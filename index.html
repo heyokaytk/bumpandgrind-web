@@ -635,13 +635,12 @@
       <strong>Free. Weekly. Always worth opening.</strong>
     </p>
     
-    <div class="newsletter-form" id="newsletter-form-wrap">
-      <input type="email" id="newsletter-email" placeholder="your@email.com" required />
-      <button type="button" id="newsletter-btn" onclick="handleNewsletterSubmit()">Subscribe Free</button>
-    </div>
+    <form class="newsletter-form" id="newsletter-form" action="https://embeds.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0" method="post" target="beehiiv-sink">
+      <input type="email" name="email" id="newsletter-email" placeholder="your@email.com" required />
+      <button type="submit" id="newsletter-btn">Subscribe Free</button>
+    </form>
     <p id="newsletter-msg" style="margin-top:16px;font-size:13px;letter-spacing:0.06em;min-height:20px;color:var(--blush);"></p>
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <iframe src="https://subscribe-forms.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="display:none;"></iframe>
+    <iframe name="beehiiv-sink" style="display:none;" aria-hidden="true"></iframe>
 
   </div>
 </div>
@@ -669,50 +668,13 @@
   reveals.forEach(el => observer.observe(el));
 
   // Newsletter submit
-  async function handleNewsletterSubmit() {
-    const emailInput = document.getElementById('newsletter-email');
+  document.getElementById('newsletter-form').addEventListener('submit', function() {
     const btn = document.getElementById('newsletter-btn');
     const msg = document.getElementById('newsletter-msg');
-    const email = emailInput.value.trim();
-
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      msg.style.color = 'var(--blush-deep)';
-      msg.textContent = 'Please enter a valid email address.';
-      return;
-    }
-
-    btn.textContent = 'Subscribing...';
+    btn.textContent = 'Subscribed ✓';
     btn.disabled = true;
-
-    try {
-      const res = await fetch('https://api.beehiiv.com/v2/publications/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0/subscriptions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, reactivate_existing: true, send_welcome_email: true })
-      });
-
-      if (res.ok || res.status === 201 || res.status === 200) {
-        msg.style.color = 'var(--blush)';
-        msg.textContent = "You're in. Welcome to the newsletter.";
-        emailInput.value = '';
-        btn.textContent = 'Subscribed ✓';
-      } else {
-        // Fallback: open beehiiv subscribe page
-        window.open(`https://subscribe-forms.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0?email=${encodeURIComponent(email)}`, '_blank');
-        msg.style.color = 'var(--blush)';
-        msg.textContent = "Redirecting you to confirm your subscription.";
-        btn.textContent = 'Subscribe Free';
-        btn.disabled = false;
-      }
-    } catch (e) {
-      // Network fallback
-      window.open(`https://subscribe-forms.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0?email=${encodeURIComponent(email)}`, '_blank');
-      msg.style.color = 'var(--blush)';
-      msg.textContent = "Redirecting you to confirm your subscription.";
-      btn.textContent = 'Subscribe Free';
-      btn.disabled = false;
-    }
-  }
+    msg.textContent = "You're in. Check your inbox to confirm.";
+  });
 
   // Mixes player
   function loadMix(card, url) {
