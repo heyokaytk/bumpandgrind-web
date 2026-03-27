@@ -326,12 +326,12 @@
   }
 
   /* ── NEWSLETTER ── */
-  #newsletter-section { background: var(--dark); padding: 100px 48px; }
+  #newsletter-section { background: var(--blush-light); padding: 100px 48px; }
   #newsletter { max-width: 640px; margin: 0 auto; text-align: center; }
-  #newsletter .section-label { color: var(--blush); }
-  #newsletter .section-title { color: var(--white); }
-  .newsletter-sub { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 48px; font-weight: 300; }
-  .newsletter-sub strong { color: rgba(255,255,255,0.8); font-weight: 400; }
+  #newsletter .section-label { color: var(--blush-deep); }
+  #newsletter .section-title { color: var(--dark); }
+  .newsletter-sub { font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 48px; font-weight: 300; }
+  .newsletter-sub strong { color: var(--dark); font-weight: 500; }
   .newsletter-form { display: flex; max-width: 460px; margin: 0 auto; }
   .newsletter-form input[type="email"] {
     flex: 1; background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.12); border-right: none;
@@ -635,11 +635,8 @@
       <strong>Free. Weekly. Always worth opening.</strong>
     </p>
     
-    <form class="newsletter-form" id="newsletter-form" onsubmit="submitNewsletter(event)">
-      <input type="email" id="newsletter-email" placeholder="your@email.com" required />
-      <button type="submit" id="newsletter-btn">Subscribe Free</button>
-    </form>
-    <p id="newsletter-msg" style="margin-top:16px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;min-height:20px;color:var(--blush);"></p>
+    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+    <iframe src="https://subscribe-forms.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:460px;height:320px;border:none;background:transparent;display:block;margin:0 auto;"></iframe>
 
   </div>
 </div>
@@ -665,34 +662,6 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
-
-  // Newsletter submit
-  function submitNewsletter(e) {
-    e.preventDefault();
-    const email = document.getElementById('newsletter-email').value.trim();
-    const btn = document.getElementById('newsletter-btn');
-    const msg = document.getElementById('newsletter-msg');
-
-    btn.textContent = 'Subscribing...';
-    btn.disabled = true;
-
-    const form = new FormData();
-    form.append('email', email);
-
-    fetch('https://embeds.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: form
-    }).then(() => {
-      btn.textContent = 'Subscribed ✓';
-      msg.textContent = "You're in — check your inbox to confirm.";
-      document.getElementById('newsletter-email').value = '';
-    }).catch(() => {
-      btn.textContent = 'Subscribed ✓';
-      msg.textContent = "You're in — check your inbox to confirm.";
-      document.getElementById('newsletter-email').value = '';
-    });
-  }
 
   // Mixes player
   function loadMix(card, url) {
