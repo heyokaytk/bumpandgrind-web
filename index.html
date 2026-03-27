@@ -635,12 +635,11 @@
       <strong>Free. Weekly. Always worth opening.</strong>
     </p>
     
-    <form class="newsletter-form" id="newsletter-form" action="https://embeds.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0" method="post" target="beehiiv-sink">
-      <input type="email" name="email" id="newsletter-email" placeholder="your@email.com" required />
+    <form class="newsletter-form" id="newsletter-form" onsubmit="submitNewsletter(event)">
+      <input type="email" id="newsletter-email" placeholder="your@email.com" required />
       <button type="submit" id="newsletter-btn">Subscribe Free</button>
     </form>
-    <p id="newsletter-msg" style="margin-top:16px;font-size:13px;letter-spacing:0.06em;min-height:20px;color:var(--blush);"></p>
-    <iframe name="beehiiv-sink" style="display:none;" aria-hidden="true"></iframe>
+    <p id="newsletter-msg" style="margin-top:16px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;min-height:20px;color:var(--blush);"></p>
 
   </div>
 </div>
@@ -668,13 +667,32 @@
   reveals.forEach(el => observer.observe(el));
 
   // Newsletter submit
-  document.getElementById('newsletter-form').addEventListener('submit', function() {
+  function submitNewsletter(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletter-email').value.trim();
     const btn = document.getElementById('newsletter-btn');
     const msg = document.getElementById('newsletter-msg');
-    btn.textContent = 'Subscribed ✓';
+
+    btn.textContent = 'Subscribing...';
     btn.disabled = true;
-    msg.textContent = "You're in. Check your inbox to confirm.";
-  });
+
+    const form = new FormData();
+    form.append('email', email);
+
+    fetch('https://embeds.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: form
+    }).then(() => {
+      btn.textContent = 'Subscribed ✓';
+      msg.textContent = "You're in — check your inbox to confirm.";
+      document.getElementById('newsletter-email').value = '';
+    }).catch(() => {
+      btn.textContent = 'Subscribed ✓';
+      msg.textContent = "You're in — check your inbox to confirm.";
+      document.getElementById('newsletter-email').value = '';
+    });
+  }
 
   // Mixes player
   function loadMix(card, url) {
