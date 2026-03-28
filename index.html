@@ -698,11 +698,17 @@
       <a href="#" target="_blank" class="newsletter-recap-link">Read the full issue →</a>
     </div>
     <form class="newsletter-form" id="newsletterForm">
+      <div style="position:absolute;left:-9999px" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </div>
       <input type="email" id="newsletterEmail" placeholder="Your email address" required autocomplete="email">
-      <button type="submit">Subscribe</button>
+      <button type="submit" id="newsletterBtn">Subscribe</button>
     </form>
     <div class="newsletter-success" id="newsletterSuccess">
-      Thanks! Check the new tab to confirm your subscription.
+      You're on the list. See you in your inbox.
+    </div>
+    <div class="newsletter-success" id="newsletterError" style="border-left-color:#c0392b;color:#c0392b;">
+      Something went wrong. Try again or email us directly.
     </div>
   </div>
 </div>
@@ -723,10 +729,32 @@
 <script>
   document.getElementById('newsletterForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const email = encodeURIComponent(document.getElementById('newsletterEmail').value);
-    window.open('https://subscribe-forms.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0?email=' + email, '_blank');
-    this.style.display = 'none';
-    document.getElementById('newsletterSuccess').style.display = 'block';
+    if (this.querySelector('[name="website"]').value) return; // honeypot
+    const email = document.getElementById('newsletterEmail').value;
+    const btn = document.getElementById('newsletterBtn');
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+    fetch('https://api.beehiiv.com/v2/publications/pub_9b939e75-dd9d-4683-9d66-7e6ee8c2a7ad/subscriptions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer MYJqqQn4A2tiSM7FM3zgIPh0LU2D3bb0Vb2bfnSUM3cPnlEjwbqHZQkV3ZFst6IX'
+      },
+      body: JSON.stringify({ email: email, reactivate_existing: true, send_welcome_email: true })
+    })
+    .then(res => {
+      if (res.ok || res.status === 201) {
+        document.getElementById('newsletterForm').style.display = 'none';
+        document.getElementById('newsletterSuccess').style.display = 'block';
+      } else {
+        throw new Error('API error');
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Subscribe';
+      btn.disabled = false;
+      document.getElementById('newsletterError').style.display = 'block';
+    });
   });
 
   const reveals = document.querySelectorAll('.reveal');
