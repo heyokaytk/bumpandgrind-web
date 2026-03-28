@@ -734,13 +734,10 @@
     const btn = document.getElementById('newsletterBtn');
     btn.textContent = 'Subscribing...';
     btn.disabled = true;
-    fetch('https://api.beehiiv.com/v2/publications/pub_9b939e75-dd9d-4683-9d66-7e6ee8c2a7ad/subscriptions', {
+    fetch('https://bumpandgrind-subscribe.okaytkokay.workers.dev/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer MYJqqQn4A2tiSM7FM3zgIPh0LU2D3bb0Vb2bfnSUM3cPnlEjwbqHZQkV3ZFst6IX'
-      },
-      body: JSON.stringify({ email: email, reactivate_existing: true, send_welcome_email: true })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
     })
     .then(res => {
       if (res.ok || res.status === 201) {
