@@ -83,6 +83,7 @@
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,47 +91,68 @@
     text-align: center;
     padding: 120px 24px 80px;
     position: relative;
-    background: var(--white);
+    background: url('BUMPANDGRIND-HERO-TOP.jpg') center center / cover no-repeat;
     overflow: hidden;
   }
-  #hero::before {
-    content: "B&G";
+  #hero::before { display: none; }
+  .hero-bg-letters {
     font-family: var(--display);
-    font-size: clamp(200px, 40vw, 520px);
-    color: rgba(240, 179, 160, 0.09);
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+    font-size: clamp(140px, 38vw, 520px);
+    color: var(--white);
+    line-height: 0.85;
     pointer-events: none;
     user-select: none;
-    line-height: 1;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 0;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  }
+  #hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.38);
+    pointer-events: none;
+    z-index: 0;
   }
   .hero-eyebrow {
     font-family: var(--sans);
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--blush-deep);
-    margin-bottom: 28px;
+    color: var(--white);
+    margin-bottom: 48px;
+    margin-top: 12px;
     animation: fadeUp 0.8s ease both;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
   }
   .hero-logo {
     width: clamp(220px, 45vw, 460px);
     margin-bottom: 36px;
     animation: fadeUp 0.9s 0.1s ease both;
     filter: drop-shadow(0 4px 32px rgba(0,0,0,0.07));
+    position: relative;
+    z-index: 1;
   }
   .hero-tagline {
     font-family: var(--serif);
-    font-size: clamp(20px, 3vw, 30px);
+    font-size: clamp(22px, 3.5vw, 36px);
     font-weight: 600;
     font-style: italic;
-    color: #555;
-    max-width: 500px;
+    color: var(--dark);
+    max-width: 560px;
     line-height: 1.5;
     margin-bottom: 48px;
     animation: fadeUp 0.9s 0.2s ease both;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-logo {
+    position: relative;
+    z-index: 2;
   }
   .hero-cta-row {
     display: flex;
@@ -138,6 +160,8 @@
     flex-wrap: wrap;
     justify-content: center;
     animation: fadeUp 0.9s 0.3s ease both;
+    position: relative;
+    z-index: 2;
   }
   .btn-primary {
     display: inline-block;
@@ -150,12 +174,13 @@
     text-transform: uppercase;
     text-decoration: none;
     padding: 16px 36px;
-    transition: background 0.25s, transform 0.2s;
+    transition: background 0.25s, color 0.25s, transform 0.2s;
   }
-  .btn-primary:hover { background: var(--blush-deep); transform: translateY(-1px); }
+  .btn-primary:hover { background: var(--blush-deep); color: var(--white); transform: translateY(-1px); }
   .btn-outline {
     display: inline-block;
-    border: 1.5px solid var(--dark);
+    background: var(--white);
+    border: 1.5px solid var(--white);
     color: var(--dark);
     font-family: var(--sans);
     font-size: 11px;
@@ -164,9 +189,9 @@
     text-transform: uppercase;
     text-decoration: none;
     padding: 16px 36px;
-    transition: background 0.25s, color 0.25s, transform 0.2s;
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.2s;
   }
-  .btn-outline:hover { background: var(--dark); color: var(--white); transform: translateY(-1px); }
+  .btn-outline:hover { background: var(--blush-deep); color: var(--white); border-color: var(--blush-deep); transform: translateY(-1px); }
   .hero-scroll-hint {
     position: absolute;
     bottom: 32px; left: 50%;
@@ -178,8 +203,8 @@
   .scroll-line { width: 1px; height: 40px; background: var(--blush); animation: scrollPulse 2s infinite; }
 
   /* ── TICKER ── */
-  .ticker-wrap { background: var(--dark); color: var(--white); overflow: hidden; padding: 14px 0; }
-  .ticker-inner { display: flex; width: max-content; animation: ticker 60s linear infinite; }
+  .ticker-wrap { background: var(--blush-deep); color: var(--white); overflow: hidden; padding: 14px 0; }
+  .ticker-inner { display: flex; width: max-content; animation: ticker 100s linear infinite; }
   .ticker-inner span { font-family: var(--display); font-size: 17px; letter-spacing: 0.12em; padding: 0 40px; white-space: nowrap; }
   .ticker-inner span.dot { color: var(--blush); padding: 0 12px; }
 
@@ -245,56 +270,58 @@
   .event-status.tba { color: var(--blush-deep); border-color: var(--blush); }
   .btn-ticket {
     display: inline-block;
-    background: var(--dark); color: var(--white);
+    background: var(--white); color: var(--dark);
+    border: 1.5px solid var(--dark);
     font-family: var(--sans); font-size: 10px; font-weight: 600;
     letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
     padding: 10px 22px; white-space: nowrap;
-    transition: background 0.2s, transform 0.15s;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
   }
-  .btn-ticket:hover { background: var(--blush-deep); transform: translateY(-1px); }
+  .btn-ticket:hover { background: var(--blush-deep); color: var(--white); border-color: var(--blush-deep); transform: translateY(-1px); }
+  .btn-ticket--disabled { background: var(--light-gray); color: var(--mid-gray); border-color: var(--light-gray); pointer-events: none; }
 
   /* ── MIXES ── */
-  #mixes-section { background: var(--dark); }
+  #mixes-section { background: var(--blush-light); }
   #mixes { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
-  #mixes .section-label { color: var(--blush); }
-  #mixes .section-title { color: var(--white); margin-bottom: 12px; }
-  #mixes .section-sub { font-size: 14px; color: rgba(255,255,255,0.35); letter-spacing: 0.04em; margin-bottom: 56px; font-weight: 300; }
+  #mixes .section-label { color: var(--blush-deep); }
+  #mixes .section-title { color: var(--dark); margin-bottom: 12px; }
+  #mixes .section-sub { font-size: 14px; color: rgba(24,20,18,0.6); letter-spacing: 0.04em; margin-bottom: 56px; font-weight: 300; }
   .mixes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .mix-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
+    background: var(--white);
+    border: 1px solid var(--light-gray);
     padding: 28px;
     transition: background 0.2s, border-color 0.2s;
     cursor: pointer;
     position: relative;
   }
-  .mix-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(240,179,160,0.3); }
-  .mix-card.active { background: rgba(240,179,160,0.08); border-color: var(--blush); }
+  .mix-card:hover { background: var(--white); border-color: var(--blush); }
+  .mix-card.active { background: var(--white); border-color: var(--blush-deep); }
   .mix-num {
-    font-family: var(--display); font-size: 36px; color: rgba(255,255,255,0.1);
+    font-family: var(--display); font-size: 36px; color: var(--dark);
     line-height: 1; margin-bottom: 16px; letter-spacing: 0.05em;
   }
-  .mix-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
-  .mix-date { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .mix-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+  .mix-date { font-size: 11px; color: rgba(24,20,18,0.6); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
   .mix-play-btn {
     display: flex; align-items: center; gap: 8px;
     font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--blush); border: none; background: none; cursor: pointer; padding: 0;
+    color: var(--blush-deep); border: none; background: none; cursor: pointer; padding: 0;
     font-family: var(--sans); transition: color 0.2s;
   }
-  .mix-play-btn:hover { color: var(--white); }
+  .mix-play-btn:hover { color: var(--dark); }
   .mix-play-btn .play-icon {
     width: 28px; height: 28px; border-radius: 50%;
     background: var(--blush-deep); display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: background 0.2s;
   }
-  .mix-play-btn:hover .play-icon { background: var(--blush); }
+  .mix-play-btn:hover .play-icon { background: var(--dark); }
   .mix-play-btn svg { width: 10px; height: 10px; fill: white; margin-left: 2px; }
   .mixes-player {
     margin-top: 32px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-top: 2px solid var(--blush);
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-top: 2px solid var(--blush-deep);
     overflow: hidden;
     transition: all 0.3s ease;
   }
@@ -302,15 +329,15 @@
   .mixes-footer { margin-top: 36px; text-align: center; }
   .btn-mixcloud {
     display: inline-flex; align-items: center; gap: 10px;
-    border: 1.5px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6);
+    background: var(--white); border: 1px solid var(--light-gray); color: var(--dark);
     font-family: var(--sans); font-size: 11px; font-weight: 500;
     letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
-    padding: 12px 28px; transition: border-color 0.2s, color 0.2s;
+    padding: 16px 36px; transition: border-color 0.2s, color 0.2s, background 0.2s;
   }
-  .btn-mixcloud:hover { border-color: var(--blush); color: var(--blush); }
+  .btn-mixcloud:hover { background: var(--blush-deep); border-color: var(--blush-deep); color: var(--white); }
 
   /* ── GALLERY ── */
-  #gallery-section { background: var(--blush-light); }
+  #gallery-section { background: var(--white); }
   #gallery { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
   .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 48px; }
   .gallery-item { overflow: hidden; background: var(--light-gray); aspect-ratio: 4/3; position: relative; }
@@ -325,12 +352,39 @@
   }
 
   /* ── NEWSLETTER ── */
-  #newsletter-section { background: var(--blush-light); padding: 100px 48px; }
+  #newsletter-section { background: var(--white); padding: 100px 48px; }
   #newsletter { max-width: 640px; margin: 0 auto; text-align: center; }
   #newsletter .section-label { color: var(--blush-deep); }
   #newsletter .section-title { color: var(--dark); }
   .newsletter-sub { font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 48px; font-weight: 300; }
   .newsletter-sub strong { color: var(--dark); font-weight: 500; }
+  .newsletter-recap {
+    max-width: 460px; margin: 0 auto 40px;
+    background: var(--blush-light); padding: 24px 28px;
+    border-left: 3px solid var(--blush-deep); text-align: left;
+  }
+  .newsletter-recap-label {
+    font-family: var(--sans); font-size: 10px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush-deep);
+    margin-bottom: 12px;
+  }
+  .newsletter-recap-list {
+    list-style: none; padding: 0; margin: 0 0 16px;
+  }
+  .newsletter-recap-list li {
+    font-size: 13px; color: rgba(24,20,18,0.75); padding: 5px 0;
+    padding-left: 16px; position: relative; line-height: 1.5;
+  }
+  .newsletter-recap-list li::before {
+    content: "◆"; position: absolute; left: 0;
+    font-size: 6px; color: var(--blush-deep); top: 8px;
+  }
+  .newsletter-recap-link {
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; color: var(--blush-deep); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .newsletter-recap-link:hover { color: var(--dark); }
   .newsletter-form { display: flex; max-width: 460px; margin: 0 auto; }
   .newsletter-form input[type="email"] {
     flex: 1; background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.12); border-right: none;
@@ -346,7 +400,7 @@
   .newsletter-form button:hover { opacity: 0.85; }
 
   /* ── LOVE ── */
-  #love-section { background: var(--white); }
+  #love-section { background: var(--blush-light); }
   #love { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
   .love-marquee-wrap { overflow: hidden; margin-top: 56px; }
   .love-marquee { display: flex; width: max-content; animation: ticker 44s linear infinite; }
@@ -359,13 +413,13 @@
 
   /* ── FOOTER ── */
   footer {
-    background: var(--off-white); border-top: 1px solid var(--light-gray);
-    padding: 44px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    background: var(--white); border-top: 1px solid var(--light-gray);
+    padding: 44px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; position: relative;
   }
   footer img.logo { height: 36px; }
-  .footer-copy { font-size: 12px; color: var(--mid-gray); letter-spacing: 0.04em; }
+  .footer-copy { font-size: 12px; color: rgba(24,20,18,0.6); letter-spacing: 0.04em; position: absolute; left: 50%; transform: translateX(-50%); }
   .footer-social { display: flex; gap: 20px; }
-  .footer-social a { color: var(--mid-gray); transition: color 0.2s; }
+  .footer-social a { color: var(--dark); transition: color 0.2s; }
   .footer-social a:hover { color: var(--blush-deep); }
   .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
 
@@ -407,7 +461,7 @@
     <a href="#events-section">Events</a>
     <a href="#gallery-section">Photos</a>
     <a href="#newsletter-section">Newsletter</a>
-    <a href="#events-section" class="nav-cta">Get Tickets</a>
+    <a href="#newsletter-section" class="nav-cta">Get Tickets</a>
   </div>
   <div class="nav-social">
     <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" aria-label="Instagram">
@@ -421,13 +475,11 @@
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow">Halifax, Nova Scotia · Est. 2016</p>
-  <p class="hero-tagline">Halifax's premier R&B experience.</p>
+  <p class="hero-bg-letters">B&G</p>
+  <p class="hero-eyebrow">BUMP &amp; GRIND R&amp;B PARTY · Est. 2016</p>
   <div class="hero-cta-row">
-    <a href="#events-section" class="btn-primary">Next BUMP & GRIND Event</a>
+    <a href="#events-section" class="btn-outline">Next BUMP &amp; GRIND Event</a>
     <a href="#newsletter-section" class="btn-outline">Join the Newsletter</a>
-  </div>
-  <div class="hero-scroll-hint">
   </div>
 </section>
 
@@ -502,34 +554,33 @@
 <div id="about-section">
   <div id="about">
     <div class="reveal">
-      <p class="section-label">About</p>
-      <h2 class="section-title">Halifax's Only Dedicated R&B Experience</h2>
+      <p class="section-label">About 🎶</p>
+      <h2 class="section-title">Halifax's Only Dedicated R&B Experience.</h2>
       <p class="about-body">
-        Since 2016, <strong>Bump &amp; Grind</strong> has defined R&amp;B events in Halifax. Over the years we have curated a unique premium event.<br><br>
-        We don't just throw parties. We own our audience, grow our community, and show up for our city every time.
-      </p>
-    </div>
+<b>Bump & Grind</b> is Halifax's favourite R&B experience. Established in 2016 — from intimate venues and rooftop patios to sold-out nights at some of the city's biggest stages. Stay connected with our weekly R&B newsletter and hopefully we'll see you at the next one. ❤️   
+</div>
   </div>
 </div>
 
 <!-- EVENTS -->
 <div id="events-section">
   <div id="events">
-    <p class="section-label reveal">2026 Season</p>
+    <p class="section-label reveal">2026 Season 🗓️</p>
     <h2 class="section-title reveal">Upcoming Events</h2>
 
     <div class="event-card reveal">
       <div class="event-date-block">
         <div class="event-month">May</div>
         <div class="event-day">14</div>
+        <div class="event-month">Sun</div>
       </div>
       <div class="event-info">
-        <div class="event-name">Patio Day Party</div>
-        <div class="event-meta">The Pint · Argyle Street, Halifax &nbsp;·&nbsp; 4pm – 8pm</div>
+        <div class="event-name">🤫</div>
+        <div class="event-meta">Event Details Coming Soon!</div>
       </div>
       <div class="event-actions">
-        <span class="event-status on-sale">Tickets Available</span>
-        <a href="https://YOUR-EVENTBRITE-LINK-MAY14" target="_blank" class="btn-ticket">Get Tickets</a>
+        <span class="event-status on-sale">On Sale in April</span>
+        <a href="#" target="_blank" class="btn-ticket btn-ticket--disabled">Get Tickets</a>
       </div>
     </div>
 
@@ -539,35 +590,35 @@
 <!-- MIXES -->
 <div id="mixes-section">
   <div id="mixes">
-    <p class="section-label reveal">Mixes</p>
+    <p class="section-label reveal">Mixes 🎧</p>
     <h2 class="section-title reveal">Your Monthly Mix</h2>
-    <p class="section-sub reveal">A curated 30-minute R&B set keeping the vibe alive between events.</p>
+    <p class="section-sub reveal">Here is your curated 30-minute R&B set keeping the vibe going between events.</p>
     <div class="mixes-grid">
 
-      <div class="mix-card reveal" onclick="loadMix(this, 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=%2Fheyokaytk%2FYOUR-MIX-SLUG-1%2F')">
-        <div class="mix-num">001</div>
-        <div class="mix-title">The Warm Up</div>
-        <div class="mix-date">February 2026</div>
+      <div class="mix-card reveal" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/bump-grind-rb-mix-january-2026/')">
+        <div class="mix-num">JANUARY R&B MIX</div>
+        <div class="mix-title"></div>
+        <div class="mix-date">Mixed By OKAY⚡️TK</div>
         <button class="mix-play-btn">
           <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
           Play Mix
         </button>
       </div>
 
-      <div class="mix-card reveal" style="transition-delay:0.1s" onclick="loadMix(this, 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=%2Fheyokaytk%2FYOUR-MIX-SLUG-2%2F')">
-        <div class="mix-num">002</div>
-        <div class="mix-title">Late Night Vibes</div>
-        <div class="mix-date">January 2026</div>
+      <div class="mix-card reveal" style="transition-delay:0.1s" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/okay-tk-bump-grind-rb-mix-november-2025/')">
+        <div class="mix-num">NOVEMBER R&B MIX</div>
+        <div class="mix-title"></div>
+        <div class="mix-date">Mixed By OKAY⚡️TK</div>
         <button class="mix-play-btn">
           <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
           Play Mix
         </button>
       </div>
 
-      <div class="mix-card reveal" style="transition-delay:0.2s" onclick="loadMix(this, 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=%2Fheyokaytk%2FYOUR-MIX-SLUG-3%2F')">
-        <div class="mix-num">003</div>
-        <div class="mix-title">Sunday Feels</div>
-        <div class="mix-date">December 2025</div>
+      <div class="mix-card reveal" style="transition-delay:0.2s" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/baby-yu-x-okay-tk-bump-grind-rb-mix/')">
+        <div class="mix-num">MAY R&B MIX 2025</div>
+        <div class="mix-title"></div>
+        <div class="mix-date">Mixed By OKAY⚡️TK & DJ Baby Yu</div>
         <button class="mix-play-btn">
           <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
           Play Mix
@@ -577,7 +628,7 @@
     </div>
 
     <div class="mixes-player reveal" id="mixPlayer" style="display:none;">
-      <iframe id="mixFrame" height="120" allow="autoplay"></iframe>
+      <iframe id="mixFrame" height="60" allow="autoplay"></iframe>
     </div>
 
     <div class="mixes-footer reveal">
@@ -590,16 +641,15 @@
 </div>
 <div id="gallery-section">
   <div id="gallery">
-    <p class="section-label reveal">Photos</p>
-    <h2 class="section-title reveal">The Vibe Speaks for Itself</h2>
-    <p class="reveal" style="color:var(--mid-gray);font-size:13px;letter-spacing:0.06em;margin-top:-8px;">Replace the placeholders below with your actual event photos.</p>
+    <p class="section-label reveal">Photos 📸</p>
+    <h2 class="section-title reveal">Let The Vibe Speak For Itself</h2>
+    <p class="reveal" style="color:var(--mid-gray);font-size:13px;letter-spacing:0.06em;margin-top:-8px;"></p>
     <div class="gallery-grid">
-      <div class="gallery-item tall reveal"><div class="gallery-placeholder">Photo 1</div></div>
-      <div class="gallery-item reveal"><div class="gallery-placeholder">Photo 2</div></div>
-      <div class="gallery-item reveal" style="transition-delay:0.1s"><div class="gallery-placeholder">Photo 3</div></div>
-      <div class="gallery-item reveal" style="transition-delay:0.15s"><div class="gallery-placeholder">Photo 4</div></div>
-      <div class="gallery-item reveal" style="transition-delay:0.2s"><div class="gallery-placeholder">Photo 5</div></div>
-      <div class="gallery-item reveal" style="transition-delay:0.25s"><div class="gallery-placeholder">Photo 6</div></div>
+      <div class="gallery-item tall reveal"><img src="images/gallery/PHOTO-1.jpg" alt="Bump & Grind"></div>
+      <div class="gallery-item reveal"><img src="images/gallery/PHOTO-2.jpg" alt="Bump & Grind"></div>
+      <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="images/gallery/PHOTO-3.jpg" alt="Bump & Grind"></div>
+      <div class="gallery-item reveal" style="transition-delay:0.15s"><img src="images/gallery/PHOTO-4.jpg" alt="Bump & Grind"></div>
+      <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="images/gallery/PHOTO-5.jpg" alt="Bump & Grind"></div>
     </div>
   </div>
 </div>
@@ -607,20 +657,22 @@
 <!-- COMMUNITY -->
 <div id="love-section">
   <div id="love">
-    <p class="section-label reveal">The Community</p>
-    <h2 class="section-title reveal">People Love This Party</h2>
+    <p class="section-label reveal">The Community 🤝</p>
+    <h2 class="section-title reveal">What The People Are Saying</h2>
     <div class="love-marquee-wrap">
       <div class="love-marquee">
-        <div class="love-card"><p class="love-quote">"Best R&amp;B night in the city. Period. Always a full crowd, great energy, and the DJ never misses."</p><p class="love-handle">@hfx_nightlife</p></div>
-        <div class="love-card"><p class="love-quote">"This is the one event I clear my calendar for every time. Bump &amp; Grind just hits different."</p><p class="love-handle">@jlthompsonhfx</p></div>
-        <div class="love-card"><p class="love-quote">"Sold out for a reason. The vibe is unmatched — mature crowd, incredible music, good times every time."</p><p class="love-handle">@east_coast_moves</p></div>
-        <div class="love-card"><p class="love-quote">"Finally a party where you can actually hear the music, dance, and not fight your way to the bar."</p><p class="love-handle">@kennedym_hfx</p></div>
-        <div class="love-card"><p class="love-quote">"The newsletter alone is worth it — they actually know R&amp;B. This crew is the real deal."</p><p class="love-handle">@rnblistener902</p></div>
-        <div class="love-card"><p class="love-quote">"Best R&amp;B night in the city. Period. Always a full crowd, great energy, and the DJ never misses."</p><p class="love-handle">@hfx_nightlife</p></div>
-        <div class="love-card"><p class="love-quote">"This is the one event I clear my calendar for every time. Bump &amp; Grind just hits different."</p><p class="love-handle">@jlthompsonhfx</p></div>
-        <div class="love-card"><p class="love-quote">"Sold out for a reason. The vibe is unmatched — mature crowd, incredible music, good times every time."</p><p class="love-handle">@east_coast_moves</p></div>
-        <div class="love-card"><p class="love-quote">"Finally a party where you can actually hear the music, dance, and not fight your way to the bar."</p><p class="love-handle">@kennedym_hfx</p></div>
-        <div class="love-card"><p class="love-quote">"The newsletter alone is worth it — they actually know R&amp;B. This crew is the real deal."</p><p class="love-handle">@rnblistener902</p></div>
+        <div class="love-card"><p class="love-quote">"🔥"</p><p class="love-handle">@alleyandy</p></div>
+        <div class="love-card"><p class="love-quote">"By far the best Bump and Grind yet."</p><p class="love-handle">@amy_laplante82</p></div>
+        <div class="love-card"><p class="love-quote">"That was super fun."</p><p class="love-handle">@alicat.my9lives</p></div>
+        <div class="love-card"><p class="love-quote">"The best vibes."</p><p class="love-handle">@lovejessweb</p></div>
+        <div class="love-card"><p class="love-quote">"Cannot wait for this."</p><p class="love-handle">@tiffyjewl12</p></div>
+        <div class="love-card"><p class="love-quote">"Finally gonna make this one! Can't wait! 🔥🔥"</p><p class="love-handle">@celinenineotwo</p></div>
+        <div class="love-card"><p class="love-quote">"🔥"</p><p class="love-handle">@alleyandy</p></div>
+        <div class="love-card"><p class="love-quote">"By far the best Bump and Grind yet."</p><p class="love-handle">@amy_laplante82</p></div>
+        <div class="love-card"><p class="love-quote">"That was super fun."</p><p class="love-handle">@alicat.my9lives</p></div>
+        <div class="love-card"><p class="love-quote">"The best vibes."</p><p class="love-handle">@lovejessweb</p></div>
+        <div class="love-card"><p class="love-quote">"Cannot wait for this."</p><p class="love-handle">@tiffyjewl12</p></div>
+        <div class="love-card"><p class="love-quote">"Finally gonna make this one! Can't wait! 🔥🔥"</p><p class="love-handle">@celinenineotwo</p></div>
       </div>
     </div>
   </div>
@@ -629,12 +681,23 @@
 <!-- NEWSLETTER -->
 <div id="newsletter-section">
   <div id="newsletter">
-    <p class="section-label">Newsletter</p>
+    <p class="section-label">Newsletter ✉️</p>
     <h2 class="section-title">Halifax's Only<br>Weekly R&amp;B Newsletter</h2>
     <p class="newsletter-sub">
-      VIP perks, early event access &amp; exclusive drops.<br>
+      Be the first to know when tickets drop — plus VIP perks, early event access &amp; exclusive R&amp;B drops.<br>
       <strong>Free. Weekly. Always worth opening.</strong>
     </p>
+    <div class="newsletter-recap">
+      <p class="newsletter-recap-label">Latest Issue — March 25, 2026</p>
+      <ul class="newsletter-recap-list">
+        <li>Patio season is back ☀️ — dates locked, tickets dropping very soon</li>
+        <li>⏪️ R&amp;B Rewind: The En Vogue record that hit #1 and defined an era</li>
+        <li>🎂 On This Day: Celebrating the Queen of Soul herself — Aretha Franklin</li>
+      </ul>
+      <a href="#" target="_blank" class="newsletter-recap-link">Read the full issue →</a>
+    </div>
+    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+    <script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
     <iframe src="https://subscribe-forms.beehiiv.com/5057e9f5-3d40-42e5-875e-5fb0ff45bbb0" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:460px;height:339px;margin:0 auto;display:block;border:none;background:transparent;"></iframe>
   </div>
 </div>
@@ -667,7 +730,8 @@
     card.classList.add('active');
     const player = document.getElementById('mixPlayer');
     const frame = document.getElementById('mixFrame');
-    frame.src = url;
+    const path = new URL(url).pathname;
+    frame.src = 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=' + encodeURIComponent(path);
     player.style.display = 'block';
     setTimeout(() => player.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
   }
