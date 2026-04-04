@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bump & Grind Halifax — Your Favourite R&B Party</title>
+
+<!-- META / OG TAGS -->
+<meta name="description" content="Halifax's original and favourite R&B party. Sold-out events, weekly newsletter, monthly mixes. Since 2016.">
+<meta property="og:title" content="Bump & Grind Halifax — Your Favourite R&B Party">
+<meta property="og:description" content="Halifax's original and favourite R&B party. Sold-out events, weekly newsletter, monthly mixes. Since 2016.">
+<meta property="og:image" content="https://www.bumpandgrindhfx.com/IMAGES/BUMPANDGRIND-OG.jpg">
+<meta property="og:url" content="https://www.bumpandgrindhfx.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bump & Grind Halifax">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bump & Grind Halifax — Your Favourite R&B Party">
+<meta name="twitter:description" content="Halifax's original and favourite R&B party. Sold-out events, weekly newsletter, monthly mixes. Since 2016.">
+<meta name="twitter:image" content="https://www.bumpandgrindhfx.com/IMAGES/BUMPANDGRIND-OG.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -267,7 +281,7 @@
     padding: 9px 22px; border: 1.5px solid currentColor; white-space: nowrap;
   }
   .event-status.on-sale { color: var(--dark); border-color: var(--dark); background: var(--blush-light); }
-  .event-status.tba { color: var(--blush-deep); border-color: var(--blush); }
+  .event-status.coming-soon { color: var(--blush-deep); border-color: var(--blush); }
   .btn-ticket {
     display: inline-block;
     background: var(--white); color: var(--dark);
@@ -279,6 +293,12 @@
   }
   .btn-ticket:hover { background: var(--blush-deep); color: var(--white); border-color: var(--blush-deep); transform: translateY(-1px); }
   .btn-ticket--disabled { background: var(--light-gray); color: var(--mid-gray); border-color: var(--light-gray); pointer-events: none; }
+  .events-footer-note {
+    font-family: var(--sans); font-size: 13px; color: var(--mid-gray);
+    letter-spacing: 0.04em; margin-top: 32px; font-weight: 400;
+  }
+  .events-footer-note a { color: var(--blush-deep); text-decoration: none; font-weight: 500; }
+  .events-footer-note a:hover { color: var(--dark); }
 
   /* ── MIXES ── */
   #mixes-section { background: var(--blush-light); }
@@ -486,7 +506,7 @@
   </div>
 </section>
 
-<!-- TICKER -->
+<!-- ARTIST TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-inner">
     <span>Marvin Gaye</span><span class="dot">◆</span>
@@ -501,7 +521,7 @@
     <span>Keith Sweat</span><span class="dot">◆</span>
     <span>Boyz II Men</span><span class="dot">◆</span>
     <span>Mary J. Blige</span><span class="dot">◆</span>
-    <span>R. Kelly</span><span class="dot">◆</span>
+    <span>TLC</span><span class="dot">◆</span>
     <span>Usher</span><span class="dot">◆</span>
     <span>Aaliyah</span><span class="dot">◆</span>
     <span>Destiny's Child</span><span class="dot">◆</span>
@@ -532,7 +552,7 @@
     <span>Keith Sweat</span><span class="dot">◆</span>
     <span>Boyz II Men</span><span class="dot">◆</span>
     <span>Mary J. Blige</span><span class="dot">◆</span>
-    <span>R. Kelly</span><span class="dot">◆</span>
+    <span>TLC</span><span class="dot">◆</span>
     <span>Usher</span><span class="dot">◆</span>
     <span>Aaliyah</span><span class="dot">◆</span>
     <span>Destiny's Child</span><span class="dot">◆</span>
@@ -560,18 +580,21 @@
       <p class="section-label">About Bump & Grind R&B Party</p>
       <h2 class="section-title">Halifax's Only Dedicated R&B Experience 🎶</h2>
       <p class="about-body">
-<b>Bump & Grind</b> is Halifax's favourite and original R&B party. Established in 2016 — from intimate venues and rooftop patios to sold-out nights at some of the city's biggest stages. Stay connected with our weekly R&B newsletter and we'll see you at the next one. ❤️   
-</div>
+        <strong>Bump & Grind</strong> is Halifax's favourite and original R&B party. Established in 2016 — from intimate venues and rooftop patios to sold-out nights at some of the city's biggest stages. Stay connected with our weekly R&B newsletter and we'll see you at the next one. ❤️
+      </p>
+    </div>
+    <div class="reveal">
+      <p class="about-pull">"From rooftop patios to sold-out ballrooms — if you know, you know."</p>
+    </div>
   </div>
 </div>
 
-<!-- TICKER -->
+<!-- EVENT PROMO TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-inner">
     <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
     <span>Sunday May 17th 2026</span><span class="dot">◆</span>
-    <!-- duplicate for seamless loop -->
     <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
     <span>Sunday May 17th 2026</span><span class="dot">◆</span>
@@ -585,7 +608,6 @@
     <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
     <span>Sunday May 17th 2026</span><span class="dot">◆</span>
-    <!-- duplicate for seamless loop -->
     <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
     <span>Sunday May 17th 2026</span><span class="dot">◆</span>
@@ -595,9 +617,10 @@
 <!-- EVENTS -->
 <div id="events-section">
   <div id="events">
-    <p class="section-label reveal">Bump & Grind R&B · 2026 Summer Season</p>
+    <p class="section-label reveal">Bump & Grind R&B · 2026 Summer Patio Season</p>
     <h2 class="section-title reveal">Upcoming Events 🗓️</h2>
 
+    <!-- MAY 17 — ON SALE -->
     <div class="event-card reveal">
       <div class="event-date-block">
         <div class="event-month">May</div>
@@ -605,42 +628,81 @@
         <div class="event-month">Sun</div>
       </div>
       <div class="event-info">
-        <div class="event-name">The Pint Patio</div>
-        <div class="event-meta">1575 Argyle Street · Downtown Halifax, Nova Scotia</div>
+        <div class="event-name">Bump & Grind: R&B Patio Party</div>
+        <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
       </div>
       <div class="event-actions">
         <span class="event-status on-sale">On Sale Now!</span>
-        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?BumpAndGrindRNBPatioParty" target="_blank" class="btn-ticket btn-ticket--enabled">Get Tickets</a>
+        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?BumpAndGrindRNBPatioParty" target="_blank" class="btn-ticket">Get Tickets</a>
       </div>
     </div>
 
-  </div>
-</div>
+    <!-- JUNE 21 — COMING SOON -->
+    <div class="event-card reveal">
+      <div class="event-date-block">
+        <div class="event-month">Jun</div>
+        <div class="event-day">21</div>
+        <div class="event-month">Sun</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Bump & Grind: R&B Patio Party</div>
+        <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
+      </div>
+      <div class="event-actions">
+        <span class="event-status coming-soon">Coming Soon</span>
+      </div>
+    </div>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-inner">
-    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
-    <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
-    <!-- duplicate for seamless loop -->
-    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
-    <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
-    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
-    <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
-    <!-- duplicate for seamless loop -->
-    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
-    <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
-    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
-    <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
-    <!-- duplicate for seamless loop -->
-    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
-    <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
+    <!-- JULY 19 — COMING SOON -->
+    <div class="event-card reveal">
+      <div class="event-date-block">
+        <div class="event-month">Jul</div>
+        <div class="event-day">19</div>
+        <div class="event-month">Sun</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Bump & Grind: R&B Patio Party</div>
+        <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
+      </div>
+      <div class="event-actions">
+        <span class="event-status coming-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <!-- AUGUST 16 — COMING SOON -->
+    <div class="event-card reveal">
+      <div class="event-date-block">
+        <div class="event-month">Aug</div>
+        <div class="event-day">16</div>
+        <div class="event-month">Sun</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Bump & Grind: R&B Patio Party</div>
+        <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
+      </div>
+      <div class="event-actions">
+        <span class="event-status coming-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <!-- SEPTEMBER 20 — COMING SOON -->
+    <div class="event-card reveal">
+      <div class="event-date-block">
+        <div class="event-month">Sep</div>
+        <div class="event-day">20</div>
+        <div class="event-month">Sun</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Bump & Grind: R&B Patio Party</div>
+        <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
+      </div>
+      <div class="event-actions">
+        <span class="event-status coming-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <p class="events-footer-note reveal">Tickets for each date drop closer to the event. <a href="#newsletter-section">Subscribe to the newsletter</a> for early access & VIP pricing.</p>
+
   </div>
 </div>
 
@@ -696,11 +758,12 @@
     </div>
   </div>
 </div>
+
+<!-- GALLERY -->
 <div id="gallery-section">
   <div id="gallery">
     <p class="section-label reveal">Photos From Our Events</p>
     <h2 class="section-title reveal">Let The Vibe Speak For Itself 📸</h2>
-    <p class="reveal" style="color:var(--mid-gray);font-size:13px;letter-spacing:0.06em;margin-top:-8px;"></p>
     <div class="gallery-grid">
       <div class="gallery-item tall reveal"><img src="IMAGES/GALLERY/PHOTO-1.jpg" alt="Bump & Grind"></div>
       <div class="gallery-item reveal"><img src="IMAGES/GALLERY/PHOTO-2.jpg" alt="Bump & Grind"></div>
@@ -768,6 +831,7 @@
     </div>
   </div>
 </div>
+
 <!-- FOOTER -->
 <footer>
   <a href="#" class="wordmark">BUMP &amp; GRIND <span>R&amp;B PARTY</span></a>
