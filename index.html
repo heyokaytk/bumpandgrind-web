@@ -981,9 +981,9 @@
   // Instagram feed
   fetch('https://feeds.behold.so/qsCAEsMOGmrWz85yWrjH')
     .then(r => r.json())
-    .then(posts => {
+    .then(data => {
       const grid = document.getElementById('instagramGrid');
-      const items = posts.slice(0, 12);
+      const items = (data.posts || data).slice(0, 12);
       grid.innerHTML = items.map(post => {
         const img = (post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl) || post.mediaUrl || '';
         const alt = post.caption ? post.caption.slice(0, 80) : 'Bump & Grind Halifax';
