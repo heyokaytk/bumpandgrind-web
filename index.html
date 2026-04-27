@@ -125,7 +125,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 60%);
+    background: rgba(255, 255, 255, 0.38);
     pointer-events: none;
     z-index: 0;
   }
@@ -432,6 +432,71 @@
   .love-quote { font-family: var(--serif); font-size: 17px; font-style: italic; font-weight: 600; line-height: 1.65; color: #333; margin-bottom: 16px; }
   .love-handle { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blush-deep); font-weight: 500; }
 
+  /* ── INSTAGRAM ── */
+  #instagram-section { background: var(--white); }
+  #instagram { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
+  #instagram .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 16px; }
+  #instagram .section-header-left {}
+  .btn-instagram {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--white); border: 1px solid var(--light-gray); color: var(--dark);
+    font-family: var(--sans); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+    padding: 14px 28px; transition: border-color 0.2s, color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .btn-instagram:hover { background: var(--blush-deep); border-color: var(--blush-deep); color: var(--white); }
+  .btn-instagram svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+  }
+  .instagram-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--light-gray);
+    position: relative;
+    display: block;
+    text-decoration: none;
+  }
+  .instagram-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .instagram-item:hover img { transform: scale(1.06); }
+  .instagram-item-overlay {
+    position: absolute; inset: 0;
+    background: rgba(24,20,18,0);
+    transition: background 0.3s ease;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .instagram-item:hover .instagram-item-overlay { background: rgba(24,20,18,0.45); }
+  .instagram-item-overlay svg {
+    width: 24px; height: 24px; fill: white;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .instagram-item:hover .instagram-item-overlay svg { opacity: 1; }
+  .instagram-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #f5ddd5 0%, #e8cfc6 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .instagram-placeholder svg { width: 24px; height: 24px; fill: var(--blush); }
+  .instagram-loading {
+    grid-column: 1 / -1; text-align: center;
+    font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--mid-gray); padding: 60px 0;
+  }
+
+  @media (max-width: 768px) {
+    #instagram { padding: 72px 24px; }
+    .instagram-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+    #instagram .section-header { flex-direction: column; align-items: flex-start; }
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--white); border-top: 1px solid var(--light-gray);
@@ -452,56 +517,9 @@
   .reveal.visible { opacity: 1; transform: none; }
 
   /* ── MOBILE ── */
-  .nav-hamburger {
-    display: none;
-    background: none; border: none; cursor: pointer;
-    width: 28px; height: 20px; position: relative;
-    flex-direction: column; justify-content: space-between;
-    padding: 0; z-index: 200;
-  }
-  .nav-hamburger span {
-    display: block; width: 100%; height: 2px;
-    background: var(--dark); transition: all 0.3s ease;
-    border-radius: 1px;
-  }
-  .nav-hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-  .nav-hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none; position: fixed; inset: 0; z-index: 150;
-    background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
-    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  .mobile-menu.open { opacity: 1; visibility: visible; }
-  .mobile-menu-inner {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; height: 100%; gap: 8px; padding: 80px 24px 40px;
-  }
-  .mobile-menu-link {
-    font-family: var(--display); font-size: 32px; letter-spacing: 0.08em;
-    color: var(--dark); text-decoration: none; padding: 12px 0;
-    transition: color 0.2s;
-  }
-  .mobile-menu-link:hover { color: var(--blush-deep); }
-  .mobile-menu-cta {
-    display: inline-block; margin-top: 20px;
-    background: var(--dark); color: var(--white);
-    font-family: var(--sans); font-size: 11px; font-weight: 600;
-    letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
-    padding: 16px 36px; transition: background 0.2s;
-  }
-  .mobile-menu-cta:hover { background: var(--blush-deep); }
-  .mobile-menu-social { display: flex; gap: 24px; margin-top: 32px; }
-  .mobile-menu-social a { color: var(--dark); transition: color 0.2s; }
-  .mobile-menu-social a:hover { color: var(--blush-deep); }
-  .mobile-menu-social svg { width: 22px; height: 22px; fill: currentColor; }
-
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
     .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-    .mobile-menu { display: block; }
     #about { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px; }
     #events, #gallery, #love, #mixes { padding: 72px 24px; }
     #newsletter-section { padding: 72px 24px; }
@@ -512,7 +530,7 @@
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-item.tall { grid-row: span 1; aspect-ratio: 4/3; }
     .newsletter-form { flex-direction: column; }
-    .newsletter-form input[type="email"] { border-right: 1.5px solid var(--light-gray); border-bottom: none; }
+    .newsletter-form input[type="email"] { border-right: 1.5px solid rgba(255,255,255,0.12); border-bottom: none; }
     footer { flex-direction: column; align-items: flex-start; padding: 36px 24px; }
   }
 </style>
@@ -523,18 +541,14 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="wordmark">BUMP <span>&amp;</span> GRIND <span>R&amp;B PARTY</span></a>
+  <a href="#" class="wordmark">BUMP <font color="cd8069">&amp;</font> GRIND <span>R&amp;B PARTY</span></a>
   <div class="nav-links">
     <a href="#about-section">About</a>
     <a href="#events-section">Upcoming Events</a>
-    <a href="#mixes-section">Mixes</a>
     <a href="#gallery-section">Photos</a>
     <a href="#newsletter-section">Our Newsletter</a>
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?track=hI8RPjzBQS8" class="nav-cta">Patio Party Tickets!</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?BumpAndGrindRNBPatioParty" class="nav-cta">Patio Party Tickets!</a>
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
   <div class="nav-social">
     <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" aria-label="Instagram">
       <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -545,34 +559,15 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-inner">
-    <a href="#about-section" class="mobile-menu-link" onclick="closeMenu()">About</a>
-    <a href="#events-section" class="mobile-menu-link" onclick="closeMenu()">Upcoming Events</a>
-    <a href="#mixes-section" class="mobile-menu-link" onclick="closeMenu()">Mixes</a>
-    <a href="#gallery-section" class="mobile-menu-link" onclick="closeMenu()">Photos</a>
-    <a href="#newsletter-section" class="mobile-menu-link" onclick="closeMenu()">Our Newsletter</a>
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?track=hI8RPjzBQS8" class="mobile-menu-cta" onclick="closeMenu()">Patio Party Tickets</a>
-    <div class="mobile-menu-social">
-      <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <a href="https://www.facebook.com/bumpandgrindhfx" target="_blank" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
-
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-bg-letters">B<span style="color:var(--blush-deep)">&</span>G</p>
+  <p class="hero-bg-letters">B&G</p>
   <p class="hero-eyebrow">BUMP &amp; GRIND</p>
-  <p class="hero-eyebrow">Halifax's Original &amp; Favourite R&amp;B Party</p>
+  <p class="hero-eyebrow">Halifax's Original & Favourite R&amp;B Party</p>
   <p class="hero-eyebrow">Est. 2016</p>
   <div class="hero-cta-row">
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?track=hI8RPjzBQS8" class="btn-outline">Patio Party Tickets</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?BumpAndGrindRNBPatioParty" class="btn-outline">Patio Party Tickets</a>
+    <a href="#newsletter-section" class="btn-outline">Join Our Newsletter</a>
   </div>
 </section>
 
@@ -702,8 +697,8 @@
         <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
       </div>
       <div class="event-actions">
-        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?track=hI8RPjzBQS8" target="_blank" class="btn-ticket">Get Tickets</a>
-        <span class="event-status on-sale">Sold Out!</span>
+        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?BumpAndGrindRNBPatioParty" target="_blank" class="btn-ticket">Get Tickets</a>
+        <span class="event-status on-sale">75% Sold!</span>
       </div>
     </div>
 
@@ -781,7 +776,7 @@
   <div id="mixes">
     <p class="section-label reveal">Bump & Grind Mixes</p>
     <h2 class="section-title reveal">Your Monthly Mix 🎧</h2>
-    <p class="section-sub reveal">A curated 30-minute R&amp;B set to keep the vibe going between events.</p>
+    <p class="section-sub reveal">Here is your curated 30-minute R&B set keeping the vibe going between events.</p>
     <div class="mixes-grid">
 
       <div class="mix-card reveal" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/bump-grind-rb-mix-january-2026/')">
@@ -868,6 +863,25 @@
   </div>
 </div>
 
+<!-- INSTAGRAM -->
+<div id="instagram-section">
+  <div id="instagram">
+    <div class="section-header reveal">
+      <div class="section-header-left">
+        <p class="section-label">Follow Along</p>
+        <h2 class="section-title">@bumpandgrindhfx</h2>
+      </div>
+      <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" class="btn-instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Follow on Instagram
+      </a>
+    </div>
+    <div class="instagram-grid reveal" id="instagramGrid">
+      <div class="instagram-loading">Loading...</div>
+    </div>
+  </div>
+</div>
+
 <!-- NEWSLETTER -->
 <div id="newsletter-section">
   <div id="newsletter">
@@ -884,7 +898,7 @@
         <li>⏪️ R&B Rewind: The Ginuwine ballad from 2001 that still belongs in every slow jam set</li>
         <li>🗓️ On This Day: A birthday shoutout to Detroit's Dej Loaf — and why "Try Me" earns its spot at the party</li>
       </ul>
-      <a href="#newsletter-section" class="newsletter-recap-link">Subscribe below to get the next issue →</a>
+      <a href="#newsletter-section" class="newsletter-recap-link">Subscribe to read the full issue below →</a>
     </div>
     <form class="newsletter-form" id="newsletterForm">
       <div style="position:absolute;left:-9999px" aria-hidden="true">
@@ -964,19 +978,27 @@
     setTimeout(() => player.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
   }
 
-  // Mobile menu
-  const hamburger = document.getElementById('navHamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  function closeMenu() {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  hamburger.addEventListener('click', function() {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.classList.toggle('active');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
+  // Instagram feed
+  fetch('https://feeds.behold.so/qsCAEsMOGmrWz85yWrjH')
+    .then(r => r.json())
+    .then(posts => {
+      const grid = document.getElementById('instagramGrid');
+      const items = posts.slice(0, 12);
+      grid.innerHTML = items.map(post => {
+        const img = (post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl) || post.mediaUrl || '';
+        const alt = post.caption ? post.caption.slice(0, 80) : 'Bump & Grind Halifax';
+        return img ? `
+          <a class="instagram-item" href="${post.permalink}" target="_blank" rel="noopener" aria-label="${alt.replace(/"/g, '&quot;')}">
+            <img src="${img}" alt="${alt.replace(/"/g, '&quot;')}" loading="lazy">
+            <div class="instagram-item-overlay">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+          </a>` : '';
+      }).join('');
+    })
+    .catch(() => {
+      document.getElementById('instagramGrid').innerHTML = '';
+    });
 </script>
 </body>
 </html>
