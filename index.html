@@ -371,6 +371,34 @@
     color: var(--blush-deep); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
   }
 
+  /* ── GALLERY CAROUSEL ── */
+  .gallery-carousel { position: relative; }
+  .gallery-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: var(--white); border: 1.5px solid var(--light-gray);
+    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10; color: var(--dark);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .gallery-arrow:hover { background: var(--blush-deep); border-color: var(--blush-deep); color: var(--white); }
+  .gallery-arrow:disabled { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
+  .gallery-arrow-left { left: -22px; }
+  .gallery-arrow-right { right: -22px; }
+  .gallery-arrow svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .gallery-grid { transition: opacity 0.25s ease; }
+  .gallery-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+  .gallery-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--light-gray); cursor: pointer;
+    transition: background 0.2s, width 0.2s; border: none; padding: 0;
+  }
+  .gallery-dot.active { background: var(--blush-deep); width: 20px; border-radius: 3px; }
+  @media (max-width: 768px) {
+    .gallery-arrow { width: 36px; height: 36px; }
+    .gallery-arrow-left { left: 8px; }
+    .gallery-arrow-right { right: 8px; }
+  }
+
   /* ── NEWSLETTER ── */
   #newsletter-section { background: var(--white); padding: 100px 48px; }
   #newsletter { max-width: 640px; margin: 0 auto; text-align: center; }
@@ -918,12 +946,15 @@
   <div id="gallery">
     <p class="section-label reveal">Photos From Our Events</p>
     <h2 class="section-title reveal">Let The Vibe Speak For Itself 📸</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item tall reveal"><img src="IMAGES/GALLERY/PHOTO-1.jpg" alt="Bump & Grind"></div>
-      <div class="gallery-item reveal"><img src="IMAGES/GALLERY/PHOTO-2.jpg" alt="Bump & Grind"></div>
-      <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="IMAGES/GALLERY/PHOTO-3.jpg" alt="Bump & Grind"></div>
-      <div class="gallery-item reveal" style="transition-delay:0.15s"><img src="IMAGES/GALLERY/PHOTO-4.jpg" alt="Bump & Grind"></div>
-      <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="IMAGES/GALLERY/PHOTO-5.jpg" alt="Bump & Grind"></div>
+    <div class="gallery-carousel reveal">
+      <button class="gallery-arrow gallery-arrow-left" id="galleryPrev" aria-label="Previous photos">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="gallery-grid" id="galleryGrid"></div>
+      <button class="gallery-arrow gallery-arrow-right" id="galleryNext" aria-label="Next photos">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="gallery-dots" id="galleryDots"></div>
     </div>
   </div>
 </div>
@@ -1092,6 +1123,65 @@
     .catch(() => {
       document.getElementById('instagramGrid').innerHTML = '';
     });
+
+  // Gallery carousel
+  (function() {
+    const photos = [
+      'IMAGES/GALLERY/PHOTO-1.jpg',
+      'IMAGES/GALLERY/PHOTO-2.jpg',
+      'IMAGES/GALLERY/PHOTO-3.jpg',
+      'IMAGES/GALLERY/PHOTO-4.jpg',
+      'IMAGES/GALLERY/PHOTO-5.jpg',
+      'IMAGES/GALLERY/PHOTO-6.jpg',
+      'IMAGES/GALLERY/PHOTO-7.jpg',
+      'IMAGES/GALLERY/PHOTO-8.jpg',
+      'IMAGES/GALLERY/PHOTO-9.jpg',
+      'IMAGES/GALLERY/PHOTO-10.jpg',
+      // Add more: 'IMAGES/GALLERY/PHOTO-11.jpg', etc.
+    ];
+    const PER_PAGE = 5;
+    let current = 0;
+    const total = Math.ceil(photos.length / PER_PAGE);
+    const grid = document.getElementById('galleryGrid');
+    const prevBtn = document.getElementById('galleryPrev');
+    const nextBtn = document.getElementById('galleryNext');
+    const dotsEl = document.getElementById('galleryDots');
+
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Page ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    }
+
+    function buildGrid(slice) {
+      grid.innerHTML = slice.map((src, i) =>
+        '<div class="gallery-item' + (i === 0 ? ' tall' : '') + '">' +
+        '<img src="' + src + '" alt="Bump &amp; Grind" loading="lazy"></div>'
+      ).join('');
+    }
+
+    function render(page, animate) {
+      const slice = photos.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+      if (animate) {
+        grid.style.opacity = '0';
+        setTimeout(function() { buildGrid(slice); grid.style.opacity = '1'; }, 250);
+      } else {
+        buildGrid(slice);
+      }
+      dotsEl.querySelectorAll('.gallery-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === page);
+      });
+      prevBtn.disabled = page === 0;
+      nextBtn.disabled = page === total - 1;
+    }
+
+    function goTo(page) { current = page; render(current, true); }
+    prevBtn.addEventListener('click', function() { if (current > 0) goTo(current - 1); });
+    nextBtn.addEventListener('click', function() { if (current < total - 1) goTo(current + 1); });
+    render(0, false);
+  })();
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
