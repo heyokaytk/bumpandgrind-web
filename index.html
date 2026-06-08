@@ -105,7 +105,7 @@
     text-align: center;
     padding: 120px 24px 80px;
     position: relative;
-    background: url('IMAGES/JUNE2026HEADER.jpg') center center / cover no-repeat;
+    background: url('IMAGES/BUMPANDGRIND-HERO-TOP.jpg') center center / cover no-repeat;
     overflow: hidden;
   }
   #hero::before { display: none; }
@@ -371,34 +371,6 @@
     color: var(--blush-deep); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
   }
 
-  /* ── GALLERY CAROUSEL ── */
-  .gallery-carousel { position: relative; }
-  .gallery-arrow {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: var(--white); border: 1.5px solid var(--light-gray);
-    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; z-index: 10; color: var(--dark);
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-  }
-  .gallery-arrow:hover { background: var(--blush-deep); border-color: var(--blush-deep); color: var(--white); }
-  .gallery-arrow:disabled { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
-  .gallery-arrow-left { left: -22px; }
-  .gallery-arrow-right { right: -22px; }
-  .gallery-arrow svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .gallery-grid { transition: opacity 0.25s ease; }
-  .gallery-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
-  .gallery-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--light-gray); cursor: pointer;
-    transition: background 0.2s, width 0.2s; border: none; padding: 0;
-  }
-  .gallery-dot.active { background: var(--blush-deep); width: 20px; border-radius: 3px; }
-  @media (max-width: 768px) {
-    .gallery-arrow { width: 36px; height: 36px; }
-    .gallery-arrow-left { left: 8px; }
-    .gallery-arrow-right { right: 8px; }
-  }
-
   /* ── NEWSLETTER ── */
   #newsletter-section { background: var(--white); padding: 100px 48px; }
   #newsletter { max-width: 640px; margin: 0 auto; text-align: center; }
@@ -525,72 +497,6 @@
     #instagram .section-header { flex-direction: column; align-items: flex-start; }
   }
 
-  /* ── WAITLIST ── */
-  #waitlist-section { background: var(--dark); padding: 100px 48px; }
-  #waitlist { max-width: 640px; margin: 0 auto; text-align: center; }
-  #waitlist .section-label { color: var(--blush-deep); }
-  #waitlist .section-title { color: var(--white); }
-  .waitlist-sub {
-    font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75;
-    margin-bottom: 40px; font-weight: 300;
-  }
-  .waitlist-form { display: flex; max-width: 460px; margin: 0 auto; flex-direction: column; gap: 0; }
-  .waitlist-form-row { display: flex; }
-  .waitlist-form input[type="text"],
-  .waitlist-form input[type="email"] {
-    flex: 1; background: rgba(255,255,255,0.06);
-    border: 1.5px solid rgba(255,255,255,0.14); border-right: none;
-    color: var(--white); font-family: var(--sans); font-size: 14px;
-    padding: 16px 20px; outline: none; transition: border-color 0.2s;
-  }
-  .waitlist-form input[type="text"] {
-    border-right: 1.5px solid rgba(255,255,255,0.14);
-    border-bottom: none; margin-bottom: 0;
-  }
-  .waitlist-form input[type="text"] { border-right: none; }
-  .waitlist-form input::placeholder { color: rgba(255,255,255,0.3); }
-  .waitlist-form input:focus { border-color: var(--blush-deep); }
-  .waitlist-form-stacked { display: flex; flex-direction: column; flex: 1; }
-  .waitlist-form-stacked input:first-child { border-bottom: none; }
-  .waitlist-form button {
-    background: var(--blush-deep); border: none; color: var(--white);
-    font-family: var(--sans); font-size: 11px; font-weight: 600;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 16px 24px; cursor: pointer; transition: background 0.2s; white-space: nowrap;
-  }
-  .waitlist-form button:hover { background: var(--white); color: var(--dark); }
-  .waitlist-form button:disabled { opacity: 0.5; cursor: not-allowed; }
-  .waitlist-fine-print {
-    font-size: 11px; color: rgba(255,255,255,1); margin-top: 16px;
-    letter-spacing: 0.03em; line-height: 1.6;
-  }
-  .waitlist-success,
-  .waitlist-error {
-    display: none; max-width: 460px; margin: 16px auto 0;
-    padding: 16px 20px;
-    font-family: var(--sans); font-size: 13px; text-align: left;
-  }
-  .waitlist-success[data-fs-success],
-  [data-fs-success]:not(:empty) {
-    display: block;
-    background: rgba(217,123,99,0.12);
-    border-left: 3px solid var(--blush-deep);
-    color: rgba(255,255,255,0.75);
-  }
-  [data-fs-error]:not(:empty) {
-    display: block;
-    background: rgba(192,57,43,0.1);
-    border-left: 3px solid #c0392b;
-    color: #e07070;
-  }
-  @media (max-width: 768px) {
-    #waitlist-section { padding: 72px 24px; }
-    .waitlist-form-row { flex-direction: column; }
-    .waitlist-form input[type="text"],
-    .waitlist-form input[type="email"] { border-right: 1.5px solid rgba(255,255,255,0.14); border-bottom: none; }
-    .waitlist-form button { padding: 16px; }
-  }
-
   /* ── FOOTER ── */
   footer {
     background: var(--white); border-top: 1px solid var(--light-gray);
@@ -610,10 +516,54 @@
   .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
+  /* ── BURGER MENU ── */
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+  .nav-burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
-    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .nav-social { display: none; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      z-index: 150;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+      font-size: 16px;
+      letter-spacing: 0.1em;
+    }
+    .nav-cta { padding: 14px 36px; }
     #about { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px; }
     #events, #gallery, #love, #mixes { padding: 72px 24px; }
     #newsletter-section { padding: 72px 24px; }
@@ -639,11 +589,13 @@
   <div class="nav-links">
     <a href="#about-section">About</a>
     <a href="#events-section">Upcoming Events</a>
-    <a href="#waitlist-section">June 21 Waitlist</a>
     <a href="#gallery-section">Photos</a>
     <a href="#newsletter-section">Our Newsletter</a>
-    <a href="/waitlist" class="nav-cta">June 21 — Join the Waitlist</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?BumpAndGrindRNBPatioParty" class="nav-cta">Patio Party Tickets!</a>
   </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <div class="nav-social">
     <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" aria-label="Instagram">
       <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -661,7 +613,7 @@
   <p class="hero-eyebrow">Halifax's Original & Favourite R&amp;B Party</p>
   <p class="hero-eyebrow">Est. 2016</p>
   <div class="hero-cta-row">
-    <a href="#waitlist-section" class="btn-outline">June 21 — Join the Waitlist</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?BumpAndGrindRNBPatioParty" class="btn-outline">Patio Party Tickets</a>
     <a href="#newsletter-section" class="btn-outline">Join Our Newsletter</a>
   </div>
 </section>
@@ -752,25 +704,25 @@
 <!-- EVENT PROMO TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-inner">
-    <span>June 21st — Sold Out 🎟</span><span class="dot">◆</span>
+    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Join the Waitlist Below</span><span class="dot">◆</span>
-    <span>June 21st — Sold Out 🎟</span><span class="dot">◆</span>
+    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
+    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Join the Waitlist Below</span><span class="dot">◆</span>
-    <span>June 21st — Sold Out 🎟</span><span class="dot">◆</span>
+    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
+    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Join the Waitlist Below</span><span class="dot">◆</span>
+    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
     <!-- duplicate for seamless loop -->
-    <span>June 21st — Sold Out 🎟</span><span class="dot">◆</span>
+    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Join the Waitlist Below</span><span class="dot">◆</span>
-    <span>June 21st — Sold Out 🎟</span><span class="dot">◆</span>
+    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
+    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Join the Waitlist Below</span><span class="dot">◆</span>
-    <span>June 21st — Sold Out 🎟</span><span class="dot">◆</span>
+    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
+    <span>Get Your Tickets Now!</span><span class="dot">◆</span>
     <span>Bump & Grind Patio Party</span><span class="dot">◆</span>
-    <span>Join the Waitlist Below</span><span class="dot">◆</span>
+    <span>Sunday May 17th 2026</span><span class="dot">◆</span>
   </div>
 </div>
 
@@ -780,7 +732,24 @@
     <p class="section-label reveal">Bump & Grind R&B · 2026 Summer Patio Season</p>
     <h2 class="section-title reveal">Upcoming Events 🗓️</h2>
 
-    <!-- JUNE 21 — ON SALE -->
+    <!-- MAY 17 — ON SALE -->
+    <div class="event-card reveal">
+      <div class="event-date-block">
+        <div class="event-month">May</div>
+        <div class="event-day">17</div>
+        <div class="event-month">Sun</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Bump & Grind: R&B Patio Party</div>
+        <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
+      </div>
+      <div class="event-actions">
+        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/933?BumpAndGrindRNBPatioParty" target="_blank" class="btn-ticket">Get Tickets</a>
+        <span class="event-status on-sale">75% Sold!</span>
+      </div>
+    </div>
+
+    <!-- JUNE 21 — COMING SOON -->
     <div class="event-card reveal">
       <div class="event-date-block">
         <div class="event-month">Jun</div>
@@ -792,8 +761,7 @@
         <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
       </div>
       <div class="event-actions">
-        <a href="#waitlist-section" class="btn-ticket">Join the Waitlist</a>
-        <span class="event-status coming-soon">Sold Out</span>
+        <span class="event-status coming-soon">Coming Soon</span>
       </div>
     </div>
 
@@ -813,27 +781,11 @@
       </div>
     </div>
 
-<!-- AUGUST 22 — COMING SOON -->
+    <!-- AUGUST 16 — COMING SOON -->
     <div class="event-card reveal">
       <div class="event-date-block">
         <div class="event-month">Aug</div>
-        <div class="event-day">22</div>
-        <div class="event-month">Sat</div>
-      </div>
-      <div class="event-info">
-        <div class="event-name">Bump & Grind R&B Party</div>
-        <div class="event-meta">The Marquee · 2037 Gottingen Street · Halifax</div>
-      </div>
-      <div class="event-actions">
-        <span class="event-status coming-soon">Coming Soon</span>
-      </div>
-    </div>
-   
-    <!-- AUGUST 23 — COMING SOON -->
-    <div class="event-card reveal">
-      <div class="event-date-block">
-        <div class="event-month">Aug</div>
-        <div class="event-day">23</div>
+        <div class="event-day">16</div>
         <div class="event-month">Sun</div>
       </div>
       <div class="event-info">
@@ -866,28 +818,6 @@
   </div>
 </div>
 
-<!-- WAITLIST -->
-<div id="waitlist-section">
-  <div id="waitlist">
-    <h2 class="section-title reveal">Join the Waitlist.</h2>
-    <p class="waitlist-sub reveal">We're sold out for June 21st, but sometimes tickets open up. Drop your info and we'll reach out if one becomes available.</p>
-    <div class="waitlist-success" id="waitlistSuccess" data-fs-success>You're on the list. We'll reach out if a ticket opens up — keep an eye on your inbox.</div>
-    <div class="waitlist-error" id="waitlistError" data-fs-error></div>
-    <form class="waitlist-form reveal" id="waitlistForm">
-      <input type="hidden" name="_gotcha" style="display:none">
-      <input type="hidden" name="event" value="June 21 Patio Party Waitlist">
-      <div class="waitlist-form-row">
-        <div class="waitlist-form-stacked">
-          <input type="text" name="name" placeholder="First name" autocomplete="given-name" required data-fs-field>
-          <input type="email" name="email" placeholder="Email address" autocomplete="email" required data-fs-field>
-        </div>
-        <button type="submit" data-fs-submit-btn>Count Me In</button>
-      </div>
-    </form>
-    <p class="waitlist-fine-print reveal">We'll only contact you if a ticket opens up. No spam, ever.</p>
-  </div>
-</div>
-
 <!-- MIXES -->
 <div id="mixes-section">
   <div id="mixes">
@@ -896,8 +826,8 @@
     <p class="section-sub reveal">Here is your curated 30-minute R&B set keeping the vibe going between events.</p>
     <div class="mixes-grid">
 
-      <div class="mix-card reveal" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/okay-tk-bump-grind-rb-mix-may-2026/')">
-        <div class="mix-num">MAY R&B MIX 2026</div>
+      <div class="mix-card reveal" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/bump-grind-rb-mix-january-2026/')">
+        <div class="mix-num">JANUARY R&B MIX</div>
         <div class="mix-title"></div>
         <div class="mix-date">Mixed By OKAY⚡️TK</div>
         <button class="mix-play-btn">
@@ -946,15 +876,12 @@
   <div id="gallery">
     <p class="section-label reveal">Photos From Our Events</p>
     <h2 class="section-title reveal">Let The Vibe Speak For Itself 📸</h2>
-    <div class="gallery-carousel reveal">
-      <button class="gallery-arrow gallery-arrow-left" id="galleryPrev" aria-label="Previous photos">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="gallery-grid" id="galleryGrid"></div>
-      <button class="gallery-arrow gallery-arrow-right" id="galleryNext" aria-label="Next photos">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-      <div class="gallery-dots" id="galleryDots"></div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall reveal"><img src="IMAGES/GALLERY/PHOTO-1.jpg" alt="Bump & Grind"></div>
+      <div class="gallery-item reveal"><img src="IMAGES/GALLERY/PHOTO-2.jpg" alt="Bump & Grind"></div>
+      <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="IMAGES/GALLERY/PHOTO-3.jpg" alt="Bump & Grind"></div>
+      <div class="gallery-item reveal" style="transition-delay:0.15s"><img src="IMAGES/GALLERY/PHOTO-4.jpg" alt="Bump & Grind"></div>
+      <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="IMAGES/GALLERY/PHOTO-5.jpg" alt="Bump & Grind"></div>
     </div>
   </div>
 </div>
@@ -1012,12 +939,12 @@
       <strong>Free. Weekly. Always worth opening.</strong>
     </p>
     <div class="newsletter-recap">
-      <p class="newsletter-recap-label">Latest Issue — June 3rd, 2026</p>
+      <p class="newsletter-recap-label">Latest Issue — April 8th, 2026</p>
       <ul class="newsletter-recap-list">
-       <li>📡 R&B Radar: Syd is back with "Callin," the lead single off her upcoming third solo album </li>
-<li>⏪️ R&B Rewind: Shai’s "If I Ever Fall In Love" was written in 15 minutes</li>
-<li>🗓️ On This Day:  Celebrating the birth of Curtis Mayfield</li>
-</ul>
+        <li>📡 R&B Radar: Brent Faiyaz's "Four Seasons" and why it's been on repeat since ICON dropped</li>
+        <li>⏪️ R&B Rewind: The Ginuwine ballad from 2001 that still belongs in every slow jam set</li>
+        <li>🗓️ On This Day: A birthday shoutout to Detroit's Dej Loaf — and why "Try Me" earns its spot at the party</li>
+      </ul>
       <a href="#newsletter-section" class="newsletter-recap-link">Subscribe to read the full issue below →</a>
     </div>
     <form class="newsletter-form" id="newsletterForm">
@@ -1078,10 +1005,6 @@
     });
   });
 
-  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-  formspree('initForm', { formElement: '#waitlistForm', formId: 'xqeozjnr' });
-
-
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1124,65 +1047,25 @@
       document.getElementById('instagramGrid').innerHTML = '';
     });
 
-  // Gallery carousel
+  // Burger menu toggle
   (function() {
-    const photos = [
-      'IMAGES/GALLERY/PHOTO-1.jpg',
-      'IMAGES/GALLERY/PHOTO-2.jpg',
-      'IMAGES/GALLERY/PHOTO-3.jpg',
-      'IMAGES/GALLERY/PHOTO-4.jpg',
-      'IMAGES/GALLERY/PHOTO-5.jpg',
-      'IMAGES/GALLERY/PHOTO-6.jpg',
-      'IMAGES/GALLERY/PHOTO-7.jpg',
-      'IMAGES/GALLERY/PHOTO-8.jpg',
-      'IMAGES/GALLERY/PHOTO-9.jpg',
-      'IMAGES/GALLERY/PHOTO-10.jpg',
-      // Add more: 'IMAGES/GALLERY/PHOTO-11.jpg', etc.
-    ];
-    const PER_PAGE = 5;
-    let current = 0;
-    const total = Math.ceil(photos.length / PER_PAGE);
-    const grid = document.getElementById('galleryGrid');
-    const prevBtn = document.getElementById('galleryPrev');
-    const nextBtn = document.getElementById('galleryNext');
-    const dotsEl = document.getElementById('galleryDots');
-
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', 'Page ' + (i + 1));
-      dot.addEventListener('click', () => goTo(i));
-      dotsEl.appendChild(dot);
-    }
-
-    function buildGrid(slice) {
-      grid.innerHTML = slice.map((src, i) =>
-        '<div class="gallery-item' + (i === 0 ? ' tall' : '') + '">' +
-        '<img src="' + src + '" alt="Bump &amp; Grind" loading="lazy"></div>'
-      ).join('');
-    }
-
-    function render(page, animate) {
-      const slice = photos.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
-      if (animate) {
-        grid.style.opacity = '0';
-        setTimeout(function() { buildGrid(slice); grid.style.opacity = '1'; }, 250);
-      } else {
-        buildGrid(slice);
-      }
-      dotsEl.querySelectorAll('.gallery-dot').forEach(function(d, i) {
-        d.classList.toggle('active', i === page);
+    var burger = document.getElementById('navBurger');
+    var links = document.querySelector('.nav-links');
+    burger.addEventListener('click', function() {
+      var open = links.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        links.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       });
-      prevBtn.disabled = page === 0;
-      nextBtn.disabled = page === total - 1;
-    }
-
-    function goTo(page) { current = page; render(current, true); }
-    prevBtn.addEventListener('click', function() { if (current > 0) goTo(current - 1); });
-    nextBtn.addEventListener('click', function() { if (current < total - 1) goTo(current + 1); });
-    render(0, false);
+    });
   })();
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
