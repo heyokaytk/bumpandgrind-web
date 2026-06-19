@@ -297,12 +297,15 @@
   <div class="form-wrap">
     <span class="form-label">We'll reach out if a ticket opens up</span>
 
-    <form id="waitlistForm" action="https://formsubmit.io/2bcd9ad5-b551-4f66-92b6-70357110e8e4" method="POST">
-      <!-- Formsubmit Anti-Spam Honeypot -->
-      <input type="hidden" name="_honey" style="display:none">
+    <form id="waitlistForm" action="https://api.web3forms.com/submit" method="POST">
+      <!-- Web3Forms Access Key -->
+      <input type="hidden" name="access_key" value="b6fb76de-b533-4d31-98c4-b805f0e711e1">
       
-      <!-- Redirects user back to main page after successful submission -->
-      <input type="hidden" name="_next" value="https://www.bumpandgrindhfx.com">
+      <!-- Redirects user back to waitlist page after successful submission -->
+      <input type="hidden" name="redirect" value="https://www.bumpandgrindhfx.com/waitlist">
+      
+      <!-- Anti-Spam Honeypot -->
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
       
       <input type="hidden" name="event" value="June 21 Patio Party Waitlist">
       <input type="text"  name="name"  placeholder="FIRST NAME"     autocomplete="given-name" required>
