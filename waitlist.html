@@ -311,10 +311,8 @@
     <span class="form-label" id="formSubtitle">We'll reach out if a ticket opens up</span>
 
     <form id="waitlistForm" action="https://api.web3forms.com/submit" method="POST">
-      <!-- Web3Forms Access Key -->
       <input type="hidden" name="access_key" value="b6fb76de-b533-4d31-98c4-b805f0e711e1">
       
-      <!-- Anti-Spam Honeypot -->
       <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
       
       <input type="hidden" name="event" value="June 21 Patio Party Waitlist">
@@ -323,7 +321,6 @@
       <button type="submit">COUNT ME IN</button>
     </form>
 
-    <!-- Success Message Container -->
     <div id="result" class="success-message"></div>
 
     <p class="fine-print">
@@ -334,7 +331,6 @@
 
 </div>
 
-<!-- JavaScript to handle submission without reloading the page -->
 <script>
   const form = document.getElementById('waitlistForm');
   const result = document.getElementById('result');
@@ -343,25 +339,19 @@
   form.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const formData = new FormData(form);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-      
-      // Change button text to show it's working
       const submitButton = form.querySelector('button[type="submit"]');
       submitButton.disabled = true;
       submitButton.innerText = 'SENDING...';
 
+      // Capture the data exactly as the working HTML version did
+      const formData = new FormData(form);
+
+      // Send it as a raw form submission, bypassing the strict JSON spam filters
       fetch('https://api.web3forms.com/submit', {
               method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json'
-              },
-              body: json
+              body: formData
           })
           .then(async (response) => {
-              let json = await response.json();
               if (response.status == 200) {
                   // Hide the form fields and subtitle
                   form.style.display = 'none';
