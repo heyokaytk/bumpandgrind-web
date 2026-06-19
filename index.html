@@ -720,6 +720,8 @@
     <div class="waitlist-success" id="waitlistSuccess" style="display:none; max-width:460px; margin:16px auto 0; padding:16px 20px; background:rgba(217,123,99,0.12); border-left:3px solid #d97b63; color:rgba(255,255,255,0.75); font-family:'Outfit',sans-serif; font-size:13px; text-align:left;">You're on the list. We'll reach out if a ticket opens up — keep an eye on your inbox.</div>
     <div class="waitlist-error" id="waitlistError" style="display:none; max-width:460px; margin:16px auto 0; padding:16px 20px; background:rgba(192,57,43,0.1); border-left:3px solid #c0392b; color:#e07070; font-family:'Outfit',sans-serif; font-size:13px; text-align:left;"></div>
     <form class="waitlist-form reveal" id="waitlistForm">
+      <input type="hidden" name="access_key" value="b6fb76de-b533-4d31-98c4-b805f0e711e1">
+      <input type="checkbox" name="botcheck" style="display:none;">
       <input type="hidden" name="event" value="June 21 Patio Party Waitlist">
       <div class="waitlist-form-row">
         <div class="waitlist-form-stacked">
@@ -914,20 +916,19 @@
   document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('waitlistBtn');
-    const name = this.querySelector('[name="name"]').value;
-    const email = this.querySelector('[name="email"]').value;
     btn.textContent = 'Submitting...';
     btn.disabled = true;
-    fetch('https://formspree.io/f/xqeozjnr', {
+    const formData = new FormData(this);
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, event: 'June 21 Patio Party Waitlist' })
+      body: formData
     })
-    .then(res => {
-      if (res.ok) {
+    .then(async (res) => {
+      const data = await res.json();
+      if (data.success) {
         document.getElementById('waitlistForm').style.display = 'none';
         document.getElementById('waitlistSuccess').style.display = 'block';
-      } else { throw new Error(); }
+      } else { throw new Error(data.message); }
     })
     .catch(() => {
       btn.textContent = 'Count Me In';
