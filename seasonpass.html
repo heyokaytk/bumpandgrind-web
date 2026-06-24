@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+<title>Season Pass — Bump &amp; Grind R&amp;B Party</title>
+<meta name="description" content="One pass. Every party. Introducing B&G Season Passes for the very first time.">
+<meta property="og:title" content="B&amp;G Season Pass — One Pass. Every Party.">
+<meta property="og:description" content="Introducing B&G Season Passes for the very first time. You get first access.">
+<meta property="og:image" content="https://www.bumpandgrindhfx.com/IMAGES/BUMPANDGRIND-OG.jpg">
+<meta property="og:url" content="https://www.bumpandgrindhfx.com/seasonpass">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blush:     #d97b63;
+    --blush-mid: #c4624a;
+    --plum:      #1a0410;
+    --white:     #ffffff;
+    --muted:     rgba(255,255,255,0.45);
+    --display:   'Bebas Neue', sans-serif;
+    --sans:      'Outfit', sans-serif;
+  }
+
+  html, body {
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--sans);
+    background-color: var(--plum);
+    background-image: url('IMAGES/WAITLISTHEADER.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+  }
+
+  /* Dark overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(15, 2, 10, 0.88) 0%,
+      rgba(60, 10, 30, 0.80) 50%,
+      rgba(15, 2, 10, 0.92) 100%
+    );
+    z-index: 0;
+  }
+
+  /* Grain texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  .page {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 60px 24px 120px;
+    text-align: center;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* —— LOGO —— */
+  .logo {
+    width: clamp(160px, 40vw, 280px);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.1s;
+    filter: drop-shadow(0 4px 32px rgba(0,0,0,0.6));
+  }
+
+  /* —— BADGE —— */
+  .badge {
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: var(--plum);
+    background: var(--blush);
+    padding: 5px 18px 3px;
+    margin-bottom: 24px;
+    display: inline-block;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  /* —— HEADLINE —— */
+  .headline {
+    font-family: var(--display);
+    font-size: clamp(56px, 15vw, 110px);
+    line-height: 0.88;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: 0;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.3s;
+  }
+
+  .headline em {
+    color: var(--blush);
+    font-style: normal;
+  }
+
+  /* —— FLOATING CARD HERO —— */
+  .card-hero {
+    margin: 36px 0 44px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .card-hero img {
+    width: clamp(260px, 55vw, 420px);
+    display: block;
+    margin: 0 auto;
+    animation: float 6s ease-in-out infinite, floatShadow 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(-14px) rotate(0.8deg); }
+  }
+
+  @keyframes floatShadow {
+    0%, 100% { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.55)); }
+    50%       { filter: drop-shadow(0 24px 42px rgba(0,0,0,0.28)); }
+  }
+
+  /* —— INTRO —— */
+  .intro {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+    max-width: 340px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.5s;
+  }
+
+  /* —— PERKS —— */
+  .perks {
+    width: 100%;
+    max-width: 420px;
+    text-align: left;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.6s;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--blush);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .perks-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .perks-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-left: 18px;
+    border-left: 2px solid var(--blush);
+  }
+
+  .perk-label {
+    font-family: var(--display);
+    font-size: 17px;
+    letter-spacing: 0.14em;
+    color: var(--white);
+  }
+
+  .perk-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  /* —— FINE PRINT —— */
+  .fine-print-section {
+    width: 100%;
+    max-width: 420px;
+    text-align: left;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.7s;
+  }
+
+  .fine-print-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .fine-print-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .fp-label {
+    font-family: var(--display);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .fp-desc {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+  }
+
+  /* —— WIDGET —— */
+  .widget-wrap {
+    width: 100%;
+    max-width: 500px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.8s;
+  }
+
+  /* —— FOOTER LINK —— */
+  .footer-link {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    text-decoration: none;
+    z-index: 10;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .footer-link:hover { color: var(--blush); }
+
+  @media (max-width: 480px) {
+    .page { padding: 48px 20px 120px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <img
+    src="IMAGES/BUMPANDGRIND-MAIN-LOGO.png"
+    alt="Bump &amp; Grind"
+    class="logo"
+  >
+
+  <span class="badge">SEASON PASS · LIMITED RUN</span>
+
+  <h1 class="headline">ONE PASS.<br><em>EVERY PARTY.</em></h1>
+
+  <div class="card-hero">
+    <img src="IMAGES/vipcards.png" alt="B&amp;G Season Pass card">
+  </div>
+
+  <p class="intro">Introducing B&amp;G Season Passes for the very first time — and you get first access.</p>
+
+  <div class="perks">
+    <p class="section-title">WHAT YOU GET</p>
+    <ul class="perks-list">
+      <li>
+        <span class="perk-label">THE VIP CARD</span>
+        <span class="perk-desc">A custom, physical B&amp;G Season Pass card.</span>
+      </li>
+      <li>
+        <span class="perk-label">ALL-ACCESS ENTRY</span>
+        <span class="perk-desc">Guaranteed entry for you to every remaining B&amp;G event this year.</span>
+      </li>
+      <li>
+        <span class="perk-label">BRING A FRIEND (+1)</span>
+        <span class="perk-desc">You get a +1 guest list spot for our bigger venue shows (like our nights at The Marquee).</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="fine-print-section">
+    <p class="section-title">THE FINE PRINT</p>
+    <ul class="fine-print-list">
+      <li>
+        <span class="fp-label">PATIO PARTY CAPACITY</span>
+        <span class="fp-desc">Due to strict space limits on the patio, the +1 perk does not apply to our patio parties.</span>
+      </li>
+      <li>
+        <span class="fp-label">CARD PICKUP</span>
+        <span class="fp-desc">You'll be able to pick up your physical pass at the door at our next event.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="widget-wrap">
+    <div id="bloom-widget-container"></div>
+  </div>
+
+  <a href="https://www.bumpandgrindhfx.com" class="footer-link">← bumpandgrindhfx.com</a>
+</div>
+
+<script>
+  const script = document.createElement('script');
+  script.src = 'https://www.bloomtickets.ca/assets/widget.js';
+  script.onload = () => {
+    BloomWidget.init({
+      containerId: 'bloom-widget-container',
+      eventId: '1878',
+      btnColor: '#d97b63',
+      url: 'https://www.bloomtickets.ca'
+    });
+  };
+  document.body.appendChild(script);
+</script>
+</body>
+</html>
