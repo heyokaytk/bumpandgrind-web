@@ -183,6 +183,16 @@
     text-align: center;
   }
 
+ .centered-heading {
+    font-family: var(--display);
+    font-size: 17px;
+    letter-spacing: 0.14em;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 20px;
+    display: block; /* Ensures it spans the full width so text-align: center works */
+  }
+
   .perks-list {
     list-style: none;
     display: flex;
@@ -301,7 +311,7 @@
   <p class="intro">Introducing B&amp;G Season Passes for the very first time, and you get first access.</p>
 
   <div class="perks">
-    <span class="perk-label">WHAT YOU GET</span>
+    <span class="centered-heading">WHAT YOU GET</span>
     <ul class="perks-list">
       <li>
         <span class="perk-label">THE VIP CARD</span>
@@ -319,7 +329,7 @@
   </div>
 
   <div class="fine-print-section">
-    <p class="section-title">THE FINE PRINT</p>
+    <span class="centered-heading">THE FINE PRINT</span>
     <ul class="fine-print-list">
       <li>
         <span class="perk-label">PATIO PARTY CAPACITY</span>
