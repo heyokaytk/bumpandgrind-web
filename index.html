@@ -606,7 +606,7 @@
     #instagram .section-header { flex-direction: column; align-items: flex-start; }
     .event-card { grid-template-columns: 72px 1fr; gap: 20px; }
     .event-actions { flex-direction: row; align-items: center; }
-    .event-status { display: none; }
+    .event-status.on-sale { display: none; }
     .mixes-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-item.tall { grid-row: span 1; aspect-ratio: 4/3; }
@@ -634,7 +634,7 @@
     <a href="#mixes-section">Mixes</a>
     <a href="#gallery-section">Photos</a>
     <a href="#about-section">About</a>
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="nav-cta">July 26th Tickets!</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="nav-cta" id="navCta">July 26th Tickets!</a>
   </div>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -679,7 +679,7 @@
     </div>
   </div>
   <div class="hero-cta-row">
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="btn-outline">Get Your July 26th Tickets</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="btn-outline" id="heroCtaPrimary">Get Your July 26th Tickets</a>
     <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&amp;G2026SeasonPass:All-Access" class="btn-outline">Get 2026 Season Passes</a>
   </div>
 </section>
@@ -1181,7 +1181,10 @@
         </a>` : '';
       }).join('');
     })
-    .catch(() => { document.getElementById('instagramGrid').innerHTML = ''; });
+    .catch(() => {
+      document.getElementById('instagramGrid').innerHTML =
+        '<p class="instagram-loading">Couldn\'t load the feed right now. <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" rel="noopener" style="color:var(--blush-deep)">Follow us on Instagram</a> instead.</p>';
+    });
 
   // Gallery carousel
   (function() {
@@ -1226,6 +1229,9 @@
     function closeMenu() { nav.classList.remove('nav-open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
     burger.addEventListener('click', function() { nav.classList.contains('nav-open') ? closeMenu() : openMenu(); });
     links.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && nav.classList.contains('nav-open')) closeMenu();
+    });
   })();
 
   // Hero countdown to next Patio Party
@@ -1259,6 +1265,10 @@
       if (!parts) {
         clearInterval(timer);
         container.innerHTML = '<p class="hero-countdown-message">See You On The Patio! 🎉</p>';
+        var navCta = document.getElementById('navCta');
+        var heroCta = document.getElementById('heroCtaPrimary');
+        if (navCta) { navCta.textContent = 'See Upcoming Events'; navCta.href = '#events-section'; }
+        if (heroCta) { heroCta.textContent = 'See Upcoming Events'; heroCta.href = '#events-section'; }
         return false;
       }
       els.days.textContent = pad(parts.days);
