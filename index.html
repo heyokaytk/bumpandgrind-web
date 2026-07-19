@@ -947,11 +947,12 @@
     <p class="section-label">Get In Touch</p>
     <h2 class="section-title">Questions, Bookings,<br>Partnerships?</h2>
     <p class="contact-sub">Venue, sponsorship, press, or just want to say what's up, drop us a line and we'll get back to you.</p>
-    <form class="contact-form" id="contactForm" action="https://formspree.io/bumpandgrindhfx@gmail.com" method="POST">
+    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="b6fb76de-b533-4d31-98c4-b805f0e711e1">
       <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
-      <input type="email" name="_replyto" placeholder="Email address" autocomplete="email" required>
+      <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
       <textarea name="message" placeholder="Your message..." required></textarea>
-      <input type="hidden" name="_subject" value="New Inquiry — Bump & Grind Website">
+      <input type="hidden" name="subject" value="New Inquiry — Bump & Grind Website">
       <button type="submit" id="contactBtn">Send Message</button>
     </form>
     <div class="contact-success" id="contactSuccess">Thanks — we'll get back to you soon.</div>
@@ -1011,18 +1012,17 @@
     const data = new FormData(form);
     fetch(form.action, {
       method: 'POST', body: data, headers: { 'Accept': 'application/json' }
-    }).then(function (r) {
-      if (r.ok) {
+    })
+    .then(async (r) => {
+      const result = await r.json();
+      if (result.success) {
         form.reset();
         form.style.display = 'none';
         document.getElementById('contactSuccess').style.display = 'block';
         document.getElementById('contactError').style.display = 'none';
-      } else {
-        document.getElementById('contactError').style.display = 'block';
-        btn.textContent = 'Send Message';
-        btn.disabled = false;
-      }
-    }).catch(function () {
+      } else { throw new Error(result.message); }
+    })
+    .catch(() => {
       document.getElementById('contactError').style.display = 'block';
       btn.textContent = 'Send Message';
       btn.disabled = false;
