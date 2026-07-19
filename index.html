@@ -276,40 +276,6 @@
   .events-footer-note a { color: var(--blush-deep); text-decoration: none; font-weight: 500; }
   .events-footer-note a:hover { color: var(--dark); }
 
-  /* ── WAITLIST ── */
-  #waitlist-section { background: var(--dark); padding: 100px 48px; }
-  #waitlist { max-width: 640px; margin: 0 auto; text-align: center; }
-  #waitlist .section-title { color: var(--white); }
-  .waitlist-sub { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 40px; font-weight: 300; }
-  .waitlist-form { display: flex; max-width: 460px; margin: 0 auto; flex-direction: column; gap: 0; }
-  .waitlist-form-row { display: flex; }
-  .waitlist-form input[type="text"],
-  .waitlist-form input[type="email"] {
-    flex: 1; background: rgba(255,255,255,0.06);
-    border: 1.5px solid rgba(255,255,255,0.14); border-right: none;
-    color: var(--white); font-family: var(--sans); font-size: 14px;
-    padding: 16px 20px; outline: none; transition: border-color 0.2s;
-  }
-  .waitlist-form input[type="text"] { border-right: none; border-bottom: none; }
-  .waitlist-form input::placeholder { color: rgba(255,255,255,0.4); }
-  .waitlist-form input:focus { border-color: var(--blush-deep); }
-  .waitlist-form-stacked { display: flex; flex-direction: column; flex: 1; }
-  .waitlist-form button {
-    background: var(--blush-deep); border: none; color: var(--white);
-    font-family: var(--sans); font-size: 11px; font-weight: 600;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 16px 24px; cursor: pointer; transition: background 0.2s; white-space: nowrap;
-  }
-  .waitlist-form button:hover:not(:disabled) { background: var(--white); color: var(--dark); }
-  .waitlist-form button:disabled { opacity: 0.7; cursor: default; }
-  .waitlist-success, .waitlist-error {
-    display: none; max-width: 460px; margin: 16px auto 0;
-    padding: 16px 20px; font-family: var(--sans); font-size: 13px; text-align: left;
-  }
-  .waitlist-success { background: rgba(184,84,58,0.16); border-left: 3px solid var(--blush-deep); color: rgba(255,255,255,0.85); }
-  .waitlist-error { background: rgba(192,57,43,0.12); border-left: 3px solid #c0392b; color: #ff8f8f; }
-  .waitlist-fine-print { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 16px; letter-spacing: 0.03em; line-height: 1.6; }
-
   /* ── MIXES ── */
   #mixes-section { background: var(--blush-light); }
   #mixes { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
@@ -351,16 +317,19 @@
   }
   .btn-mixcloud:hover { background: var(--blush-deep); border-color: var(--blush-deep); color: var(--white); }
 
-  /* ── REQUESTS ── */
-  #requests-section { background: var(--white); padding: 100px 48px; }
-  #requests { max-width: 640px; margin: 0 auto; text-align: center; }
+  /* ── REQUESTS (co-exists inside the Mixes block) ── */
+  #requests { max-width: 640px; margin: 80px auto 0; padding-top: 80px; border-top: 1px solid rgba(24,20,18,0.1); text-align: center; }
   #requests .section-label { color: var(--blush-deep); }
   .requests-sub { font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 40px; font-weight: 300; }
-  .vinyl-icon { width: clamp(80px, 20vw, 120px); height: clamp(80px, 20vw, 120px); margin: 0 auto 40px; display: block; animation: spin 8s linear infinite; }
-  .vinyl-disc { fill: var(--dark); }
-  .vinyl-groove { fill: none; stroke: var(--light-gray); stroke-opacity: 0.6; stroke-width: 1; }
-  .vinyl-label { fill: var(--blush-deep); }
-  .vinyl-hole { fill: var(--white); }
+  .cassette-icon { width: clamp(96px, 24vw, 140px); height: auto; margin: 0 auto 40px; display: block; }
+  .cassette-body { fill: var(--dark); }
+  .cassette-label { fill: var(--blush-light); }
+  .cassette-window { fill: rgba(255,255,255,0.1); }
+  .cassette-reel { animation: spin 3s linear infinite; }
+  .reel-ring { fill: none; stroke: var(--white); stroke-opacity: 0.5; stroke-width: 1.5; }
+  .reel-spokes { fill: none; stroke: var(--white); stroke-opacity: 0.6; stroke-width: 1.5; stroke-linecap: round; }
+  .reel-hub { fill: var(--blush-deep); }
+  .cassette-screw { fill: var(--white); fill-opacity: 0.3; }
   @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   .requests-form { display: flex; max-width: 460px; margin: 0 auto; }
   .requests-form input[type="text"] { flex: 1; background: var(--white); border: 1.5px solid var(--light-gray); border-right: none; color: var(--dark); font-family: var(--sans); font-size: 14px; padding: 16px 20px; outline: none; transition: border-color 0.2s; }
@@ -370,7 +339,7 @@
   .requests-form button:hover:not(:disabled) { background: var(--dark); }
   .requests-form button:disabled { opacity: 0.7; cursor: default; }
   .requests-success, .requests-error { display: none; max-width: 460px; margin: 16px auto 0; padding: 16px 20px; font-family: var(--sans); font-size: 13px; text-align: left; }
-  .requests-success { background: var(--blush-light); border-left: 3px solid var(--blush-deep); color: var(--dark); }
+  .requests-success { background: var(--white); border-left: 3px solid var(--blush-deep); color: var(--dark); }
   .requests-error { background: rgba(192,57,43,0.08); border-left: 3px solid #c0392b; color: #c0392b; }
 
   /* ── GALLERY ── */
@@ -499,7 +468,7 @@
     .reveal { opacity: 1; transform: none; transition: none; }
     .hero-eyebrow, .hero-h1, .hero-cta-row { animation: none; }
     .ticker-inner, .love-marquee { animation: none; }
-    .vinyl-icon { animation: none; }
+    .cassette-reel { animation: none; }
   }
 
   /* ── BURGER MENU ── */
@@ -561,8 +530,8 @@
     .nav-cta { padding: 14px 36px; }
     #about { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px; }
     #events, #gallery, #love, #mixes { padding: 72px 24px; }
-    #newsletter-section, #contact-section, #requests-section { padding: 72px 24px; }
-    #waitlist-section { padding: 72px 24px; }
+    #newsletter-section, #contact-section { padding: 72px 24px; }
+    #requests { margin-top: 56px; padding-top: 56px; }
     #instagram { padding: 72px 24px; }
     .instagram-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
     #instagram .section-header { flex-direction: column; align-items: flex-start; }
@@ -576,10 +545,6 @@
     .newsletter-form input[type="email"] { border-right: 1.5px solid var(--light-gray); border-bottom: none; }
     .requests-form input[type="text"] { border-right: 1.5px solid var(--light-gray); border-bottom: none; }
     .contact-form input, .contact-form textarea { border-bottom: 1.5px solid var(--light-gray); }
-    .waitlist-form-row { flex-direction: column; }
-    .waitlist-form input[type="text"],
-    .waitlist-form input[type="email"] { border-right: 1.5px solid rgba(255,255,255,0.14); border-bottom: none; }
-    .waitlist-form button { padding: 16px; }
     footer { flex-direction: column; align-items: flex-start; padding: 36px 24px; }
     .footer-copy { position: static; transform: none; order: 3; }
   }
@@ -595,7 +560,7 @@
   <div class="nav-links">
     <a href="#events-section">Events</a>
     <a href="#mixes-section">Mixes</a>
-    <a href="#requests-section">Requests</a>
+    <a href="#requests">Requests</a>
     <a href="#gallery-section">Photos</a>
     <a href="#about-section">About</a>
     <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="nav-cta">July 26th Tickets!</a>
@@ -782,29 +747,6 @@
   </div>
 </div>
 
-<!-- WAITLIST -->
-<div id="waitlist-section">
-  <div id="waitlist">
-    <h2 class="section-title reveal">Join the Waitlist.</h2>
-    <p class="waitlist-sub reveal">If our July 26th day party sells out, drop your info and we'll reach out if a ticket becomes available.</p>
-    <div class="waitlist-success" id="waitlistSuccess">You're on the list. We'll reach out if a ticket opens up. Keep an eye on your inbox.</div>
-    <div class="waitlist-error" id="waitlistError"></div>
-    <form class="waitlist-form reveal" id="waitlistForm">
-      <input type="hidden" name="access_key" value="b6fb76de-b533-4d31-98c4-b805f0e711e1">
-      <input type="checkbox" name="botcheck" style="display:none;">
-      <input type="hidden" name="event" value="July 26 Patio Party Waitlist">
-      <div class="waitlist-form-row">
-        <div class="waitlist-form-stacked">
-          <input type="text" name="name" placeholder="First name" autocomplete="given-name" required>
-          <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
-        </div>
-        <button type="submit" id="waitlistBtn">Count Me In</button>
-      </div>
-    </form>
-    <p class="waitlist-fine-print reveal">We'll only contact you if a ticket opens up. No spam, ever.</p>
-  </div>
-</div>
-
 <!-- MIXES -->
 <div id="mixes-section">
   <div id="mixes">
@@ -846,33 +788,41 @@
         All Mixes on Mixcloud
       </a>
     </div>
-  </div>
-</div>
 
-<!-- REQUESTS -->
-<div id="requests-section">
-  <div id="requests">
-    <p class="section-label reveal">Song Requests</p>
-    <h2 class="section-title reveal">Help Shape Our Next Mix 🎵</h2>
-    <p class="requests-sub reveal">Got a song that needs to be in our next mix and played at the Bump & Grind event? Drop it below;  no name, no email, just the song.</p>
-    <svg class="vinyl-icon reveal" viewBox="0 0 120 120" role="img" aria-label="Spinning vinyl record">
-      <circle class="vinyl-disc" cx="60" cy="60" r="58"/>
-      <circle class="vinyl-groove" cx="60" cy="60" r="46"/>
-      <circle class="vinyl-groove" cx="60" cy="60" r="34"/>
-      <circle class="vinyl-groove" cx="60" cy="60" r="22"/>
-      <circle class="vinyl-label" cx="60" cy="60" r="18"/>
-      <circle class="vinyl-hole" cx="60" cy="60" r="4"/>
-    </svg>
-    <form class="requests-form reveal" id="requestsForm" action="https://formspree.io/bumpandgrindhfx@gmail.com" method="POST">
-      <div style="position:absolute;left:-9999px" aria-hidden="true">
-        <input type="text" name="website" tabindex="-1" autocomplete="off">
-      </div>
-      <input type="text" name="song_request" id="songRequestInput" placeholder="Song title + artist" required autocomplete="off">
-      <input type="hidden" name="_subject" value="New Song Request — Bump & Grind Website">
-      <button type="submit" id="requestsBtn">Send It</button>
-    </form>
-    <div class="requests-success" id="requestsSuccess">Got it — thanks for the request!</div>
-    <div class="requests-error" id="requestsError">Something went wrong. Email us directly at <a href="mailto:bumpandgrindhfx@gmail.com" style="color:#c0392b">bumpandgrindhfx@gmail.com</a>.</div>
+    <div id="requests">
+      <p class="section-label reveal">Song Requests</p>
+      <h2 class="section-title reveal">Help Shape Our Next Mix 🎵</h2>
+      <p class="requests-sub reveal">Got a song that needs to be in our next mix and played at the Bump & Grind event? Drop it below;  no name, no email, just the song.</p>
+      <svg class="cassette-icon reveal" viewBox="0 0 120 80" role="img" aria-label="Cassette tape with spinning reels">
+        <rect class="cassette-body" x="3" y="3" width="114" height="74" rx="10"/>
+        <rect class="cassette-label" x="16" y="12" width="88" height="12" rx="2"/>
+        <rect class="cassette-window" x="18" y="28" width="84" height="34" rx="4"/>
+        <g class="cassette-reel" style="transform-origin:40px 45px">
+          <circle class="reel-ring" cx="40" cy="45" r="13"/>
+          <path class="reel-spokes" d="M40 45V34M40 45l9.5 5.5M40 45l-9.5 5.5"/>
+          <circle class="reel-hub" cx="40" cy="45" r="4"/>
+        </g>
+        <g class="cassette-reel" style="transform-origin:80px 45px">
+          <circle class="reel-ring" cx="80" cy="45" r="13"/>
+          <path class="reel-spokes" d="M80 45V34M80 45l9.5 5.5M80 45l-9.5 5.5"/>
+          <circle class="reel-hub" cx="80" cy="45" r="4"/>
+        </g>
+        <circle class="cassette-screw" cx="12" cy="70" r="2.5"/>
+        <circle class="cassette-screw" cx="60" cy="70" r="2.5"/>
+        <circle class="cassette-screw" cx="108" cy="70" r="2.5"/>
+      </svg>
+      <form class="requests-form reveal" id="requestsForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="b6fb76de-b533-4d31-98c4-b805f0e711e1">
+        <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" name="song_request" id="songRequestInput" placeholder="Song title + artist" required autocomplete="off">
+        <input type="hidden" name="subject" value="New Song Request — Bump & Grind Website">
+        <button type="submit" id="requestsBtn">Send It</button>
+      </form>
+      <div class="requests-success" id="requestsSuccess">Got it — thanks for the request!</div>
+      <div class="requests-error" id="requestsError">Something went wrong. Email us directly at <a href="mailto:bumpandgrindhfx@gmail.com" style="color:#c0392b">bumpandgrindhfx@gmail.com</a>.</div>
+    </div>
   </div>
 </div>
 
@@ -1051,32 +1001,6 @@
     });
   });
 
-  // Waitlist form
-  document.getElementById('waitlistForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('waitlistBtn');
-    btn.textContent = 'Submitting...';
-    btn.disabled = true;
-    const formData = new FormData(this);
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: formData
-    })
-    .then(async (res) => {
-      const data = await res.json();
-      if (data.success) {
-        document.getElementById('waitlistForm').style.display = 'none';
-        document.getElementById('waitlistSuccess').style.display = 'block';
-      } else { throw new Error(data.message); }
-    })
-    .catch(() => {
-      btn.textContent = 'Count Me In';
-      btn.disabled = false;
-      document.getElementById('waitlistError').textContent = 'Something went wrong. Please try again.';
-      document.getElementById('waitlistError').style.display = 'block';
-    });
-  });
-
   // Contact form
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -1116,18 +1040,17 @@
     const data = new FormData(form);
     fetch(form.action, {
       method: 'POST', body: data, headers: { 'Accept': 'application/json' }
-    }).then(function (r) {
-      if (r.ok) {
+    })
+    .then(async (r) => {
+      const result = await r.json();
+      if (result.success) {
         form.reset();
         form.style.display = 'none';
         document.getElementById('requestsSuccess').style.display = 'block';
         document.getElementById('requestsError').style.display = 'none';
-      } else {
-        document.getElementById('requestsError').style.display = 'block';
-        btn.textContent = 'Send It';
-        btn.disabled = false;
-      }
-    }).catch(function () {
+      } else { throw new Error(result.message); }
+    })
+    .catch(() => {
       document.getElementById('requestsError').style.display = 'block';
       btn.textContent = 'Send It';
       btn.disabled = false;
