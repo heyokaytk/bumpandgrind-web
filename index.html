@@ -31,6 +31,7 @@
     --blush-light: #fceee9;
     --blush: #f0b3a0;
     --blush-deep: #b8543a;
+    --blush-deep-text: #ac4c34;
     --light-gray: #eee9e7;
     --mid-gray: #6b6b6b;
     --dark: #181412;
@@ -51,6 +52,11 @@
 
   h1, h2 { text-wrap: balance; }
   :focus-visible { outline: 2px solid var(--blush-deep); outline-offset: 3px; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
 
   /* ── NAV ── */
   nav {
@@ -128,7 +134,9 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.38);
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 64%, rgba(10,8,6,0.55) 0%, rgba(10,8,6,0.28) 45%, rgba(10,8,6,0) 75%),
+      rgba(255, 255, 255, 0.38);
     pointer-events: none;
     z-index: 0;
   }
@@ -156,6 +164,67 @@
     z-index: 2;
     text-shadow: 0 4px 30px rgba(0,0,0,0.5);
     animation: fadeUp 0.85s 0.15s ease both;
+  }
+  .hero-countdown {
+    position: relative;
+    z-index: 2;
+    margin: -20px 0 40px;
+    animation: fadeUp 0.9s 0.22s ease both;
+  }
+  .hero-countdown-label {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    margin-bottom: 16px;
+  }
+  .hero-countdown-units {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 48px;
+  }
+  .countdown-num {
+    font-family: var(--display);
+    font-size: clamp(32px, 6vw, 56px);
+    line-height: 1;
+    color: var(--white);
+    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  }
+  .countdown-unit-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-top: 6px;
+  }
+  .countdown-colon {
+    font-family: var(--display);
+    font-size: clamp(32px, 6vw, 56px);
+    line-height: 1;
+    color: var(--blush);
+    margin-top: -4px;
+  }
+  .hero-countdown-message {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
   }
   .hero-cta-row {
     display: flex;
@@ -196,7 +265,7 @@
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--blush-deep);
+    color: var(--blush-deep-text);
     margin-bottom: 16px;
   }
   .section-title {
@@ -236,7 +305,7 @@
     padding: 18px 24px; margin-bottom: 40px; font-size: 14px; color: var(--dark);
   }
   .season-pass-note a {
-    font-weight: 600; color: var(--blush-deep); text-decoration: none;
+    font-weight: 600; color: var(--blush-deep-text); text-decoration: none;
     border-bottom: 1px solid var(--blush-deep); white-space: nowrap;
   }
   .season-pass-note a:hover { color: var(--dark); border-color: var(--dark); }
@@ -279,7 +348,7 @@
   /* ── MIXES ── */
   #mixes-section { background: var(--blush-light); }
   #mixes { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
-  #mixes .section-label { color: var(--blush-deep); }
+  #mixes .section-label { color: var(--blush-deep-text); }
   #mixes .section-title { color: var(--dark); margin-bottom: 12px; }
   #mixes .section-sub { font-size: 14px; color: rgba(24,20,18,0.65); letter-spacing: 0.04em; margin-bottom: 56px; font-weight: 300; }
   .mixes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -319,7 +388,7 @@
 
   /* ── REQUESTS (co-exists inside the Mixes block) ── */
   #requests { max-width: 640px; margin: 80px auto 0; padding-top: 80px; border-top: 1px solid rgba(24,20,18,0.1); text-align: center; }
-  #requests .section-label { color: var(--blush-deep); }
+  #requests .section-label { color: var(--blush-deep-text); }
   .requests-sub { font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 40px; font-weight: 300; }
   .cassette-icon { width: clamp(96px, 24vw, 140px); height: auto; margin: 0 auto 40px; display: block; }
   .cassette-body { fill: var(--dark); }
@@ -373,7 +442,7 @@
   .love-marquee-wrap:hover .love-marquee { animation-play-state: paused; }
   .love-card { background: var(--blush-light); border-left: 3px solid var(--blush); padding: 28px 32px; width: 320px; flex-shrink: 0; margin-right: 20px; }
   .love-quote { font-family: var(--serif); font-size: 17px; font-style: italic; font-weight: 600; line-height: 1.65; color: #333; margin-bottom: 16px; }
-  .love-handle { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blush-deep); font-weight: 500; }
+  .love-handle { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blush-deep-text); font-weight: 500; }
 
   /* ── INSTAGRAM ── */
   #instagram-section { background: var(--white); }
@@ -401,15 +470,15 @@
   /* ── NEWSLETTER ── */
   #newsletter-section { background: var(--white); padding: 100px 48px; }
   #newsletter { max-width: 640px; margin: 0 auto; text-align: center; }
-  #newsletter .section-label { color: var(--blush-deep); }
+  #newsletter .section-label { color: var(--blush-deep-text); }
   .newsletter-sub { font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 48px; font-weight: 300; }
   .newsletter-sub strong { color: var(--dark); font-weight: 500; }
   .newsletter-recap { max-width: 460px; margin: 0 auto 40px; background: var(--blush-light); padding: 24px 28px; border-left: 3px solid var(--blush-deep); text-align: left; }
-  .newsletter-recap-label { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush-deep); margin-bottom: 12px; }
+  .newsletter-recap-label { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush-deep-text); margin-bottom: 12px; }
   .newsletter-recap-list { list-style: none; padding: 0; margin: 0 0 16px; }
   .newsletter-recap-list li { font-size: 13px; color: rgba(24,20,18,0.75); padding: 5px 0; padding-left: 16px; position: relative; line-height: 1.5; }
   .newsletter-recap-list li::before { content: "◆"; position: absolute; left: 0; font-size: 6px; color: var(--blush-deep); top: 8px; }
-  .newsletter-recap-link { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--blush-deep); text-decoration: none; transition: color 0.2s; }
+  .newsletter-recap-link { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--blush-deep-text); text-decoration: none; transition: color 0.2s; }
   .newsletter-recap-link:hover { color: var(--dark); }
   .newsletter-form { display: flex; max-width: 460px; margin: 0 auto; }
   .newsletter-form input[type="email"] { flex: 1; background: var(--white); border: 1.5px solid var(--light-gray); border-right: none; color: var(--dark); font-family: var(--sans); font-size: 14px; padding: 16px 20px; outline: none; transition: border-color 0.2s; }
@@ -423,7 +492,7 @@
   /* ── CONTACT ── */
   #contact-section { background: var(--blush-light); padding: 100px 48px; }
   #contact { max-width: 640px; margin: 0 auto; text-align: center; }
-  #contact .section-label { color: var(--blush-deep); }
+  #contact .section-label { color: var(--blush-deep-text); }
   .contact-sub { font-size: 17px; color: #555; line-height: 1.75; margin-bottom: 48px; font-weight: 300; }
   .contact-form { display: flex; flex-direction: column; gap: 0; max-width: 460px; margin: 0 auto; text-align: left; }
   .contact-form input,
@@ -537,7 +606,7 @@
     #instagram .section-header { flex-direction: column; align-items: flex-start; }
     .event-card { grid-template-columns: 72px 1fr; gap: 20px; }
     .event-actions { flex-direction: row; align-items: center; }
-    .event-status { display: none; }
+    .event-status.on-sale { display: none; }
     .mixes-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-item.tall { grid-row: span 1; aspect-ratio: 4/3; }
@@ -549,8 +618,6 @@
     .footer-copy { position: static; transform: none; order: 3; }
   }
 </style>
-<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
-<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
 </head>
 <body>
 
@@ -563,7 +630,8 @@
     <a href="#requests">Requests</a>
     <a href="#gallery-section">Photos</a>
     <a href="#about-section">About</a>
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="nav-cta">July 26th Tickets!</a>
+    <a href="#contact-section">Contact</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="nav-cta" id="navCta">July 26th Tickets!</a>
   </div>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -583,8 +651,32 @@
   <p class="hero-bg-letters" aria-hidden="true">B&amp;G</p>
   <p class="hero-eyebrow">Bump &amp; Grind · Est. 2016</p>
   <h1 class="hero-h1">Halifax's original &amp; favourite R&amp;B party.</h1>
+  <div class="hero-countdown" id="heroCountdown" aria-label="Countdown to the next Patio Party on Sunday, July 26, 2026 at 3 PM">
+    <p class="hero-countdown-label">Next Patio Party In</p>
+    <div class="hero-countdown-units">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cdDays">00</span>
+        <span class="countdown-unit-label">Days</span>
+      </div>
+      <span class="countdown-colon">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cdHours">00</span>
+        <span class="countdown-unit-label">Hours</span>
+      </div>
+      <span class="countdown-colon">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cdMinutes">00</span>
+        <span class="countdown-unit-label">Minutes</span>
+      </div>
+      <span class="countdown-colon">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cdSeconds">00</span>
+        <span class="countdown-unit-label">Seconds</span>
+      </div>
+    </div>
+  </div>
   <div class="hero-cta-row">
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="btn-outline">Get Your July 26th Tickets</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="btn-outline" id="heroCtaPrimary">Get Your July 26th Tickets</a>
     <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&amp;G2026SeasonPass:All-Access" class="btn-outline">Get 2026 Season Passes</a>
   </div>
 </section>
@@ -816,6 +908,7 @@
         <div style="position:absolute;left:-9999px" aria-hidden="true">
           <input type="text" name="website" tabindex="-1" autocomplete="off">
         </div>
+        <label for="songRequestInput" class="sr-only">Song title and artist</label>
         <input type="text" name="song_request" id="songRequestInput" placeholder="Song title + artist" required autocomplete="off">
         <input type="hidden" name="subject" value="New Song Request — Bump & Grind Website">
         <button type="submit" id="requestsBtn">Send It</button>
@@ -835,20 +928,20 @@
       <div class="gallery-track" id="galleryTrack">
         <div class="gallery-page">
           <div class="gallery-grid">
-            <div class="gallery-item tall reveal"><img src="IMAGES/GALLERY/PHOTO-1.jpg" alt="Crowd dancing at a Bump & Grind rooftop patio party in Halifax" loading="eager"></div>
-            <div class="gallery-item reveal"><img src="IMAGES/GALLERY/PHOTO-2.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
-            <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="IMAGES/GALLERY/PHOTO-3.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
-            <div class="gallery-item reveal" style="transition-delay:0.15s"><img src="IMAGES/GALLERY/PHOTO-4.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
-            <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="IMAGES/GALLERY/PHOTO-5.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
+            <div class="gallery-item tall reveal"><img src="IMAGES/GALLERY/PHOTO-1.jpg" alt="Three friends posing indoors under blue and purple club lighting, one wearing an &quot;I Identify As Scotian&quot; shirt" loading="eager"></div>
+            <div class="gallery-item reveal"><img src="IMAGES/GALLERY/PHOTO-2.jpg" alt="A group of women laughing and dancing close together at a Bump & Grind night party" loading="lazy"></div>
+            <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="IMAGES/GALLERY/PHOTO-3.jpg" alt="Friends dancing indoors under red lighting at a Bump & Grind party" loading="lazy"></div>
+            <div class="gallery-item reveal" style="transition-delay:0.15s"><img src="IMAGES/GALLERY/PHOTO-4.jpg" alt="A group of friends smiling together at the bar during a Bump & Grind night" loading="lazy"></div>
+            <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="IMAGES/GALLERY/PHOTO-5.jpg" alt="Three friends posing near the DJ booth, lit in pink and blue" loading="lazy"></div>
           </div>
         </div>
         <div class="gallery-page">
           <div class="gallery-grid">
-            <div class="gallery-item tall"><img src="IMAGES/GALLERY/PHOTO-6.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
-            <div class="gallery-item"><img src="IMAGES/GALLERY/PHOTO-7.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
-            <div class="gallery-item"><img src="IMAGES/GALLERY/PHOTO-8.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
-            <div class="gallery-item"><img src="IMAGES/GALLERY/PHOTO-9.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
-            <div class="gallery-item"><img src="IMAGES/GALLERY/PHOTO-10.jpg" alt="Bump & Grind R&B party crowd in Halifax" loading="lazy"></div>
+            <div class="gallery-item tall"><img src="IMAGES/GALLERY/PHOTO-6.jpg" alt="Six friends dressed up in front of a Bump & Grind photo backdrop" loading="lazy"></div>
+            <div class="gallery-item"><img src="IMAGES/GALLERY/PHOTO-7.jpg" alt="Three friends taking a sunlit close-up photo together on the patio" loading="lazy"></div>
+            <div class="gallery-item"><img src="IMAGES/GALLERY/PHOTO-8.jpg" alt="Friends laughing together in the sun at a Bump & Grind patio party" loading="lazy"></div>
+            <div class="gallery-item"><img src="IMAGES/GALLERY/PHOTO-9.jpg" alt="Crowd gathered on the patio near the sponsor tent and string lights" loading="lazy"></div>
+            <div class="gallery-item"><img src="IMAGES/GALLERY/PHOTO-10.jpg" alt="Wide view of a crowded outdoor patio party under string lights" loading="lazy"></div>
           </div>
         </div>
       </div>
@@ -923,12 +1016,13 @@
         <li>📡 R&amp;B Radar: new R&amp;B worth your attention right now</li>
         <li>🗓️ On This Day: a moment in R&amp;B and soul history</li>
       </ul>
-      <a href="#newsletter-section" class="newsletter-recap-link">Subscribe to get this week's issue →</a>
+      <a href="#newsletterEmail" class="newsletter-recap-link">Subscribe to get this week's issue →</a>
     </div>
     <form class="newsletter-form" id="newsletterForm">
       <div style="position:absolute;left:-9999px" aria-hidden="true">
         <input type="text" name="website" tabindex="-1" autocomplete="off">
       </div>
+      <label for="newsletterEmail" class="sr-only">Email address</label>
       <input type="email" id="newsletterEmail" placeholder="Your email address" required autocomplete="email">
       <button type="submit" id="newsletterBtn">Subscribe</button>
     </form>
@@ -949,9 +1043,12 @@
     <p class="contact-sub">Venue, sponsorship, press, or just want to say what's up, drop us a line and we'll get back to you.</p>
     <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="b6fb76de-b533-4d31-98c4-b805f0e711e1">
-      <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
-      <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
-      <textarea name="message" placeholder="Your message..." required></textarea>
+      <label for="contactName" class="sr-only">Your name</label>
+      <input type="text" name="name" id="contactName" placeholder="Your name" autocomplete="name" required>
+      <label for="contactEmail" class="sr-only">Email address</label>
+      <input type="email" name="email" id="contactEmail" placeholder="Email address" autocomplete="email" required>
+      <label for="contactMessage" class="sr-only">Your message</label>
+      <textarea name="message" id="contactMessage" placeholder="Your message..." required></textarea>
       <input type="hidden" name="subject" value="New Inquiry — Bump & Grind Website">
       <button type="submit" id="contactBtn">Send Message</button>
     </form>
@@ -1089,18 +1186,22 @@
     .then(data => {
       const grid = document.getElementById('instagramGrid');
       const items = (data.posts || data).slice(0, 12);
+      const esc = (s) => String(s).replace(/"/g, '&quot;');
       grid.innerHTML = items.map(post => {
         const img = (post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl) || post.mediaUrl || '';
         const alt = post.caption ? post.caption.slice(0, 80) : 'Bump & Grind Halifax';
-        return img ? `<a class="instagram-item" href="${post.permalink}" target="_blank" rel="noopener">
-          <img src="${img}" alt="${alt.replace(/"/g,'&quot;')}" loading="lazy">
+        return img ? `<a class="instagram-item" href="${esc(post.permalink)}" target="_blank" rel="noopener">
+          <img src="${esc(img)}" alt="${esc(alt)}" loading="lazy">
           <div class="instagram-item-overlay">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </div>
         </a>` : '';
       }).join('');
     })
-    .catch(() => { document.getElementById('instagramGrid').innerHTML = ''; });
+    .catch(() => {
+      document.getElementById('instagramGrid').innerHTML =
+        '<p class="instagram-loading">Couldn\'t load the feed right now. <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" rel="noopener" style="color:var(--blush-deep)">Follow us on Instagram</a> instead.</p>';
+    });
 
   // Gallery carousel
   (function() {
@@ -1145,6 +1246,58 @@
     function closeMenu() { nav.classList.remove('nav-open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
     burger.addEventListener('click', function() { nav.classList.contains('nav-open') ? closeMenu() : openMenu(); });
     links.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && nav.classList.contains('nav-open')) closeMenu();
+    });
+  })();
+
+  // Hero countdown to next Patio Party
+  (function() {
+    var target = new Date('2026-07-26T15:00:00-03:00').getTime();
+    var container = document.getElementById('heroCountdown');
+    var els = {
+      days: document.getElementById('cdDays'),
+      hours: document.getElementById('cdHours'),
+      minutes: document.getElementById('cdMinutes'),
+      seconds: document.getElementById('cdSeconds')
+    };
+
+    function getCountdownParts(targetMs, nowMs) {
+      var diff = targetMs - nowMs;
+      if (diff <= 0) return null;
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      var minutes = Math.floor((diff / (1000 * 60)) % 60);
+      var seconds = Math.floor((diff / 1000) % 60);
+      return { days: days, hours: hours, minutes: minutes, seconds: seconds };
+    }
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    var timer;
+    function tick() {
+      var parts = getCountdownParts(target, Date.now());
+      if (!parts) {
+        clearInterval(timer);
+        container.innerHTML = '<p class="hero-countdown-message">See You On The Patio! 🎉</p>';
+        var navCta = document.getElementById('navCta');
+        var heroCta = document.getElementById('heroCtaPrimary');
+        if (navCta) { navCta.textContent = 'See Upcoming Events'; navCta.href = '#events-section'; }
+        if (heroCta) { heroCta.textContent = 'See Upcoming Events'; heroCta.href = '#events-section'; }
+        return false;
+      }
+      els.days.textContent = pad(parts.days);
+      els.hours.textContent = pad(parts.hours);
+      els.minutes.textContent = pad(parts.minutes);
+      els.seconds.textContent = pad(parts.seconds);
+      return true;
+    }
+
+    if (tick()) {
+      timer = setInterval(tick, 1000);
+    }
   })();
 </script>
 </body>
