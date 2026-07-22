@@ -454,11 +454,35 @@
   .mixes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .mix-card {
     background: var(--white); border: 1px solid var(--light-gray);
-    padding: 28px; transition: background 0.2s, border-color 0.2s; cursor: pointer; position: relative;
+    transition: border-color 0.2s; cursor: pointer; position: relative;
   }
   .mix-card:hover { border-color: var(--blush); }
   .mix-card.active { border-color: var(--blush-deep); }
-  .mix-num { font-family: var(--display); font-size: 36px; color: var(--dark); line-height: 1; margin-bottom: 16px; letter-spacing: 0.05em; }
+  .mix-art {
+    position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+    background: var(--blush-light); border-bottom: 1px solid var(--light-gray);
+  }
+  .mix-art img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s cubic-bezier(.16,1,.3,1), filter 0.3s;
+  }
+  .mix-card:hover .mix-art img { transform: scale(1.06); }
+  .mix-art-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(24,20,18,0) 45%, rgba(24,20,18,0.72) 100%);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .mix-card:hover .mix-art-overlay, .mix-card.active .mix-art-overlay { opacity: 1; }
+  .mix-art-play {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--blush-deep); display: flex; align-items: center; justify-content: center;
+    transform: scale(0.85); transition: transform 0.3s, background 0.2s;
+  }
+  .mix-card:hover .mix-art-play { transform: scale(1); background: var(--dark); }
+  .mix-art-play svg { width: 16px; height: 16px; fill: white; margin-left: 3px; }
+  .mix-body { padding: 24px 28px 28px; }
+  .mix-num { font-family: var(--display); font-size: 30px; color: var(--dark); line-height: 1; margin-bottom: 10px; letter-spacing: 0.05em; }
   .mix-date { font-size: 11px; color: rgba(24,20,18,0.65); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
   .mix-play-btn {
     display: flex; align-items: center; gap: 8px;
@@ -474,6 +498,10 @@
   }
   .mix-play-btn:hover .play-icon { background: var(--dark); }
   .mix-play-btn svg { width: 10px; height: 10px; fill: white; margin-left: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .mix-art img, .mix-art-overlay, .mix-art-play { transition: none; }
+    .mix-card:hover .mix-art img { transform: none; }
+  }
   .mixes-player { margin-top: 32px; background: var(--white); border: 1px solid var(--light-gray); border-top: 2px solid var(--blush-deep); overflow: hidden; }
   .mixes-player iframe { display: block; width: 100%; border: none; }
   .mixes-footer { margin-top: 36px; text-align: center; }
@@ -954,29 +982,47 @@
     <h2 class="section-title reveal">Your Monthly Mix 🎧</h2>
     <p class="section-sub reveal">Here is your curated 30-minute R&amp;B set keeping the vibe going between events.</p>
     <div class="mixes-grid">
-      <div class="mix-card reveal" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/bump-grind-rb-mix-june-2026/')">
-        <div class="mix-num">JUNE R&amp;B MIX 2026</div>
-        <div class="mix-date">Mixed By OKAY⚡️TK</div>
-        <button class="mix-play-btn">
-          <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
-          Play Mix
-        </button>
+      <div class="mix-card reveal" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/bump-grind-rb-mix-july-2026/')">
+        <div class="mix-art">
+          <img src="https://thumbnailer.mixcloud.com/unsafe/640x640/extaudio/e/b/d/1/548e-c686-45de-bcec-f3300799858e" alt="Cover art for the Bump &amp; Grind R&amp;B Mix, July 2026" loading="lazy" decoding="async">
+          <div class="mix-art-overlay"><span class="mix-art-play"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span></div>
+        </div>
+        <div class="mix-body">
+          <div class="mix-num">JULY R&amp;B MIX 2026</div>
+          <div class="mix-date">Mixed By OKAY⚡️TK</div>
+          <button class="mix-play-btn">
+            <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
+            Play Mix
+          </button>
+        </div>
       </div>
-      <div class="mix-card reveal" style="transition-delay:0.1s" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/okay-tk-bump-grind-rb-mix-may-2026/')">
-        <div class="mix-num">MAY R&amp;B MIX 2026</div>
-        <div class="mix-date">Mixed By OKAY⚡️TK</div>
-        <button class="mix-play-btn">
-          <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
-          Play Mix
-        </button>
+      <div class="mix-card reveal" style="transition-delay:0.1s" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/bump-grind-rb-mix-june-2026/')">
+        <div class="mix-art">
+          <img src="https://thumbnailer.mixcloud.com/unsafe/640x640/extaudio/4/9/3/4/76e0-07bf-4cfd-80f8-f5a60e2892c5" alt="Cover art for the Bump &amp; Grind R&amp;B Mix, June 2026" loading="lazy" decoding="async">
+          <div class="mix-art-overlay"><span class="mix-art-play"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span></div>
+        </div>
+        <div class="mix-body">
+          <div class="mix-num">JUNE R&amp;B MIX 2026</div>
+          <div class="mix-date">Mixed By OKAY⚡️TK</div>
+          <button class="mix-play-btn">
+            <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
+            Play Mix
+          </button>
+        </div>
       </div>
-      <div class="mix-card reveal" style="transition-delay:0.2s" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/baby-yu-x-okay-tk-bump-grind-rb-mix/')">
-        <div class="mix-num">MAY R&amp;B MIX 2025</div>
-        <div class="mix-date">Mixed By OKAY⚡️TK &amp; DJ Baby Yu</div>
-        <button class="mix-play-btn">
-          <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
-          Play Mix
-        </button>
+      <div class="mix-card reveal" style="transition-delay:0.2s" onclick="loadMix(this, 'https://www.mixcloud.com/heyokaytk/okay-tk-bump-grind-rb-mix-may-2026/')">
+        <div class="mix-art">
+          <img src="https://thumbnailer.mixcloud.com/unsafe/640x640/extaudio/6/2/6/e/8534-95c0-4054-96e7-8b1d9a09dff5" alt="Cover art for the Bump &amp; Grind R&amp;B Mix, May 2026" loading="lazy" decoding="async">
+          <div class="mix-art-overlay"><span class="mix-art-play"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span></div>
+        </div>
+        <div class="mix-body">
+          <div class="mix-num">MAY R&amp;B MIX 2026</div>
+          <div class="mix-date">Mixed By OKAY⚡️TK</div>
+          <button class="mix-play-btn">
+            <span class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></span>
+            Play Mix
+          </button>
+        </div>
       </div>
     </div>
     <div class="mixes-player reveal" id="mixPlayer" style="display:none;">
