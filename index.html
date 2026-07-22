@@ -399,16 +399,6 @@
   /* ── EVENTS ── */
   #events-section { background: var(--white); }
   #events { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
-  .season-pass-note {
-    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-    background: var(--blush-light); border: 1px solid var(--blush);
-    padding: 18px 24px; margin-bottom: 40px; font-size: 14px; color: var(--dark);
-  }
-  .season-pass-note a {
-    font-weight: 600; color: var(--blush-deep-text); text-decoration: none;
-    border-bottom: 1px solid var(--blush-deep); white-space: nowrap;
-  }
-  .season-pass-note a:hover { color: var(--dark); border-color: var(--dark); }
   .event-card {
     display: grid; grid-template-columns: 90px 1fr auto;
     align-items: center; gap: 40px;
@@ -767,7 +757,7 @@
     <a href="#gallery-section">Photos</a>
     <a href="#about-section">About</a>
     <a href="#contact-section">Contact</a>
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="nav-cta" id="navCta">July 26th Tickets!</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee" class="nav-cta" id="navCta">R&amp;B At The Marquee Tickets</a>
   </div>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -787,7 +777,7 @@
   <p class="hero-bg-letters" aria-hidden="true">B&amp;G</p>
   <p class="hero-eyebrow">Bump &amp; Grind · Est. 2016</p>
   <h1 class="hero-h1">Halifax's original &amp; favourite R&amp;B party.</h1>
-  <div class="hero-countdown" id="heroCountdown" aria-label="Countdown to the next Patio Party on Sunday, July 26, 2026 at 3 PM">
+  <div class="hero-countdown" id="heroCountdown" aria-label="Countdown to the next Bump & Grind show">
     <p class="hero-countdown-label">Next Patio Party In</p>
     <div class="hero-countdown-units">
       <div class="countdown-unit">
@@ -812,8 +802,7 @@
     </div>
   </div>
   <div class="hero-cta-row">
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1876?Bump＆GrindR＆BPatioDayParty-July26th" class="btn-outline" id="heroCtaPrimary">Get Your July 26th Tickets</a>
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&amp;G2026SeasonPass:All-Access" class="btn-outline">Get 2026 Season Passes</a>
+    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee" class="btn-outline" id="heroCtaPrimary">R&amp;B At The Marquee Tickets</a>
   </div>
 </section>
 
@@ -904,10 +893,6 @@
   <div id="events">
     <p class="section-label reveal">Bump &amp; Grind R&amp;B · 2026 Summer Patio Season</p>
     <h2 class="section-title reveal">Upcoming Events 🗓️</h2>
-
-    <div class="season-pass-note reveal">
-      🪪 <span>Want in on every show this season? A <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&amp;G2026SeasonPass:All-Access">2026 Season Pass</a> covers every remaining Marquee show plus New Year's, all in one pass.</span>
-    </div>
 
     <div class="event-card reveal">
       <div class="event-date-block">
@@ -1405,10 +1390,21 @@
     });
   })();
 
-  // Hero countdown to next Patio Party
+  // Hero countdown — advances through each upcoming show in order
   (function() {
-    var target = new Date('2026-07-26T15:00:00-03:00').getTime();
+    var MARQUEE_URL = 'https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee';
+    var EVENTS_URL = '#events-section';
+    var milestones = [
+      { date: new Date('2026-07-26T15:00:00-03:00').getTime(), label: 'Next Patio Party In', doneMsg: 'See You On The Patio! 🎉', ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
+      { date: new Date('2026-08-22T21:00:00-03:00').getTime(), label: 'R&B At The Marquee In', doneMsg: 'See You At The Marquee! 🎉', ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
+      { date: new Date('2026-08-23T15:00:00-03:00').getTime(), label: 'Next Patio Party In', doneMsg: 'See You On The Patio! 🎉', ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL },
+      { date: new Date('2026-09-20T15:00:00-03:00').getTime(), label: 'Next Patio Party In', doneMsg: 'See You On The Patio! 🎉', ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL }
+    ];
+
     var container = document.getElementById('heroCountdown');
+    var labelEl = container.querySelector('.hero-countdown-label');
+    var navCta = document.getElementById('navCta');
+    var heroCta = document.getElementById('heroCtaPrimary');
     var els = {
       days: document.getElementById('cdDays'),
       hours: document.getElementById('cdHours'),
@@ -1430,18 +1426,31 @@
       return String(n).padStart(2, '0');
     }
 
+    function setCta(text, href) {
+      if (navCta) { navCta.textContent = text; navCta.href = href; }
+      if (heroCta) { heroCta.textContent = text; heroCta.href = href; }
+    }
+
+    var activeIndex = -1;
     var timer;
     function tick() {
-      var parts = getCountdownParts(target, Date.now());
-      if (!parts) {
+      var now = Date.now();
+      var index = milestones.findIndex(function(m) { return m.date > now; });
+
+      if (index === -1) {
         clearInterval(timer);
-        container.innerHTML = '<p class="hero-countdown-message">See You On The Patio! 🎉</p>';
-        var navCta = document.getElementById('navCta');
-        var heroCta = document.getElementById('heroCtaPrimary');
-        if (navCta) { navCta.textContent = 'See Upcoming Events'; navCta.href = '#events-section'; }
-        if (heroCta) { heroCta.textContent = 'See Upcoming Events'; heroCta.href = '#events-section'; }
+        container.innerHTML = '<p class="hero-countdown-message">' + milestones[milestones.length - 1].doneMsg + '</p>';
+        setCta('See Upcoming Events', EVENTS_URL);
         return false;
       }
+
+      if (index !== activeIndex) {
+        activeIndex = index;
+        labelEl.textContent = milestones[index].label;
+        setCta(milestones[index].ctaText, milestones[index].ctaHref);
+      }
+
+      var parts = getCountdownParts(milestones[index].date, now);
       els.days.textContent = pad(parts.days);
       els.hours.textContent = pad(parts.hours);
       els.minutes.textContent = pad(parts.minutes);
