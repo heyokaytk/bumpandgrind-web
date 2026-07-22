@@ -564,10 +564,9 @@
   .love-quote { font-family: var(--serif); font-size: 17px; font-style: italic; font-weight: 600; line-height: 1.65; color: #333; margin-bottom: 16px; }
   .love-handle { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blush-deep-text); font-weight: 500; }
 
-  /* ── INSTAGRAM ── */
-  #instagram-section { background: var(--white); }
-  #instagram { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
-  #instagram .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 16px; }
+  /* ── INSTAGRAM (folded into Photos) ── */
+  #gallery .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 16px; }
+  .gallery-instagram-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-gray); font-weight: 500; margin: 56px 0 20px; }
   .btn-instagram {
     display: inline-flex; align-items: center; gap: 10px;
     background: var(--white); border: 1px solid var(--light-gray); color: var(--dark);
@@ -727,9 +726,8 @@
     #events, #gallery, #love, #mixes { padding: 72px 24px; }
     #newsletter-section, #contact-section { padding: 72px 24px; }
     #requests { margin-top: 56px; padding-top: 56px; }
-    #instagram { padding: 72px 24px; }
     .instagram-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
-    #instagram .section-header { flex-direction: column; align-items: flex-start; }
+    #gallery .section-header { flex-direction: column; align-items: flex-start; }
     .event-card { grid-template-columns: 72px 1fr; gap: 20px; }
     .event-actions { flex-direction: row; align-items: center; }
     .event-status.on-sale { display: none; }
@@ -751,11 +749,11 @@
 <nav>
   <a href="#" class="wordmark">BUMP <span>&amp;</span> GRIND <span>R&amp;B PARTY</span></a>
   <div class="nav-links">
+    <a href="#about-section">About</a>
     <a href="#events-section">Events</a>
     <a href="#mixes-section">Mixes</a>
     <a href="#requests">Requests</a>
     <a href="#gallery-section">Photos</a>
-    <a href="#about-section">About</a>
     <a href="#contact-section">Contact</a>
     <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee" class="nav-cta" id="navCta">R&amp;B At The Marquee Tickets</a>
   </div>
@@ -1058,11 +1056,19 @@
   </div>
 </div>
 
-<!-- GALLERY -->
+<!-- PHOTOS (event gallery + live Instagram) -->
 <div id="gallery-section">
   <div id="gallery">
-    <p class="section-label reveal">Photos From Our Events</p>
-    <h2 class="section-title reveal">Let The Vibe Speak For Itself 📸</h2>
+    <div class="section-header reveal">
+      <div class="section-header-left">
+        <p class="section-label">Photos From Our Events</p>
+        <h2 class="section-title">Let The Vibe Speak For Itself 📸</h2>
+      </div>
+      <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" rel="noopener" class="btn-instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Follow on Instagram
+      </a>
+    </div>
     <div class="gallery-carousel" id="galleryCarousel">
       <div class="gallery-track" id="galleryTrack">
         <div class="gallery-page">
@@ -1093,6 +1099,11 @@
       </div>
       <button class="gallery-arrow gallery-arrow-next" id="galleryNext" aria-label="Next photos">&#8250;</button>
     </div>
+
+    <p class="gallery-instagram-label reveal">Fresh From @bumpandgrindhfx</p>
+    <div class="instagram-grid reveal" id="instagramGrid">
+      <div class="instagram-loading">Loading...</div>
+    </div>
   </div>
 </div>
 
@@ -1116,25 +1127,6 @@
         <div class="love-card"><p class="love-quote">"Cannot wait for this."</p><p class="love-handle">@tiffyjewl12</p></div>
         <div class="love-card"><p class="love-quote">"Finally gonna make this one! Can't wait! 🔥🔥"</p><p class="love-handle">@celinenineotwo</p></div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- INSTAGRAM -->
-<div id="instagram-section">
-  <div id="instagram">
-    <div class="section-header reveal">
-      <div class="section-header-left">
-        <p class="section-label">Follow Along</p>
-        <h2 class="section-title">@bumpandgrindhfx</h2>
-      </div>
-      <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" rel="noopener" class="btn-instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        Follow on Instagram
-      </a>
-    </div>
-    <div class="instagram-grid reveal" id="instagramGrid">
-      <div class="instagram-loading">Loading...</div>
     </div>
   </div>
 </div>
