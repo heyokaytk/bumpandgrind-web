@@ -737,15 +737,15 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-carousel" id="heroCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Bump & Grind tickets">
+  <div class="hero-carousel" id="heroCarousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Bump & Grind tickets">
     <div class="hero-track" id="heroTrack">
       <div class="hero-slide">
-        <img class="hero-slide-img" src="IMAGES/AUG22-HERO-FLYER.jpg" alt="Bump & Grind presents R&B At The Marquee, Saturday August 22nd" loading="eager">
+        <img class="hero-slide-img" src="IMAGES/AUG22-HERO-FLYER.jpg" width="1600" height="2000" fetchpriority="high" alt="Bump & Grind presents R&B At The Marquee, Saturday August 22nd" loading="eager">
         <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee" class="hero-ticket-btn">Get Tickets</a>
       </div>
       <div class="hero-slide">
-        <img class="hero-slide-img" src="IMAGES/SEASONPASS-HERO-FLYER.jpg" alt="Bump & Grind Season Passes — one pass, all shows" loading="lazy">
-        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&amp;G2026SeasonPass:All-Access" class="hero-ticket-btn">Get Tickets</a>
+        <img class="hero-slide-img" src="IMAGES/SEASONPASS-HERO-FLYER.jpg" width="1600" height="2000" alt="Bump & Grind Season Passes — one pass, all shows" loading="eager">
+        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&amp;G2026SeasonPass:All-Access" class="hero-ticket-btn">Get Passes</a>
       </div>
     </div>
     <div class="hero-nav-zone">
@@ -753,8 +753,8 @@
       <button type="button" class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">&#10095;</button>
     </div>
     <div class="hero-dots" id="heroDots">
-      <button type="button" class="hero-dot active" data-index="0" aria-label="Show Aug 22 show tickets" aria-selected="true"></button>
-      <button type="button" class="hero-dot" data-index="1" aria-label="Show Season Pass tickets" aria-selected="false"></button>
+      <button type="button" class="hero-dot active" data-index="0" aria-label="View Aug 22 show flyer" aria-current="true"></button>
+      <button type="button" class="hero-dot" data-index="1" aria-label="View Season Pass flyer" aria-current="false"></button>
     </div>
   </div>
 </section>
@@ -1341,6 +1341,7 @@
   (function() {
     var carousel = document.getElementById('heroCarousel');
     var track = document.getElementById('heroTrack');
+    if (!carousel || !track) return;
     var slides = track.querySelectorAll('.hero-slide');
     var dots = document.querySelectorAll('#heroDots .hero-dot');
     var prevBtn = document.getElementById('heroPrev');
@@ -1353,7 +1354,10 @@
       dots.forEach(function(dot, i) {
         var active = i === index;
         dot.classList.toggle('active', active);
-        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+      slides.forEach(function(slide, i) {
+        slide.inert = i !== index;
       });
     }
 
@@ -1369,16 +1373,24 @@
     });
 
     var touchStartX = null;
+    var touchStartY = null;
     carousel.addEventListener('touchstart', function(event) {
       touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
     }, { passive: true });
     carousel.addEventListener('touchend', function(event) {
-      if (touchStartX === null) return;
+      if (touchStartX === null || touchStartY === null) return;
       var deltaX = event.changedTouches[0].clientX - touchStartX;
-      if (deltaX > 40) goTo(index - 1);
-      if (deltaX < -40) goTo(index + 1);
+      var deltaY = event.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 40) goTo(index - 1);
+        if (deltaX < -40) goTo(index + 1);
+      }
       touchStartX = null;
-    });
+      touchStartY = null;
+    }, { passive: true });
+
+    goTo(0);
   })();
 
   // Nav ticket CTA — advances through each upcoming show in order
