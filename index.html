@@ -1337,76 +1337,41 @@
     });
   })();
 
-  // Hero countdown — advances through each upcoming show in order
+  // Nav ticket CTA — advances through each upcoming show in order
   (function() {
     var MARQUEE_URL = 'https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee';
     var EVENTS_URL = '#events-section';
     var milestones = [
-      { date: new Date('2026-07-26T15:00:00-03:00').getTime(), label: 'Next Patio Party In', doneMsg: 'See You On The Patio! 🎉', ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
-      { date: new Date('2026-08-22T21:00:00-03:00').getTime(), label: 'R&B At The Marquee In', doneMsg: 'See You At The Marquee! 🎉', ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
-      { date: new Date('2026-08-23T15:00:00-03:00').getTime(), label: 'Next Patio Party In', doneMsg: 'See You On The Patio! 🎉', ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL },
-      { date: new Date('2026-09-20T15:00:00-03:00').getTime(), label: 'Next Patio Party In', doneMsg: 'See You On The Patio! 🎉', ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL }
+      { date: new Date('2026-07-26T15:00:00-03:00').getTime(), ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
+      { date: new Date('2026-08-22T21:00:00-03:00').getTime(), ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
+      { date: new Date('2026-08-23T15:00:00-03:00').getTime(), ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL },
+      { date: new Date('2026-09-20T15:00:00-03:00').getTime(), ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL }
     ];
 
-    var container = document.getElementById('heroCountdown');
-    var labelEl = container.querySelector('.hero-countdown-label');
     var navCta = document.getElementById('navCta');
-    var heroCta = document.getElementById('heroCtaPrimary');
-    var els = {
-      days: document.getElementById('cdDays'),
-      hours: document.getElementById('cdHours'),
-      minutes: document.getElementById('cdMinutes'),
-      seconds: document.getElementById('cdSeconds')
-    };
-
-    function getCountdownParts(targetMs, nowMs) {
-      var diff = targetMs - nowMs;
-      if (diff <= 0) return null;
-      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      var minutes = Math.floor((diff / (1000 * 60)) % 60);
-      var seconds = Math.floor((diff / 1000) % 60);
-      return { days: days, hours: hours, minutes: minutes, seconds: seconds };
-    }
-
-    function pad(n) {
-      return String(n).padStart(2, '0');
-    }
-
     function setCta(text, href) {
       if (navCta) { navCta.textContent = text; navCta.href = href; }
-      if (heroCta) { heroCta.textContent = text; heroCta.href = href; }
     }
 
     var activeIndex = -1;
-    var timer;
     function tick() {
       var now = Date.now();
       var index = milestones.findIndex(function(m) { return m.date > now; });
 
       if (index === -1) {
-        clearInterval(timer);
-        container.innerHTML = '<p class="hero-countdown-message">' + milestones[milestones.length - 1].doneMsg + '</p>';
         setCta('See Upcoming Events', EVENTS_URL);
         return false;
       }
 
       if (index !== activeIndex) {
         activeIndex = index;
-        labelEl.textContent = milestones[index].label;
         setCta(milestones[index].ctaText, milestones[index].ctaHref);
       }
-
-      var parts = getCountdownParts(milestones[index].date, now);
-      els.days.textContent = pad(parts.days);
-      els.hours.textContent = pad(parts.hours);
-      els.minutes.textContent = pad(parts.minutes);
-      els.seconds.textContent = pad(parts.seconds);
       return true;
     }
 
     if (tick()) {
-      timer = setInterval(tick, 1000);
+      setInterval(tick, 60000);
     }
   })();
 </script>
