@@ -225,7 +225,7 @@
   #hero {
     width: 100%;
     background: var(--dark);
-    padding: 0 0 56px;
+    padding: 96px 0 0;
     display: flex;
     justify-content: center;
   }
@@ -253,7 +253,7 @@
   .hero-ticket-btn {
     position: absolute;
     left: 50%;
-    bottom: 9%;
+    bottom: 7.5%;
     transform: translateX(-50%);
     display: inline-block;
     background: var(--blush-deep);
@@ -295,23 +295,6 @@
     transition: background 0.2s;
   }
   .hero-arrow:hover { background: rgba(255,255,255,0.3); }
-  .hero-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 24px;
-  }
-  .hero-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255,255,255,0.35);
-    padding: 0;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .hero-dot.active { background: var(--blush); }
 
   /* ── TICKER ── */
   .ticker-wrap { background: var(--blush-deep); color: var(--white); overflow: hidden; padding: 14px 0; }
@@ -754,10 +737,6 @@
       <button type="button" class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">&#10094;</button>
       <button type="button" class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">&#10095;</button>
     </div>
-    <div class="hero-dots" id="heroDots">
-      <button type="button" class="hero-dot active" data-index="0" aria-label="View Aug 22 show flyer" aria-current="true"></button>
-      <button type="button" class="hero-dot" data-index="1" aria-label="View Season Pass flyer" aria-current="false"></button>
-    </div>
   </div>
 </section>
 
@@ -838,7 +817,7 @@
       </p>
     </div>
     <div class="reveal">
-      <p class="about-pull">"From rooftop patios to sold-out stages — still the city's favourite."</p>
+      <p class="about-pull"></p>
     </div>
   </div>
 </div>
@@ -1345,7 +1324,6 @@
     var track = document.getElementById('heroTrack');
     if (!carousel || !track) return;
     var slides = track.querySelectorAll('.hero-slide');
-    var dots = document.querySelectorAll('#heroDots .hero-dot');
     var prevBtn = document.getElementById('heroPrev');
     var nextBtn = document.getElementById('heroNext');
     var index = 0;
@@ -1353,11 +1331,6 @@
     function goTo(newIndex) {
       index = (newIndex + slides.length) % slides.length;
       track.style.transform = 'translateX(-' + (index * 100) + '%)';
-      dots.forEach(function(dot, i) {
-        var active = i === index;
-        dot.classList.toggle('active', active);
-        dot.setAttribute('aria-current', active ? 'true' : 'false');
-      });
       slides.forEach(function(slide, i) {
         slide.inert = i !== index;
       });
@@ -1365,9 +1338,6 @@
 
     prevBtn.addEventListener('click', function() { goTo(index - 1); });
     nextBtn.addEventListener('click', function() { goTo(index + 1); });
-    dots.forEach(function(dot) {
-      dot.addEventListener('click', function() { goTo(parseInt(dot.dataset.index, 10)); });
-    });
 
     carousel.addEventListener('keydown', function(event) {
       if (event.key === 'ArrowLeft') goTo(index - 1);
