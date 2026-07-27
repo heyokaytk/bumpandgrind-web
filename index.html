@@ -1337,6 +1337,50 @@
     });
   })();
 
+  // Hero flyer carousel
+  (function() {
+    var carousel = document.getElementById('heroCarousel');
+    var track = document.getElementById('heroTrack');
+    var slides = track.querySelectorAll('.hero-slide');
+    var dots = document.querySelectorAll('#heroDots .hero-dot');
+    var prevBtn = document.getElementById('heroPrev');
+    var nextBtn = document.getElementById('heroNext');
+    var index = 0;
+
+    function goTo(newIndex) {
+      index = (newIndex + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach(function(dot, i) {
+        var active = i === index;
+        dot.classList.toggle('active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    }
+
+    prevBtn.addEventListener('click', function() { goTo(index - 1); });
+    nextBtn.addEventListener('click', function() { goTo(index + 1); });
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() { goTo(parseInt(dot.dataset.index, 10)); });
+    });
+
+    carousel.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowLeft') goTo(index - 1);
+      if (event.key === 'ArrowRight') goTo(index + 1);
+    });
+
+    var touchStartX = null;
+    carousel.addEventListener('touchstart', function(event) {
+      touchStartX = event.touches[0].clientX;
+    }, { passive: true });
+    carousel.addEventListener('touchend', function(event) {
+      if (touchStartX === null) return;
+      var deltaX = event.changedTouches[0].clientX - touchStartX;
+      if (deltaX > 40) goTo(index - 1);
+      if (deltaX < -40) goTo(index + 1);
+      touchStartX = null;
+    });
+  })();
+
   // Nav ticket CTA — advances through each upcoming show in order
   (function() {
     var MARQUEE_URL = 'https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee';
