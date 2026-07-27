@@ -211,12 +211,15 @@
   }
   .nav-links a:hover { color: var(--blush-deep); }
   .nav-cta {
-    background: var(--dark);
+    background: var(--blush-deep);
+    border: 1.5px solid var(--blush-deep);
     color: var(--white) !important;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     padding: 10px 22px;
-    transition: background 0.2s;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
   }
-  .nav-cta:hover { background: var(--blush-deep) !important; color: var(--white) !important; }
+  .nav-cta:hover { background: var(--blush) !important; border-color: var(--blush) !important; color: var(--dark) !important; }
   .nav-social { display: flex; gap: 16px; }
   .nav-social a { color: var(--dark); transition: color 0.2s; }
   .nav-social a:hover { color: var(--blush-deep); }
@@ -257,6 +260,7 @@
     bottom: 7.5%;
     transform: translateX(-50%);
     display: inline-block;
+    overflow: hidden;
     background: var(--blush-deep);
     border: 1.5px solid var(--blush-deep);
     color: var(--white);
@@ -271,6 +275,18 @@
     transition: background 0.25s, border-color 0.25s, transform 0.2s;
   }
   .hero-ticket-btn:hover { background: var(--blush); border-color: var(--blush); color: var(--dark); transform: translateX(-50%) translateY(-1px); }
+  .hero-ticket-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.75), transparent);
+    transform: skewX(-20deg);
+    animation: btnShine 2.2s ease-in-out 3;
+    animation-fill-mode: forwards;
+  }
   .hero-nav-zone {
     position: absolute;
     inset: 0;
@@ -615,12 +631,18 @@
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes btnShine {
+    0% { left: -150%; }
+    10% { left: 150%; }
+    100% { left: 150%; }
+  }
   .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     .ticker-inner, .love-marquee { animation: none; }
     .cassette-reel { animation: none; }
+    .hero-ticket-btn::after { animation: none; display: none; }
   }
 
   /* ── BURGER MENU ── */
