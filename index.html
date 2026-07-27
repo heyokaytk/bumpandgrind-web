@@ -223,150 +223,93 @@
 
   /* ── HERO ── */
   #hero {
-    min-height: 100vh;
     width: 100%;
+    background: var(--dark);
+    padding: 132px 24px 56px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 120px 24px 80px;
+  }
+  .hero-carousel {
     position: relative;
-    background: url('IMAGES/BUMPANDGRIND-HERO-TOP.jpg') center 30% / cover no-repeat;
+    width: 100%;
+    max-width: 560px;
     overflow: hidden;
   }
-  .hero-bg-letters {
-    font-family: var(--display);
-    font-size: clamp(140px, 38vw, 520px);
-    color: var(--white);
-    line-height: 0.85;
-    pointer-events: none;
-    user-select: none;
-    position: relative;
-    z-index: 2;
-    margin-bottom: 0;
-    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
-  }
-  #hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 64%, rgba(10,8,6,0.55) 0%, rgba(10,8,6,0.28) 45%, rgba(10,8,6,0) 75%),
-      rgba(255, 255, 255, 0.38);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .hero-eyebrow {
-    font-family: var(--sans);
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--white);
-    margin-top: 12px;
-    animation: fadeUp 0.8s ease both;
-    position: relative;
-    z-index: 2;
-    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
-  }
-  .hero-h1 {
-    font-family: var(--serif);
-    font-weight: 700;
-    font-style: italic;
-    font-size: clamp(26px, 3.2vw, 40px);
-    color: var(--white);
-    margin: 18px 0 44px;
-    position: relative;
-    z-index: 2;
-    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
-    animation: fadeUp 0.85s 0.15s ease both;
-  }
-  .hero-countdown {
-    position: relative;
-    z-index: 2;
-    margin: -20px 0 40px;
-    animation: fadeUp 0.9s 0.22s ease both;
-  }
-  .hero-countdown-label {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
-    margin-bottom: 16px;
-  }
-  .hero-countdown-units {
+  .hero-track {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
+    transition: transform 0.45s ease;
   }
-  .countdown-unit {
+  .hero-slide {
+    flex: 0 0 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 48px;
+    gap: 28px;
   }
-  .countdown-num {
-    font-family: var(--display);
-    font-size: clamp(32px, 6vw, 56px);
-    line-height: 1;
-    color: var(--white);
-    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  .hero-slide-img {
+    display: block;
+    width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
   }
-  .countdown-unit-label {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--blush);
-    margin-top: 6px;
-  }
-  .countdown-colon {
-    font-family: var(--display);
-    font-size: clamp(32px, 6vw, 56px);
-    line-height: 1;
-    color: var(--blush);
-    margin-top: -4px;
-  }
-  .hero-countdown-message {
-    font-family: var(--sans);
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
-  }
-  .hero-cta-row {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.9s 0.3s ease both;
-    position: relative;
-    z-index: 2;
-  }
-  .btn-outline {
+  .hero-ticket-btn {
     display: inline-block;
-    background: var(--white);
-    border: 1.5px solid var(--white);
-    color: var(--dark);
+    background: var(--blush-deep);
+    border: 1.5px solid var(--blush-deep);
+    color: var(--white);
     font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 16px 36px;
-    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.2s;
+    padding: 22px 64px;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
   }
-  .btn-outline:hover { background: var(--blush-deep); color: var(--white); border-color: var(--blush-deep); transform: translateY(-1px); }
+  .hero-ticket-btn:hover { background: var(--blush); border-color: var(--blush); color: var(--dark); transform: translateY(-1px); }
+  .hero-nav-zone {
+    position: absolute;
+    inset: 0 0 130px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    pointer-events: none;
+  }
+  .hero-arrow {
+    pointer-events: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .hero-arrow:hover { background: rgba(255,255,255,0.3); }
+  .hero-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .hero-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.35);
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .hero-dot.active { background: var(--blush); }
 
   /* ── TICKER ── */
   .ticker-wrap { background: var(--blush-deep); color: var(--white); overflow: hidden; padding: 14px 0; }
@@ -683,7 +626,6 @@
   .reveal.visible { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
-    .hero-eyebrow, .hero-h1, .hero-cta-row { animation: none; }
     .ticker-inner, .love-marquee { animation: none; }
     .cassette-reel { animation: none; }
   }
@@ -795,35 +737,25 @@
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-bg-letters" aria-hidden="true">B&amp;G</p>
-  <p class="hero-eyebrow">Bump &amp; Grind · Est. 2016</p>
-  <h1 class="hero-h1">Halifax's original &amp; favourite R&amp;B party.</h1>
-  <div class="hero-countdown" id="heroCountdown" aria-label="Countdown to the next Bump & Grind show">
-    <p class="hero-countdown-label">Next Patio Party In</p>
-    <div class="hero-countdown-units">
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cdDays">00</span>
-        <span class="countdown-unit-label">Days</span>
+  <div class="hero-carousel" id="heroCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Bump & Grind tickets">
+    <div class="hero-track" id="heroTrack">
+      <div class="hero-slide">
+        <img class="hero-slide-img" src="IMAGES/AUG22-HERO-FLYER.jpg" alt="Bump & Grind presents R&B At The Marquee, Saturday August 22nd" loading="eager">
+        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee" class="hero-ticket-btn">Get Tickets</a>
       </div>
-      <span class="countdown-colon">:</span>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cdHours">00</span>
-        <span class="countdown-unit-label">Hours</span>
-      </div>
-      <span class="countdown-colon">:</span>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cdMinutes">00</span>
-        <span class="countdown-unit-label">Minutes</span>
-      </div>
-      <span class="countdown-colon">:</span>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cdSeconds">00</span>
-        <span class="countdown-unit-label">Seconds</span>
+      <div class="hero-slide">
+        <img class="hero-slide-img" src="IMAGES/SEASONPASS-HERO-FLYER.jpg" alt="Bump & Grind Season Passes — one pass, all shows" loading="lazy">
+        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&amp;G2026SeasonPass:All-Access" class="hero-ticket-btn">Get Tickets</a>
       </div>
     </div>
-  </div>
-  <div class="hero-cta-row">
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee" class="btn-outline" id="heroCtaPrimary">R&amp;B At The Marquee Tickets</a>
+    <div class="hero-nav-zone">
+      <button type="button" class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">&#10094;</button>
+      <button type="button" class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">&#10095;</button>
+    </div>
+    <div class="hero-dots" id="heroDots">
+      <button type="button" class="hero-dot active" data-index="0" aria-label="Show Aug 22 show tickets" aria-selected="true"></button>
+      <button type="button" class="hero-dot" data-index="1" aria-label="Show Season Pass tickets" aria-selected="false"></button>
+    </div>
   </div>
 </section>
 
