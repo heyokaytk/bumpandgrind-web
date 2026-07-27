@@ -44,17 +44,14 @@ Aug 22 is the priority sell, so it's the slide visitors land on. Nothing auto-ad
 
 ### Content / links
 
-| Slide        | Image                    | Button href                                                                                             |
-| ------------ | ------------------------ | -------------------------------------------------------------------------------------------------------- |
-| Aug 22 show  | new flyer (TK supplies)  | `https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee`     |
-| Season Pass  | new flyer (TK supplies)  | `https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&G2026SeasonPass:All-Access`                    |
+| Slide       | Image                              | Button href                                                                                        |
+| ----------- | ----------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Aug 22 show | `IMAGES/AUG22-HERO-FLYER.jpg`      | `https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee` |
+| Season Pass | `IMAGES/SEASONPASS-HERO-FLYER.jpg` | `https://bump-grind-r-b-party.bloomtickets.ca/event/1878?B&G2026SeasonPass:All-Access`               |
 
-### Image specs (for TK to export)
+### Image specs
 
-- Source flyers are designed for Instagram; TK will resize/export a web-hero version of each.
-- Target export: **1600 × 2000px if 4:5 portrait** (or match whichever native ratio the flyer is designed in — square works fine too, layout adapts via `object-fit: contain`).
-- Format: JPG, optimized to roughly **300–500KB** each (current hero photo is 5.5MB — new assets should not repeat that mistake).
-- Filenames: reuse the existing `IMAGES/` convention, e.g. `IMAGES/AUG22-HERO-FLYER.jpg` and `IMAGES/SEASONPASS-HERO-FLYER.jpg` (final names TBD when TK delivers files — placeholders acceptable in initial implementation, swapped in once real assets land).
+Final assets delivered and in place at `IMAGES/AUG22-HERO-FLYER.jpg` and `IMAGES/SEASONPASS-HERO-FLYER.jpg` — both 1600×2000px (4:5), JPG, under 450KB each.
 
 ### Removed elements
 
