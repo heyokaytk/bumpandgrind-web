@@ -280,12 +280,11 @@
     position: absolute;
     top: 0;
     left: -150%;
-    width: 70%;
+    width: 60%;
     height: 100%;
-    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.75), transparent);
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
     transform: skewX(-20deg);
-    animation: btnShine 2.2s ease-in-out 3;
-    animation-fill-mode: forwards;
+    animation: btnShine 4s ease-in-out infinite;
   }
   .hero-nav-zone {
     position: absolute;
@@ -633,7 +632,7 @@
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes btnShine {
     0% { left: -150%; }
-    10% { left: 150%; }
+    18% { left: 150%; }
     100% { left: 150%; }
   }
   .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
