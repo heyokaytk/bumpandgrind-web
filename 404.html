@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Bump & Grind Halifax</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --off-white: #fdf8f7;
+    --blush-light: #fceee9;
+    --blush: #f0b3a0;
+    --blush-deep: #b8543a;
+    --blush-deep-text: #ac4c34;
+    --light-gray: #eee9e7;
+    --mid-gray: #6b6b6b;
+    --dark: #181412;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+    --display: 'Bebas Neue', sans-serif;
+  }
+
+  body {
+    background: var(--off-white);
+    color: var(--dark);
+    font-family: var(--sans);
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .wordmark {
+    font-family: var(--display);
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    color: var(--dark);
+    text-decoration: none;
+    line-height: 1;
+    display: inline-block;
+    margin-bottom: 48px;
+  }
+  .wordmark span { color: var(--blush-deep); }
+
+  .code {
+    font-family: var(--display);
+    font-size: clamp(80px, 18vw, 160px);
+    line-height: 1;
+    color: var(--blush);
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 44px);
+    margin: 16px 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--mid-gray);
+    max-width: 420px;
+    margin: 0 auto 36px;
+  }
+
+  .btn-home {
+    display: inline-block;
+    background: var(--blush-deep);
+    border: 1.5px solid var(--blush-deep);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 40px;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+  }
+  .btn-home:hover { background: var(--blush); border-color: var(--blush); color: var(--dark); }
+</style>
+</head>
+<body>
+
+  <div>
+    <a href="/" class="wordmark">BUMP <span>&amp;</span> GRIND <span>R&amp;B PARTY</span></a>
+    <div class="code">404</div>
+    <h1>This page took a night off.</h1>
+    <p>The page you're looking for doesn't exist — but the next party's still on. Head back and we'll see you on the dance floor.</p>
+    <a href="/" class="btn-home">Back to Home</a>
+  </div>
+
+</body>
+</html>
