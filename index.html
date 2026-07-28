@@ -172,6 +172,24 @@
     line-height: 1;
   }
   nav .wordmark span, footer .wordmark span { color: var(--blush-deep); }
+  nav .wordmark {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  nav .wordmark::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.9), transparent);
+    transform: skewX(-20deg);
+    mix-blend-mode: overlay;
+    animation: btnShine 4s ease-in-out infinite;
+    pointer-events: none;
+  }
   .nav-links { display: flex; align-items: center; gap: 32px; }
   .nav-links a {
     font-family: var(--sans);
