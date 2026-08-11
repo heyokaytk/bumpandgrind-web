@@ -1186,20 +1186,32 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 </footer>
 
 <script>
-  // Meta Pixel — ticket link clicks (nav CTA, hero buttons, events section)
-  document.querySelectorAll('a[href*="bloomtickets.ca"]').forEach(function(link) {
-    link.addEventListener('click', function() {
-      if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', { content_name: this.textContent.trim() });
-      }
-    });
-  });
-
-  // Newsletter form
   function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : undefined;
   }
+
+  // Meta Pixel — ticket link clicks (nav CTA, hero buttons, events section)
+  document.querySelectorAll('a[href*="bloomtickets.ca"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      const eventId = crypto.randomUUID();
+      const contentName = this.textContent.trim();
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', { content_name: contentName }, { eventID: eventId });
+      }
+      const payload = JSON.stringify({
+        event_name: 'InitiateCheckout',
+        event_id: eventId,
+        content_name: contentName,
+        fbp: getCookie('_fbp'),
+        fbc: getCookie('_fbc'),
+        event_source_url: window.location.href
+      });
+      navigator.sendBeacon('https://bumpandgrind-track.okaytkokay.workers.dev/', new Blob([payload], { type: 'text/plain' }));
+    });
+  });
+
+  // Newsletter form
   document.getElementById('newsletterForm').addEventListener('submit', function(e) {
     e.preventDefault();
     if (this.querySelector('[name="website"]').value) return;
