@@ -83,7 +83,15 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       "address": { "@type": "PostalAddress", "streetAddress": "1575 Argyle Street", "addressLocality": "Halifax", "addressRegion": "NS", "addressCountry": "CA" }
     },
     "organizer": { "@type": "Organization", "name": "Bump & Grind", "url": "https://www.bumpandgrindhfx.com" },
-    "performer": { "@type": "Person", "name": "OKAY TK" }
+    "performer": { "@type": "Person", "name": "OKAY TK" },
+    "offers": {
+      "@type": "AggregateOffer",
+      "url": "https://bump-grind-r-b-party.bloomtickets.ca/event/2483?Bump%EF%BC%86GrindR%EF%BC%86BPatioDayParty-August23rd",
+      "lowPrice": "15",
+      "highPrice": "25",
+      "priceCurrency": "CAD",
+      "availability": "https://schema.org/InStock"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -895,7 +903,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
         <div class="event-meta">The Pint Patio · 1575 Argyle Street · Downtown Halifax</div>
       </div>
       <div class="event-actions">
-        <span class="event-status coming-soon">Coming Soon</span>
+        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2483?Bump%EF%BC%86GrindR%EF%BC%86BPatioDayParty-August23rd" class="btn-ticket">Get Tickets Now</a>
+        <span class="event-status on-sale">On Sale Now</span>
       </div>
     </div>
 
@@ -1443,11 +1452,12 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   // Nav ticket CTA — advances through each upcoming show in order
   (function() {
     var MARQUEE_URL = 'https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee';
+    var PATIO_URL = 'https://bump-grind-r-b-party.bloomtickets.ca/event/2483?Bump%EF%BC%86GrindR%EF%BC%86BPatioDayParty-August23rd';
     var EVENTS_URL = '#events-section';
     var milestones = [
       { date: new Date('2026-07-26T15:00:00-03:00').getTime(), ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
       { date: new Date('2026-08-22T21:00:00-03:00').getTime(), ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
-      { date: new Date('2026-08-23T15:00:00-03:00').getTime(), ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL },
+      { date: new Date('2026-08-23T15:00:00-03:00').getTime(), ctaText: 'R&B Patio Day Party Tickets', ctaHref: PATIO_URL },
       { date: new Date('2026-09-20T15:00:00-03:00').getTime(), ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL }
     ];
 
