@@ -782,17 +782,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <div class="hero-carousel" id="heroCarousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Bump & Grind tickets">
     <div class="hero-track" id="heroTrack">
       <div class="hero-slide">
-        <img class="hero-slide-img" src="IMAGES/AUG22-HERO-FLYER.jpg" width="1920" height="1080" fetchpriority="high" alt="Bump & Grind presents R&B At The Marquee, Saturday August 22nd" loading="eager">
-        <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee" class="hero-ticket-btn">Get Tickets</a>
-      </div>
-      <div class="hero-slide">
-        <img class="hero-slide-img" src="IMAGES/AUG30-PATIO-PARTY-HERO-FLYER.jpg" width="1920" height="1080" alt="Bump & Grind R&B Patio Day Party, Sunday August 30th" loading="eager">
+        <img class="hero-slide-img" src="IMAGES/AUG30-PATIO-PARTY-HERO-FLYER.jpg" width="1920" height="1080" fetchpriority="high" alt="Bump & Grind R&B Patio Day Party, Sunday August 30th" loading="eager">
         <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2483?Bump%EF%BC%86GrindR%EF%BC%86BPatioDayParty-August30th" class="hero-ticket-btn">Get Tickets</a>
       </div>
-    </div>
-    <div class="hero-nav-zone">
-      <button type="button" class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">&#10094;</button>
-      <button type="button" class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">&#10095;</button>
     </div>
   </div>
 </section>
@@ -1431,8 +1423,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       });
     }
 
-    prevBtn.addEventListener('click', function() { goTo(index - 1); });
-    nextBtn.addEventListener('click', function() { goTo(index + 1); });
+    if (prevBtn) prevBtn.addEventListener('click', function() { goTo(index - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { goTo(index + 1); });
 
     carousel.addEventListener('keydown', function(event) {
       if (event.key === 'ArrowLeft') goTo(index - 1);
