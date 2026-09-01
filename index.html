@@ -87,7 +87,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -104,6 +104,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans: 'Outfit', sans-serif;
     --display: 'Bebas Neue', sans-serif;
+    --display-fat: 'Anton', 'Bebas Neue', Impact, sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -312,6 +313,53 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     margin-bottom: 24px;
     letter-spacing: -0.01em;
   }
+
+  /* Shared section wrapper — consistent max-width + generous rhythm */
+  .shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 48px);
+  }
+
+  /* Big type-led hero headline */
+  .hero-giant {
+    font-family: var(--display-fat);
+    font-weight: 400;
+    font-size: clamp(52px, 12vw, 132px);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  /* Small uppercase kicker above headings */
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--blush-deep-text);
+  }
+
+  /* Pill — countdown / status chips */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 9px 15px;
+    border-radius: 999px;
+    border: 1px solid var(--light-gray);
+    background: var(--white);
+    color: var(--dark);
+  }
+  .pill b { color: var(--blush-deep-text); font-weight: 600; }
 
   /* ── ABOUT ── */
   #about-section { background: var(--blush-light); }
@@ -1115,6 +1163,33 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : undefined;
+  }
+
+  // Single source of truth for the next event — drives the hero countdown pill
+  // and the nav ticket CTA. Set `date` to null (or leave it in the past) when
+  // nothing is announced; the UI then shows "New dates soon".
+  var NEXT_EVENT = {
+    name: 'R&B Patio Day Party',
+    date: '2026-09-20T15:00:00-03:00',            // ISO 8601 with TZ, or null
+    ticketUrl: 'https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee',
+    venue: 'The Pint Patio'
+  };
+
+  function nextEventMs() {
+    if (!NEXT_EVENT.date) return null;
+    var t = new Date(NEXT_EVENT.date).getTime();
+    return (isFinite(t) && t > Date.now()) ? t : null;
+  }
+
+  function formatCountdown(targetMs) {
+    var diff = targetMs - Date.now();
+    if (diff <= 0) return null;
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    if (d > 0) return d + 'd ' + h + 'h';
+    if (h > 0) return h + 'h ' + m + 'm';
+    return m + 'm';
   }
 
   // Meta Pixel — ticket link clicks (nav CTA, hero buttons, events section)
