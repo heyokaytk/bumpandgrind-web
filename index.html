@@ -945,34 +945,17 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
   // Single source of truth for the next event. Drives the hero countdown pill,
   // every "tickets" CTA (elements with [data-ticket]), and the nav CTA.
-  //  - date: ISO 8601 with timezone, or null when nothing is announced
-  //          (countdown pill then reads "New dates soon").
+  //  - date: ISO 8601 with timezone (kept for reference / JSON-LD), or null.
   //  - ticketUrl: the live ticket link, or null before tickets drop
   //          (ticket CTAs then fall back to scrolling to #events and show
   //           their data-soon-label text instead of data-live-label).
+  //  - venue: location line shown in the hero pill; empty string hides it.
   var NEXT_EVENT = {
     name: 'R&B Patio Day Party',
     date: '2026-09-20T15:00:00-03:00',
     ticketUrl: null,
-    venue: 'The Pint Patio'
+    venue: 'The Pint Patio · 1575 Argyle St · Downtown Halifax'
   };
-
-  function nextEventMs() {
-    if (!NEXT_EVENT.date) return null;
-    var t = new Date(NEXT_EVENT.date).getTime();
-    return (isFinite(t) && t > Date.now()) ? t : null;
-  }
-
-  function formatCountdown(targetMs) {
-    var diff = targetMs - Date.now();
-    if (diff <= 0) return null;
-    var d = Math.floor(diff / 86400000);
-    var h = Math.floor((diff % 86400000) / 3600000);
-    var m = Math.floor((diff % 3600000) / 60000);
-    if (d > 0) return d + 'd ' + h + 'h';
-    if (h > 0) return h + 'h ' + m + 'm';
-    return m + 'm';
-  }
 
   // Point every [data-ticket] CTA at NEXT_EVENT.ticketUrl when it exists,
   // otherwise fall back to the #events anchor and the "soon" label. Runs
@@ -1183,22 +1166,16 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     });
   })();
 
-  // Hero countdown pill — reads NEXT_EVENT
-  (function renderCountdown() {
+  // Hero venue pill — shows NEXT_EVENT.venue (hidden if empty)
+  (function renderVenuePill() {
     var pill = document.getElementById('countdownPill');
     if (!pill) return;
-    function paint() {
-      var ms = nextEventMs();
-      var cd = ms ? formatCountdown(ms) : null;
-      if (!cd) {
-        pill.textContent = 'New dates soon';
-      } else {
-        pill.innerHTML = 'Next: ' + NEXT_EVENT.name + ' · <b>' + cd + '</b>';
-      }
+    if (NEXT_EVENT.venue) {
+      pill.textContent = NEXT_EVENT.venue;
       pill.hidden = false;
+    } else {
+      pill.hidden = true;
     }
-    paint();
-    setInterval(paint, 60000);
   })();
 
   // Nav ticket CTA text/href is handled by wireTicketLinks() above,
