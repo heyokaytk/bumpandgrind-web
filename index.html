@@ -646,7 +646,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <a href="#mixes">Mixes</a>
     <a href="#memories">Memories</a>
     <a href="#about">About</a>
-    <a href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee" class="nav-cta" id="navCta">Tickets</a>
+    <a href="#events" class="nav-cta" id="navCta" data-ticket data-soon-label="See events" data-live-label="Tickets">See events</a>
   </div>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -1211,42 +1211,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     setInterval(paint, 60000);
   })();
 
-  // Nav ticket CTA — advances through each upcoming show in order
-  (function() {
-    var MARQUEE_URL = 'https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee';
-    var EVENTS_URL = '#events-section';
-    var milestones = [
-      { date: new Date('2026-07-26T15:00:00-03:00').getTime(), ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
-      { date: new Date('2026-08-22T21:00:00-03:00').getTime(), ctaText: 'R&B At The Marquee Tickets', ctaHref: MARQUEE_URL },
-      { date: new Date('2026-09-20T15:00:00-03:00').getTime(), ctaText: 'See Upcoming Events', ctaHref: EVENTS_URL }
-    ];
-
-    var navCta = document.getElementById('navCta');
-    function setCta(text, href) {
-      if (navCta) { navCta.textContent = text; navCta.href = href; }
-    }
-
-    var activeIndex = -1;
-    function tick() {
-      var now = Date.now();
-      var index = milestones.findIndex(function(m) { return m.date > now; });
-
-      if (index === -1) {
-        setCta('See Upcoming Events', EVENTS_URL);
-        return false;
-      }
-
-      if (index !== activeIndex) {
-        activeIndex = index;
-        setCta(milestones[index].ctaText, milestones[index].ctaHref);
-      }
-      return true;
-    }
-
-    if (tick()) {
-      setInterval(tick, 60000);
-    }
-  })();
+  // Nav ticket CTA text/href is handled by wireTicketLinks() above,
+  // driven by NEXT_EVENT (it carries data-ticket).
 </script>
 </body>
 </html>
