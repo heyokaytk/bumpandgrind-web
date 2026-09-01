@@ -198,54 +198,67 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
   /* ── HERO ── */
   #hero {
-    width: 100%;
-    background: var(--dark);
-    padding: 80px 0 0;
-    display: flex;
-    justify-content: center;
+    background: linear-gradient(180deg, var(--blush-light), var(--off-white));
+    padding-top: 64px;
   }
-  .hero-carousel {
-    position: relative;
-    width: 100%;
+  .hero-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: clamp(32px, 7vw, 72px) clamp(20px, 5vw, 48px) clamp(48px, 8vw, 88px);
+  }
+  .hero-inner .eyebrow { display: block; margin-bottom: 18px; }
+  .hero-sub {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: clamp(15px, 2.2vw, 19px);
+    line-height: 1.5;
+    color: #555;
+    max-width: 40ch;
+    margin: 18px 0 0;
+  }
+  .hero-flyer {
+    display: block;
+    margin: 26px 0 0;
+    border-radius: 14px;
     overflow: hidden;
+    border: 1px solid var(--light-gray);
+    box-shadow: 0 14px 34px rgba(24,20,18,0.16);
+    max-width: 760px;
   }
-  .hero-track {
-    display: flex;
-    transition: transform 0.45s ease;
-  }
-  .hero-slide {
-    position: relative;
-    flex: 0 0 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .hero-slide-img {
+  .hero-flyer img {
     display: block;
     width: 100%;
     height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .hero-flyer:hover img { transform: scale(1.02); }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 22px;
   }
   .hero-ticket-btn {
-    position: absolute;
-    left: 50%;
-    bottom: calc(7.5% - 20px);
-    transform: translateX(-50%);
-    display: inline-block;
+    position: relative;
     overflow: hidden;
+    display: inline-block;
     background: var(--blush-deep);
     border: 1.5px solid var(--blush-deep);
     color: var(--white);
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 22px 64px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+    padding: 14px 30px;
+    border-radius: 999px;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
   }
-  .hero-ticket-btn:hover { background: var(--blush); border-color: var(--blush); color: var(--dark); transform: translateX(-50%) translateY(-1px); }
+  .hero-ticket-btn:hover { background: var(--blush); border-color: var(--blush); color: var(--dark); }
   .hero-ticket-btn::after {
     content: "";
     position: absolute;
@@ -257,31 +270,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     transform: skewX(-20deg);
     animation: btnShine 4s ease-in-out infinite;
   }
-  .hero-nav-zone {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 8px;
-    pointer-events: none;
-  }
-  .hero-arrow {
-    pointer-events: auto;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255,255,255,0.15);
-    color: var(--white);
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-  }
-  .hero-arrow:hover { background: rgba(255,255,255,0.3); }
 
   /* ── TICKER ── */
   .ticker-wrap { background: var(--blush-deep); color: var(--white); overflow: hidden; padding: 14px 0; }
@@ -775,12 +763,19 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-carousel" id="heroCarousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Bump & Grind tickets">
-    <div class="hero-track" id="heroTrack">
-      <div class="hero-slide">
-        <img class="hero-slide-img" src="IMAGES/SEP20-PATIO-PARTY-HERO-FLYER.jpg" width="1920" height="1080" fetchpriority="high" alt="Bump & Grind R&B Patio Day Party, Sunday September 20th" loading="eager">
-        <a href="#events-section" class="hero-ticket-btn">Coming Soon</a>
-      </div>
+  <div class="hero-inner">
+    <p class="eyebrow">Halifax · R&amp;B · since 2016</p>
+    <h1 class="hero-giant">Your<br>favourite<br>R&amp;B party</h1>
+    <p class="hero-sub">Good music. Good people. No skips. The one the group chat already planned around.</p>
+
+    <a class="hero-flyer" id="heroFlyer" href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee">
+      <img src="IMAGES/SEP20-PATIO-PARTY-HERO-FLYER.jpg" width="1920" height="1080" fetchpriority="high" loading="eager"
+           alt="Bump & Grind R&B Patio Day Party — Sunday September 20 at The Pint Patio, Halifax">
+    </a>
+
+    <div class="hero-actions">
+      <a class="hero-ticket-btn" href="https://bump-grind-r-b-party.bloomtickets.ca/event/2099?Bump%EF%BC%86Grind-R%EF%BC%86BAtTheMarquee">Get tickets</a>
+      <span class="pill" id="countdownPill" hidden></span>
     </div>
   </div>
 </section>
@@ -1395,51 +1390,22 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     });
   })();
 
-  // Hero flyer carousel
-  (function() {
-    var carousel = document.getElementById('heroCarousel');
-    var track = document.getElementById('heroTrack');
-    if (!carousel || !track) return;
-    var slides = track.querySelectorAll('.hero-slide');
-    var prevBtn = document.getElementById('heroPrev');
-    var nextBtn = document.getElementById('heroNext');
-    var index = 0;
-
-    function goTo(newIndex) {
-      index = (newIndex + slides.length) % slides.length;
-      track.style.transform = 'translateX(-' + (index * 100) + '%)';
-      slides.forEach(function(slide, i) {
-        slide.inert = i !== index;
-      });
-    }
-
-    if (prevBtn) prevBtn.addEventListener('click', function() { goTo(index - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function() { goTo(index + 1); });
-
-    carousel.addEventListener('keydown', function(event) {
-      if (event.key === 'ArrowLeft') goTo(index - 1);
-      if (event.key === 'ArrowRight') goTo(index + 1);
-    });
-
-    var touchStartX = null;
-    var touchStartY = null;
-    carousel.addEventListener('touchstart', function(event) {
-      touchStartX = event.touches[0].clientX;
-      touchStartY = event.touches[0].clientY;
-    }, { passive: true });
-    carousel.addEventListener('touchend', function(event) {
-      if (touchStartX === null || touchStartY === null) return;
-      var deltaX = event.changedTouches[0].clientX - touchStartX;
-      var deltaY = event.changedTouches[0].clientY - touchStartY;
-      if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (deltaX > 40) goTo(index - 1);
-        if (deltaX < -40) goTo(index + 1);
+  // Hero countdown pill — reads NEXT_EVENT
+  (function renderCountdown() {
+    var pill = document.getElementById('countdownPill');
+    if (!pill) return;
+    function paint() {
+      var ms = nextEventMs();
+      var cd = ms ? formatCountdown(ms) : null;
+      if (!cd) {
+        pill.textContent = 'New dates soon';
+      } else {
+        pill.innerHTML = 'Next: ' + NEXT_EVENT.name + ' · <b>' + cd + '</b>';
       }
-      touchStartX = null;
-      touchStartY = null;
-    }, { passive: true });
-
-    goTo(0);
+      pill.hidden = false;
+    }
+    paint();
+    setInterval(paint, 60000);
   })();
 
   // Nav ticket CTA — advances through each upcoming show in order
