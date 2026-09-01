@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-01
 **Scope:** `index.html` only. No other pages, no plumbing changes.
-**Status:** Approved direction, pending spec review.
+**Status:** Approved. Ready for implementation planning.
 
 ---
 
@@ -47,13 +47,13 @@ layout, dark theme.
 | # | Section | Notes |
 |---|---------|-------|
 | 1 | **Sticky nav** | Wordmark "BUMP & GRIND" (Bebas) left; anchor links Events · Mixes · Memories · About; keep the mobile burger. Keep a single ticket `nav-cta` button pointing at the current event. |
-| 2 | **Hero** | Eyebrow "Halifax · R&B · since 2016" → giant Anton tagline → one supporting line → framed 16:9 event flyer (links to tickets) → "Get tickets" button + countdown pill. |
+| 2 | **Hero** | Eyebrow "Halifax · R&B · since 2016" → giant Anton tagline → one supporting line → framed 16:9 event flyer (links to tickets) → "Get tickets" button + countdown pill. When no next date is set, the pill shows "New dates soon" (no ticket button). |
 | 3 | **Events** | Section heading + full-width rows: date block (Bebas) / title / venue + time / ticket button. Upcoming dates only. Unannounced dates render as a muted "Soon" row. JSON-LD `Event` data re-emitted from the same source info. |
-| 4 | **Mixes** | Blush panel. Heading + recent monthly mixes as rows (cover art, title, tags, duration, play). Keeps the existing mix player mechanism. Link out to Mixcloud/SoundCloud. **Song Requests folded in here** as one compact inline input (same web3forms POST as today), not its own section. |
-| 5 | **Memories** | 3-column photo grid from `IMAGES/GALLERY/` (21 photos). "See the full gallery →". Replaces the current gallery carousel + Instagram grid. Lightbox optional (see Open questions). |
-| 6 | **About** | Short paragraph + three small stats (e.g. Since 2016 / Nights / Sold out). No testimonials. |
+| 4 | **Mixes** | Blush panel. Heading + the **3** most recent monthly mixes as rows (cover art, title, tags, duration, play). Keeps the existing mix player mechanism. "All mixes →" link out to Mixcloud/SoundCloud. **Song Requests folded in here** as one compact inline input (same web3forms POST as today), not its own section. |
+| 5 | **Memories** | 3-column photo grid from `IMAGES/GALLERY/` (21 photos). Click any photo → lightweight vanilla-JS lightbox (enlarge, arrow prev/next, Esc/backdrop to close, no library). Below the grid: "Follow on Instagram →". Replaces the current gallery carousel + Instagram grid. |
+| 6 | **About** | One short paragraph, mentioning "since 2016" in the prose. No stats row, no testimonials. If the paragraph ends up carrying its weight alone, the section can be folded into the hero/footer rather than standing on its own — implementer's call during build. |
 | 7 | **Newsletter** | Dark panel. Email → existing Cloudflare Worker endpoint, unchanged (keeps `event_id` + `fbp`/`fbc` for Meta CAPI dedup). |
-| 8 | **Contact** | Kept, but slimmed and restyled — compact block just above the footer (name / email / message, same web3forms POST). |
+| 8 | **Contact** | Kept as a slim form — compact block just above the footer (name / email / message, same web3forms POST), restyled to match. |
 | 9 | **Footer** | Wordmark, "Halifax, NS · © 2026", social links (Instagram, TikTok, Facebook, Mixcloud). |
 
 ### Removed from the homepage
@@ -108,15 +108,12 @@ layout, dark theme.
 
 ---
 
-## Open questions for spec review
+## Resolved decisions (spec review, 2026-09-01)
 
-1. **Contact**: slim form as specced, or cut to a single "bookings →
-   bumpandgrindhfx@gmail.com" line in the footer?
-2. **Memories**: click-to-enlarge lightbox, or plain grid linking out to
-   Instagram?
-3. **Mixes**: how many mixes shown on the homepage (3? 4?) before the "all mixes"
-   link.
-4. **Countdown**: hide the pill entirely once an event has passed and no next date
-   is set, or show "New dates soon"?
-5. **Stats in About**: are "50+ nights / 100% sold out" numbers accurate enough to
-   print, or keep it to "Since 2016" only?
+1. **Contact** — keep the slim form (name / email / message).
+2. **Memories** — vanilla-JS lightbox (enlarge, arrow prev/next, Esc/backdrop
+   close, no library) + a "Follow on Instagram →" link under the grid.
+3. **Mixes** — 3 mixes on the homepage, then "all mixes →".
+4. **Countdown** — when no next date is set, the pill reads "New dates soon".
+5. **About** — no stats row; one short paragraph that works "since 2016" into the
+   prose. Section may be folded away entirely if it doesn't earn its space.
