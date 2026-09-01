@@ -1,0 +1,103 @@
+<h2>Big lettering — three ways (all Tightened Warm)</h2>
+<p class="subtitle">Like the reference, the hero is mostly <em>type</em> — huge, edge to edge, doing the work. Question 1: which typeface. Question 2: does the giant text say the <strong>name</strong> or the <strong>tagline</strong>? Each mock shows the top of the page down to the first event.</p>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=Bebas+Neue&family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap');
+
+.lt{--ink:#181412;--paper:#fdf8f7;--blush:#fceee9;--terra:#b8543a;--terra-tx:#ac4c34;--sans:'Outfit',system-ui,sans-serif}
+.lt .split{gap:18px}
+.lt .phone{border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,.14);box-shadow:0 18px 44px rgba(0,0,0,.16);background:var(--paper);color:var(--ink);max-height:660px;overflow-y:auto}
+.lt .phone::-webkit-scrollbar{width:0}
+.lt .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;font:500 11px/1 var(--sans);letter-spacing:.05em;border-bottom:1px solid #eee9e7}
+.lt .nav .lg{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.03em;color:var(--terra-tx)}
+.lt .hero{padding:26px 18px 30px;background:linear-gradient(180deg,var(--blush),var(--paper))}
+.lt .eyebrow{font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--terra-tx);margin-bottom:14px}
+.lt .giant{margin:0;color:var(--ink)}
+.lt .sub{font:300 13px/1.5 var(--sans);opacity:.8;margin-top:14px}
+.lt .cta{display:inline-block;margin-top:18px;padding:12px 24px;background:var(--terra);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;border-radius:999px}
+.lt .ev{padding:22px 20px}
+.lt .ev .k{font:600 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--terra-tx)}
+.lt .evrow{display:flex;gap:12px;align-items:center;padding:16px 0;border-top:1px solid #e7ddd9;margin-top:12px}
+.lt .evrow .thumb{width:56px;height:56px;border-radius:9px;flex:none;background:url('../../../../../IMAGES/SEP20-PATIO-PARTY-HERO-FLYER.jpg') center/cover}
+.lt .evrow .d{font-family:'Bebas Neue',sans-serif;font-size:23px;line-height:.9;color:var(--terra-tx)}
+.lt .evrow .t{font:500 12px/1.3 var(--sans)}
+.lt .evrow .m{font:300 11px/1.3 var(--sans);opacity:.7}
+.lt .evrow .b{margin-left:auto;font:600 9px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:7px 11px;border-radius:999px}
+
+/* T1 Bebas condensed caps — name */
+.t1 .giant{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:82px;line-height:.82;letter-spacing:.01em;text-transform:uppercase}
+/* T2 Anton heavy grotesque — tagline (closest to the reference's chunky sans) */
+.t2 .giant{font-family:'Anton',sans-serif;font-weight:400;font-size:60px;line-height:.9;letter-spacing:-.01em;text-transform:uppercase}
+/* T3 Cormorant serif — tagline, editorial-huge */
+.t3 .giant{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:66px;line-height:.94;letter-spacing:-.015em}
+.t3 .giant em{font-style:italic}
+</style>
+
+<div class="lt">
+<div class="split">
+
+  <div class="mockup">
+    <div class="mockup-header">T1 · Bebas Neue — the NAME, huge (B&amp;G's current display face, finally used big)</div>
+    <div class="mockup-body" style="padding:14px;background:#efe7e4">
+      <div class="phone t1">
+        <div class="nav"><span class="lg">BUMP &amp; GRIND</span><span>Events · Memories · About</span></div>
+        <div class="hero">
+          <div class="eyebrow">Halifax · R&amp;B · since 2016</div>
+          <h1 class="giant">Bump<br>&amp; Grind</h1>
+          <div class="sub">Your favourite R&amp;B party. Good music, good people, no skips.</div>
+          <span class="cta">Get tickets</span>
+        </div>
+        <div class="ev">
+          <div class="k">Upcoming</div>
+          <div class="evrow"><div class="thumb"></div><div><div class="d">SEP 20</div><div class="t">R&amp;B Patio Day Party</div><div class="m">The Pint Patio · 3–7pm</div></div><span class="b">Tickets</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">T2 · Anton — the TAGLINE, chunky (closest to the reference's fat sans)</div>
+    <div class="mockup-body" style="padding:14px;background:#efe7e4">
+      <div class="phone t2">
+        <div class="nav"><span class="lg">BUMP &amp; GRIND</span><span>Events · Memories · About</span></div>
+        <div class="hero">
+          <div class="eyebrow">Halifax · R&amp;B · since 2016</div>
+          <h1 class="giant">Your<br>favourite<br>R&amp;B party</h1>
+          <div class="sub">Good music. Good people. No skips. The one the group chat already planned around.</div>
+          <span class="cta">Get tickets</span>
+        </div>
+        <div class="ev">
+          <div class="k">Upcoming</div>
+          <div class="evrow"><div class="thumb"></div><div><div class="d">SEP 20</div><div class="t">R&amp;B Patio Day Party</div><div class="m">The Pint Patio · 3–7pm</div></div><span class="b">Tickets</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">T3 · Cormorant — the TAGLINE, editorial-huge (keeps today's romance)</div>
+    <div class="mockup-body" style="padding:14px;background:#efe7e4">
+      <div class="phone t3">
+        <div class="nav"><span class="lg">BUMP &amp; GRIND</span><span>Events · Memories · About</span></div>
+        <div class="hero">
+          <div class="eyebrow">Halifax · R&amp;B · since 2016</div>
+          <h1 class="giant">Your favourite<br><em>R&amp;B party.</em></h1>
+          <div class="sub">Good music. Good people. No skips. The one the group chat already planned around.</div>
+          <span class="cta">Get tickets</span>
+        </div>
+        <div class="ev">
+          <div class="k">Upcoming</div>
+          <div class="evrow"><div class="thumb"></div><div><div class="d">SEP 20</div><div class="t">R&amp;B Patio Day Party</div><div class="m">The Pint Patio · 3–7pm</div></div><span class="b">Tickets</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="options" style="margin-top:24px">
+  <div class="option" data-choice="t1" onclick="toggleSelect(this)"><div class="letter">T1</div><div class="content"><h3>Bebas Neue · the name</h3><p>Tall condensed caps. No new font — it's already loaded. "BUMP &amp; GRIND" fills the screen.</p></div></div>
+  <div class="option" data-choice="t2" onclick="toggleSelect(this)"><div class="letter">T2</div><div class="content"><h3>Anton · the tagline</h3><p>Fat, blunt grotesque — the "big ass lettering" energy from the reference, in B&amp;G's warm palette.</p></div></div>
+  <div class="option" data-choice="t3" onclick="toggleSelect(this)"><div class="letter">T3</div><div class="content"><h3>Cormorant · the tagline</h3><p>Huge italic serif. Biggest departure from the reference, most continuity with today's site.</p></div></div>
+</div>

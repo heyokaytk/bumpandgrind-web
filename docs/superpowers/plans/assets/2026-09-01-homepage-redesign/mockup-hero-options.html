@@ -1,0 +1,102 @@
+<h2>Hero — keeping the event flyer</h2>
+<p class="subtitle">Big Anton lettering <em>and</em> the current-event flyer/ad, both in the hero. The flyer is landscape 16:9 (matches the new art). Two ways to combine them — each shows nav → hero → first event row.</p>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cormorant+Garamond:wght@700&family=Outfit:wght@300;400;500;600&display=swap');
+
+.hf{--ink:#181412;--paper:#fdf8f7;--blush:#fceee9;--terra:#b8543a;--terra-tx:#ac4c34;--line:#e7ddd9;--gray:#6b6b6b;--sans:'Outfit',system-ui,sans-serif}
+.hf .split{gap:20px}
+.hf .phone{border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,.14);box-shadow:0 18px 44px rgba(0,0,0,.16);background:var(--paper);color:var(--ink);max-height:680px;overflow-y:auto}
+.hf .phone::-webkit-scrollbar{width:0}
+.hf .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font:500 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+.hf .nav .lg{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.04em;color:var(--terra-tx)}
+.hf .eye{font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--terra-tx)}
+.hf h1{font-family:'Anton',sans-serif;font-weight:400;line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin:0}
+.hf .sub{font:300 13px/1.5 var(--sans);opacity:.82}
+.hf .count{display:inline-flex;gap:7px;align-items:center;font:500 10px/1 var(--sans);letter-spacing:.05em;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px}
+.hf .count b{color:var(--terra-tx);font-weight:600}
+.hf .cta{display:inline-block;padding:12px 24px;background:var(--terra);color:#fff;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;border-radius:999px}
+.hf .ev{padding:20px 18px}
+.hf .ev .lab{font:600 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--terra-tx)}
+.hf .evrow{display:flex;gap:12px;align-items:center;padding:14px 0;border-top:1px solid var(--line);margin-top:10px}
+.hf .evrow .d{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:.88;color:var(--terra-tx)}
+.hf .evrow .t{font:500 12px/1.3 var(--sans)}
+.hf .evrow .m{font:300 11px/1.3 var(--sans);opacity:.7}
+.hf .evrow .b{margin-left:auto;font:600 9px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:7px 11px;border-radius:999px}
+
+/* A: lettering, then flyer card */
+.hf .a .hero{padding:26px 18px 22px;background:linear-gradient(180deg,var(--blush),var(--paper))}
+.hf .a h1{font-size:50px}
+.hf .a .sub{margin-top:12px}
+.hf .a .flyer{margin:18px 0 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 26px rgba(0,0,0,.14)}
+.hf .a .flyer img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.hf .a .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+
+/* B: flyer as background, lettering over scrim */
+.hf .b .hero{position:relative;padding:30px 18px 26px;color:#fff;background:#1a1210}
+.hf .b .hero .bgimg{position:absolute;inset:0;background:url('../../../../../IMAGES/SEP20-PATIO-PARTY-HERO-FLYER.jpg') center/cover}
+.hf .b .hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,12,10,.35),rgba(20,12,10,.82))}
+.hf .b .hero>*{position:relative}
+.hf .b .eye{color:#f0c3b2}
+.hf .b h1{font-size:52px;color:#fff}
+.hf .b .sub{margin-top:12px;opacity:.9}
+.hf .b .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.hf .b .count{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#fff}
+</style>
+
+<div class="hf">
+<div class="split">
+
+  <div class="mockup">
+    <div class="mockup-header">A · Lettering first, flyer as a framed card under it</div>
+    <div class="mockup-body" style="padding:14px;background:#efe7e4">
+      <div class="phone a">
+        <div class="nav"><span class="lg">BUMP &amp; GRIND</span><span>Events · Mixes · Memories · About</span></div>
+        <div class="hero">
+          <div class="eye">Halifax · R&amp;B · since 2016</div>
+          <h1>Your<br>favourite<br>R&amp;B party</h1>
+          <div class="sub">Good music. Good people. No skips.</div>
+          <div class="flyer"><img src="../../../../../IMAGES/SEP20-PATIO-PARTY-HERO-FLYER.jpg" alt="Sep 20 flyer"></div>
+          <div class="actions">
+            <a class="cta">Get tickets</a>
+            <span class="count">Sep 20 · <b>12d 04h</b></span>
+          </div>
+        </div>
+        <div class="ev">
+          <div class="lab">Upcoming</div>
+          <div class="evrow"><div><div class="d">SEP 20</div></div><div><div class="t">R&amp;B Patio Day Party</div><div class="m">The Pint Patio · 3–7pm</div></div><span class="b">Tickets</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">B · Flyer fills the hero, lettering sits on top of it</div>
+    <div class="mockup-body" style="padding:14px;background:#efe7e4">
+      <div class="phone b">
+        <div class="nav"><span class="lg">BUMP &amp; GRIND</span><span>Events · Mixes · Memories · About</span></div>
+        <div class="hero">
+          <div class="bgimg"></div><div class="scrim"></div>
+          <div class="eye">Halifax · R&amp;B · since 2016</div>
+          <h1>Your<br>favourite<br>R&amp;B party</h1>
+          <div class="sub">Good music. Good people. No skips.</div>
+          <div class="actions">
+            <a class="cta">Get tickets</a>
+            <span class="count">Sep 20 · <b>12d 04h</b></span>
+          </div>
+        </div>
+        <div class="ev">
+          <div class="lab">Upcoming</div>
+          <div class="evrow"><div><div class="d">SEP 20</div></div><div><div class="t">R&amp;B Patio Day Party</div><div class="m">The Pint Patio · 3–7pm</div></div><span class="b">Tickets</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="options" style="margin-top:24px">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)"><div class="letter">A</div><div class="content"><h3>Lettering first, flyer card below</h3><p>Big type leads; the flyer is a crisp framed ad right under it, linked to tickets. Flyer art stays fully legible.</p></div></div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)"><div class="letter">B</div><div class="content"><h3>Flyer fills the hero, type on top</h3><p>Most poster-like and loudest. Needs a dark scrim over the flyer so white type stays readable — competes a bit with the flyer's own design.</p></div></div>
+</div>

@@ -1,0 +1,154 @@
+<h2>Full homepage — proposed redesign</h2>
+<p class="subtitle">Tightened Warm · Anton tagline hero · lean spine (Events → Mixes → Memories → About → Newsletter) with a one-line countdown. Scroll the whole thing. This is the layout for review, not final pixels.</p>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Outfit:wght@300;400;500;600&display=swap');
+
+.hp{--ink:#181412;--paper:#fdf8f7;--blush:#fceee9;--blush2:#f7e2da;--terra:#b8543a;--terra-tx:#ac4c34;--line:#e7ddd9;--gray:#6b6b6b;--sans:'Outfit',system-ui,sans-serif;--serif:'Cormorant Garamond',Georgia,serif}
+.hp .wrap{max-width:420px;margin:0 auto;border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,.14);box-shadow:0 24px 60px rgba(0,0,0,.18);background:var(--paper);color:var(--ink)}
+.hp .phone{max-height:78vh;overflow-y:auto}
+.hp .phone::-webkit-scrollbar{width:0}
+.hp section{padding:40px 22px}
+.hp .lab{font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--terra-tx)}
+
+/* nav */
+.hp .nav{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:rgba(253,248,247,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hp .nav .lg{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.04em;color:var(--terra-tx)}
+.hp .nav .links{display:flex;gap:14px;font:500 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.hp .nav .links a{opacity:.75}
+
+/* hero */
+.hp .hero{padding:30px 22px 34px;background:linear-gradient(180deg,var(--blush),var(--paper))}
+.hp .hero .eye{font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--terra-tx);margin-bottom:16px}
+.hp .hero h1{font-family:'Anton',sans-serif;font-weight:400;font-size:58px;line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin:0}
+.hp .hero .sub{font:300 14px/1.55 var(--sans);opacity:.82;margin-top:16px;max-width:34ch}
+.hp .hero .count{display:inline-flex;gap:8px;align-items:center;margin-top:18px;font:500 11px/1 var(--sans);letter-spacing:.06em;color:var(--ink);background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:999px}
+.hp .hero .count b{color:var(--terra-tx);font-weight:600}
+.hp .cta{display:inline-block;margin-top:18px;padding:13px 26px;background:var(--terra);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;border-radius:999px}
+
+/* events */
+.hp .evrow{display:flex;gap:14px;align-items:center;padding:18px 0;border-top:1px solid var(--line)}
+.hp .evrow:last-child{border-bottom:1px solid var(--line)}
+.hp .evrow .thumb{width:66px;height:66px;border-radius:10px;flex:none;background-size:cover;background-position:center}
+.hp .evrow .d{font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:.88;color:var(--terra-tx)}
+.hp .evrow .t{font:500 13px/1.3 var(--sans)}
+.hp .evrow .m{font:300 12px/1.35 var(--sans);opacity:.7}
+.hp .evrow .b{margin-left:auto;font:600 9px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:8px 12px;border-radius:999px;white-space:nowrap}
+.hp .evrow .b.soon{background:transparent;color:var(--gray);border:1px solid var(--line)}
+.hp h2.head{font-family:var(--serif);font-weight:700;font-size:30px;margin:10px 0 4px}
+
+/* mixes */
+.hp .mixes{background:var(--blush)}
+.hp .mixrow{display:flex;gap:13px;align-items:center;padding:14px 0;border-top:1px solid var(--blush2)}
+.hp .mixrow:first-of-type{border-top:none}
+.hp .mixrow .cov{width:52px;height:52px;border-radius:8px;flex:none;background-size:cover;background-position:center;position:relative}
+.hp .mixrow .cov::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.hp .mixrow .mt{font:500 12px/1.3 var(--sans)}
+.hp .mixrow .mm{font:300 11px/1.3 var(--sans);opacity:.7}
+.hp .mixrow .dur{margin-left:auto;font:400 11px var(--sans);opacity:.6}
+
+/* memories */
+.hp .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:14px}
+.hp .grid div{aspect-ratio:1;background-size:cover;background-position:center;border-radius:5px}
+.hp .more{margin-top:14px;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--terra-tx)}
+
+/* about */
+.hp .about p{font:300 14px/1.6 var(--sans);opacity:.85;margin-top:10px}
+.hp .stats{display:flex;gap:22px;margin-top:18px}
+.hp .stats b{display:block;font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--terra-tx);line-height:1}
+.hp .stats span{font:400 10px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+
+/* newsletter */
+.hp .news{background:var(--ink);color:var(--paper)}
+.hp .news h2{font-family:var(--serif);font-weight:700;font-size:28px;margin-bottom:6px}
+.hp .news p{font:300 13px/1.5 var(--sans);opacity:.8}
+.hp .news .field{display:flex;gap:8px;margin-top:16px}
+.hp .news input{flex:1;border:none;padding:13px 14px;font:300 13px var(--sans);border-radius:8px}
+.hp .news button{border:none;padding:13px 18px;background:var(--terra);color:#fff;font:600 10px var(--sans);letter-spacing:.12em;text-transform:uppercase;border-radius:8px}
+
+/* footer */
+.hp .foot{background:#f2ebe8;color:var(--gray);font:400 11px/1.7 var(--sans);letter-spacing:.03em}
+.hp .foot .lg{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--terra-tx);letter-spacing:.04em}
+.hp .foot .row{display:flex;gap:14px;margin-top:8px;text-transform:uppercase;font-size:10px;letter-spacing:.1em}
+</style>
+
+<div class="hp">
+<div class="wrap"><div class="phone">
+
+  <div class="nav">
+    <span class="lg">BUMP &amp; GRIND</span>
+    <span class="links"><a>Events</a><a>Mixes</a><a>Memories</a><a>About</a></span>
+  </div>
+
+  <div class="hero">
+    <div class="eye">Halifax · R&amp;B · since 2016</div>
+    <h1>Your<br>favourite<br>R&amp;B party</h1>
+    <div class="sub">Good music. Good people. No skips. The one the group chat already planned around.</div><br>
+    <div class="count">Next: R&amp;B Patio Day Party · <b>Sep 20</b> · <b>12d 04h 11m</b></div><br>
+    <a class="cta">Get tickets</a>
+  </div>
+
+  <section id="events">
+    <div class="lab">Upcoming</div>
+    <h2 class="head">Events</h2>
+    <div class="evrow"><div class="thumb" style="background-image:url('../../../../../IMAGES/SEP20-PATIO-PARTY-HERO-FLYER.jpg')"></div><div><div class="d">SEP 20</div><div class="t">R&amp;B Patio Day Party</div><div class="m">The Pint Patio · Argyle St · 3–7pm</div></div><span class="b">Tickets</span></div>
+    <div class="evrow"><div class="thumb" style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-6.jpg')"></div><div><div class="d">OCT</div><div class="t">Fall Night Event</div><div class="m">Venue TBA · on the newsletter first</div></div><span class="b soon">Soon</span></div>
+  </section>
+
+  <section class="mixes" id="mixes">
+    <div class="lab">Monthly Mixes</div>
+    <h2 class="head">Listen back.</h2>
+    <div class="mixrow"><div class="cov" style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-11.jpg')"></div><div><div class="mt">August 2026 — Okay TK × Baby Yu × Jester</div><div class="mm">R&amp;B · slow jams · 2000s</div></div><span class="dur">58 min</span></div>
+    <div class="mixrow"><div class="cov" style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-14.jpg')"></div><div><div class="mt">July 2026 — Patio Season Vol. 2</div><div class="mm">Afrobeats · R&amp;B · summer</div></div><span class="dur">61 min</span></div>
+    <div class="mixrow"><div class="cov" style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-18.jpg')"></div><div><div class="mt">June 2026 — Grown &amp; Sexy</div><div class="mm">90s · 2000s · R&amp;B</div></div><span class="dur">55 min</span></div>
+    <div class="more">All mixes on Mixcloud →</div>
+  </section>
+
+  <section id="memories">
+    <div class="lab">Memories</div>
+    <h2 class="head">Every one sold out.</h2>
+    <div class="grid">
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-1.jpg')"></div>
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-3.jpg')"></div>
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-5.jpg')"></div>
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-7.jpg')"></div>
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-9.jpg')"></div>
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-12.jpg')"></div>
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-15.jpg')"></div>
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-17.jpg')"></div>
+      <div style="background-image:url('../../../../../IMAGES/GALLERY/PHOTO-20.jpg')"></div>
+    </div>
+    <div class="more">See the full gallery →</div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="lab">About</div>
+    <p>Bump &amp; Grind is Halifax's original R&amp;B party. Since 2016 we've been filling rooms with the songs you forgot you loved — no skips, no filler, just a floor full of people who came to hear the same thing you did.</p>
+    <div class="stats">
+      <div><b>2016</b><span>Since</span></div>
+      <div><b>50+</b><span>Nights</span></div>
+      <div><b>100%</b><span>Sold out</span></div>
+    </div>
+  </section>
+
+  <section class="news">
+    <h2>Never miss a date.</h2>
+    <p>Weekly-ish newsletter. Ticket links before they go public, mix drops, the occasional guest list.</p>
+    <div class="field"><input placeholder="you@email.com"><button>Join</button></div>
+  </section>
+
+  <section class="foot">
+    <span class="lg">BUMP &amp; GRIND</span><br>
+    Halifax, NS · © 2026
+    <div class="row"><a>Instagram</a><a>TikTok</a><a>Facebook</a><a>Mixcloud</a></div>
+  </section>
+
+</div></div>
+</div>
+
+<div class="options" style="margin-top:24px" data-multiselect>
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)"><div class="letter">✓</div><div class="content"><h3>This layout works</h3><p>Order and sections are right — go write the spec.</p></div></div>
+  <div class="option" data-choice="reorder" onclick="toggleSelect(this)"><div class="letter">↕</div><div class="content"><h3>Reorder sections</h3><p>Tell me the order you want in the terminal.</p></div></div>
+  <div class="option" data-choice="hero" onclick="toggleSelect(this)"><div class="letter">H</div><div class="content"><h3>Hero needs work</h3><p>Type size, wording, or the countdown line.</p></div></div>
+  <div class="option" data-choice="section" onclick="toggleSelect(this)"><div class="letter">S</div><div class="content"><h3>A section's off</h3><p>Events / Mixes / Memories / About / Newsletter — say which.</p></div></div>
+</div>
