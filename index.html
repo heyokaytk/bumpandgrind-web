@@ -557,12 +557,52 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   .btn-instagram svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
 
   /* ── NEWSLETTER ── */
-  #newsletter-section { background: var(--dark); }
+  #newsletter-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--dark);
+  }
+  .nl-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: url('IMAGES/NEWSLETTER-BACKGROUND.jpg') center / cover no-repeat;
+    filter: blur(3px) grayscale(0.5) contrast(1.06) brightness(0.82) saturate(1.1);
+    transform: scale(1.06);
+  }
+  .nl-tint {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--blush-deep);
+    mix-blend-mode: color;
+    opacity: 0.55;
+  }
+  .nl-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      radial-gradient(120% 95% at 50% 0%, rgba(30,12,9,0.25), rgba(28,14,11,0.72) 62%),
+      linear-gradient(180deg, rgba(120,44,30,0.42), rgba(34,16,12,0.82));
+  }
+  #newsletter-section > #newsletter { position: relative; z-index: 3; }
   .news-shell { max-width: 640px; text-align: center; }
   #newsletter-section .eyebrow { color: var(--blush); }
   #newsletter-section .section-title { color: var(--off-white); }
   .newsletter-sub { font-family: var(--sans); font-weight: 300; font-size: 19px; line-height: 1.45; letter-spacing: 0.015em; color: rgba(253,248,247,0.8); margin: 8px auto 28px; max-width: 44ch; }
-  .newsletter-recap { max-width: 480px; margin: 0 auto 28px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); padding: 24px 28px; text-align: left; }
+  .newsletter-recap {
+    max-width: 480px; margin: 0 auto 28px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 14px;
+    padding: 24px 28px; text-align: left;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.08),
+      0 0 44px -14px rgba(255,255,255,0.25),
+      0 18px 40px rgba(0,0,0,0.4);
+  }
   .newsletter-recap-label { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blush); margin-bottom: 12px; }
   .newsletter-recap-list { list-style: none; padding: 0; margin: 0 0 16px; }
   .newsletter-recap-list li { font-size: 17px; color: rgba(253,248,247,0.78); padding: 5px 0 5px 18px; position: relative; line-height: 1.45; letter-spacing: 0.015em; }
@@ -957,6 +997,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
 <!-- NEWSLETTER -->
 <section id="newsletter-section">
+  <div class="nl-bg" aria-hidden="true"></div>
+  <div class="nl-tint" aria-hidden="true"></div>
+  <div class="nl-scrim" aria-hidden="true"></div>
   <div id="newsletter" class="shell news-shell">
     <p class="eyebrow">Newsletter</p>
     <h2 class="section-title">Never miss a date.</h2>
