@@ -259,7 +259,15 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     margin: 0 auto;
     padding: clamp(32px, 7vw, 72px) clamp(20px, 5vw, 48px) clamp(48px, 8vw, 88px);
   }
-  .hero-inner .eyebrow { display: block; margin-bottom: 18px; color: var(--blush); }
+  .hero-inner .eyebrow {
+    display: block;
+    margin-bottom: 18px;
+    font-family: var(--display);
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    color: var(--off-white);
+  }
+  .hero-inner .eyebrow span { color: var(--blush-deep); }
   #hero .hero-giant { color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,0.35); }
   #hero .pill {
     background: rgba(255,255,255,0.12);
@@ -734,7 +742,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-inner">
-    <p class="eyebrow">Bump &amp; Grind · Est 2016</p>
+    <p class="eyebrow">Bump <span>&amp;</span> Grind · Est 2016</p>
     <h1 class="hero-giant">Your<br>favourite<br>R&amp;B party</h1>
 
     <a class="hero-flyer" id="heroFlyer" href="#events" data-ticket>
@@ -820,7 +828,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <div class="shell about-shell">
     <p class="eyebrow reveal">About</p>
     <h2 class="section-title reveal">Bump &amp; Grind</h2>
-    <p class="about-body reveal">Halifax's original R&amp;B party. Since 2016 we've taken it from rooftop patios to the city's biggest stages, always with the songs you forgot you loved.</p>
+    <p class="about-body reveal">Halifax's original R&amp;B party. Since 2016 we've taken it from intimate venues, to rooftop patios, to the city's biggest stages.</p>
   </div>
 </section>
 
