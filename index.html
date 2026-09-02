@@ -110,7 +110,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     --mid-gray: #6b6b6b;
     --dark: #181412;
     --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'Outfit', sans-serif;
+    --sans: 'Bebas Neue', 'Outfit', system-ui, sans-serif;
+    --body: 'Outfit', system-ui, sans-serif;
     --display: 'Bebas Neue', sans-serif;
     --display-fat: 'Anton', 'Bebas Neue', Impact, sans-serif;
   }
@@ -121,9 +122,13 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     background: var(--white);
     color: var(--dark);
     font-family: var(--sans);
-    font-weight: 300;
+    font-weight: 400;
+    letter-spacing: 0.02em;
     overflow-x: hidden;
   }
+  /* Form fields stay in the readable body sans (Bebas is caps-only) */
+  input, textarea, select, button { letter-spacing: normal; }
+  input, textarea, select { font-family: var(--body); }
 
   h1, h2 { text-wrap: balance; }
   :focus-visible { outline: 2px solid var(--blush-deep); outline-offset: 3px; }
@@ -353,12 +358,12 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     letter-spacing: 0;
   }
   .section-title {
-    font-family: var(--display-fat);
-    font-size: clamp(34px, 5vw, 60px);
+    font-family: var(--display);
+    font-size: clamp(36px, 5.2vw, 62px);
     font-weight: 400;
-    line-height: 0.92;
+    line-height: 0.95;
     margin-bottom: 24px;
-    letter-spacing: 0.005em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     text-wrap: balance;
   }
@@ -414,10 +419,11 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   #about { background: var(--blush-light); }
   .about-shell { max-width: 760px; }
   .about-body {
-    font-family: var(--serif);
+    font-family: var(--display);
     font-size: clamp(20px, 3vw, 30px);
-    font-weight: 600;
-    line-height: 1.4;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.015em;
     color: var(--dark);
     margin-top: 14px;
   }
@@ -435,7 +441,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   .ev-mon { display: block; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush-deep-text); }
   .ev-day { display: block; font-family: var(--display); font-size: 40px; line-height: 0.9; color: var(--dark); }
   .ev-info { flex: 1; }
-  .ev-name { display: block; font-family: var(--serif); font-size: clamp(18px, 2.6vw, 24px); font-weight: 700; }
+  .ev-name { display: block; font-family: var(--display); font-size: clamp(18px, 2.6vw, 24px); font-weight: 400; letter-spacing: 0.02em; }
   .ev-meta { display: block; font-family: var(--sans); font-weight: 300; font-size: 13px; color: var(--mid-gray); margin-top: 3px; }
   .ev-cta {
     flex: none; font-family: var(--sans); font-size: 10px; font-weight: 600;
@@ -470,7 +476,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     color: #fff; font-size: 16px; text-shadow: 0 1px 4px rgba(0,0,0,.5);
   }
   .mix-info { flex: 1; }
-  .mix-t { display: block; font-family: var(--sans); font-weight: 500; font-size: 13px; }
+  .mix-t { display: block; font-family: var(--display); font-weight: 400; font-size: 15px; letter-spacing: 0.03em; }
   .mix-m { display: block; font-family: var(--sans); font-weight: 300; font-size: 12px; color: var(--mid-gray); }
   .mix-play { flex: none; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blush-deep-text); }
   .mixes-player { margin-top: 28px; background: var(--white); border: 1px solid var(--light-gray); border-top: 2px solid var(--blush-deep); overflow: hidden; }
