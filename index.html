@@ -655,6 +655,23 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   /* ── FOOTER ── */
   footer { background: var(--white); border-top: 1px solid var(--light-gray); padding: 48px 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
   .footer-logo { height: 82px; width: auto; display: block; }
+  .footer-logo-link { position: relative; display: inline-block; line-height: 0; }
+  .footer-logo-link::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(100deg, transparent 42%, rgba(255,255,255,0.9) 50%, transparent 58%);
+    background-size: 250% 100%;
+    background-position: 130% 0;
+    -webkit-mask: url('IMAGES/logo.png') center / contain no-repeat;
+            mask: url('IMAGES/logo.png') center / contain no-repeat;
+    mix-blend-mode: screen;
+    animation: logoShine 6.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes logoShine {
+    0% { background-position: 130% 0; }
+    26%, 100% { background-position: -130% 0; }
+  }
   .footer-copy { font-size: 12px; color: var(--mid-gray); letter-spacing: 0.04em; }
   .footer-social { display: flex; gap: 20px; }
   .footer-social a { color: var(--dark); transition: color 0.2s; }
@@ -675,6 +692,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     .reveal { opacity: 1; transform: none; transition: none; }
     .ticker-inner { animation: none; }
     .hero-ticket-btn::after { animation: none; display: none; }
+    .footer-logo-link::after { animation: none; display: none; }
   }
 
   /* ── BURGER MENU ── */
@@ -1054,7 +1072,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
 <!-- FOOTER -->
 <footer>
-  <a href="#"><img class="footer-logo" src="IMAGES/logo.png" width="440" height="460" loading="lazy" alt="Bump & Grind, your favourite R&B party"></a>
+  <a href="#" class="footer-logo-link"><img class="footer-logo" src="IMAGES/logo.png" width="440" height="460" loading="lazy" alt="Bump & Grind, your favourite R&B party"></a>
   <p class="footer-copy">Halifax, NS · © 2026 Bump &amp; Grind</p>
   <div class="footer-social">
     <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" rel="noopener" aria-label="Instagram">
