@@ -430,7 +430,28 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
   /* ── ABOUT ── */
   #about { background: var(--blush-light); }
-  .about-shell { max-width: 760px; }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(28px, 5vw, 64px);
+    align-items: center;
+  }
+  .about-copy { max-width: 52ch; }
+  .about-photo {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow:
+      0 0 0 1px rgba(24,20,18,0.06),
+      0 24px 50px -18px rgba(24,20,18,0.28);
+  }
+  .about-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
   .about-body {
     font-family: var(--display);
     font-size: clamp(18px, 2.6vw, 24px);
@@ -438,7 +459,12 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     line-height: 1.45;
     letter-spacing: 0.015em;
     color: var(--dark);
-    margin-top: 14px;
+    margin-top: 16px;
+  }
+  @media (max-width: 880px) {
+    .about-grid { grid-template-columns: 1fr; gap: 34px; }
+    .about-copy { max-width: none; }
+    .about-photo { max-width: 460px; }
   }
 
   /* ── EVENTS ── */
@@ -895,10 +921,18 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="shell about-shell">
-    <p class="eyebrow reveal">About</p>
-    <h2 class="section-title reveal">Bump &amp; Grind</h2>
-    <p class="about-body reveal">Halifax's original R&amp;B party. Since 2016 we've taken it from intimate venues, to rooftop patios, to the city's biggest stages.</p>
+  <div class="shell about-grid">
+    <div class="about-copy">
+      <p class="eyebrow reveal">About</p>
+      <h2 class="section-title reveal">Bump &amp; Grind</h2>
+      <p class="about-body reveal">Bump &amp; Grind started in 2016 in small, intimate venues and has grown into Halifax's longest-running R&amp;B party. Along the way, we've hosted guest DJs from across Canada and the U.S., thrown summer rooftop parties, and sold out some of the city's biggest venues.</p>
+      <p class="about-body reveal">Through it all, the focus has stayed the same: timeless R&amp;B and the songs you know and love.</p>
+      <p class="about-body reveal">Nearly a decade later, we're still bringing Halifax together, one party at a time.</p>
+      <p class="about-body reveal">See you at the next one. &#10084;&#65039;</p>
+    </div>
+    <div class="about-photo reveal">
+      <img src="IMAGES/ABOUT.jpg" width="960" height="1200" loading="lazy" alt="A packed Bump & Grind dance floor, crew singing along under the disco ball and club lights, the Bump & Grind banner on the wall">
+    </div>
   </div>
 </section>
 
