@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-10T16:58:13.047Z",
+        "reason": "pre-existing, unrelated to shimmer task: #lbImg is a lightbox <img> inside a hidden container, src is set by JS on open"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-10T17:12:14.215Z",
+        "reason": "Agent: false positive — every full-bleed <section> nests content in <div class=shell> with clamp(64-120px) padding; .ticker-wrap 0 horizontal padding is an intentional edge-to-edge scroller"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-10T17:12:14.268Z",
+        "reason": "Agent: intentional on-brand R&B-legends ticker; pauses on hover, animation:none under prefers-reduced-motion"
+      },
+      {
+        "rule": "gpt-thin-border-wide-shadow",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-10T17:12:14.316Z",
+        "reason": "Agent: deliberate backlit-poster glow on .hero-flyer and event/mix cards; advisory, core to the hero aesthetic"
+      }
+    ]
+  }
+}
