@@ -569,14 +569,17 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
   /* ── MEMORIES ── */
   #memories { background: var(--white); }
-  .mem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
-  .mem-cell {
-    padding: 0; border: 0; background: var(--light-gray);
-    border-radius: 6px; overflow: hidden; cursor: pointer; aspect-ratio: 1;
-  }
-  .mem-cell img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .mem-cell:hover img { transform: scale(1.05); }
-  .mem-cell:focus-visible { outline: 2px solid var(--blush-deep); outline-offset: 2px; }
+  #memories .mem-head { padding-bottom: clamp(28px, 4vw, 48px); }
+  #memories .mem-foot { padding-top: clamp(28px, 4vw, 48px); }
+  /* Full-bleed collage marquee: two rows of photos, edge to edge, looping in opposite directions */
+  .mem-pin { overflow: hidden; }
+  .mem-row { display: flex; width: max-content; height: clamp(150px, 27vw, 400px); animation: ticker var(--mem-dur, 90s) linear infinite; }
+  .mem-row + .mem-row { animation-direction: reverse; }
+  .mem-pin:hover .mem-row, .mem-pin:focus-within .mem-row { animation-play-state: paused; }
+  .mem-cell { flex: none; display: block; height: 100%; padding: 0; border: 0; background: var(--dark); overflow: hidden; cursor: pointer; }
+  .mem-cell img { display: block; height: 100%; width: auto; transition: transform 0.6s ease; }
+  .mem-cell:hover img { transform: scale(1.04); }
+  .mem-cell:focus-visible { outline: 3px solid var(--blush-deep); outline-offset: -3px; }
 
   .lightbox {
     position: fixed; inset: 0; z-index: 400;
@@ -598,6 +601,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   @media (prefers-reduced-motion: reduce) {
     .mem-cell img, .lb-close, .lb-prev, .lb-next { transition: none; }
     .mem-cell:hover img { transform: none; }
+    .mem-row { animation: none; }
+    .mem-pin { overflow-x: auto; scrollbar-width: none; }
   }
 
   /* ── INSTAGRAM LINK ── */
@@ -822,7 +827,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     .nav-cta { padding: 14px 36px; }
     .ev-row { flex-wrap: wrap; }
     .ev-day { font-size: 32px; }
-    .mem-grid { gap: 4px; }
     .lb-prev { left: 6px; }
     .lb-next { right: 6px; }
     .newsletter-form, .mix-request { flex-direction: column; }
@@ -1043,34 +1047,42 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
 <!-- MEMORIES -->
 <section id="memories">
-  <div class="shell">
+  <div class="shell mem-head">
     <p class="eyebrow reveal">Memories</p>
     <h2 class="section-title reveal">Good people, good nights.</h2>
+  </div>
 
-    <div class="mem-grid reveal" id="memGrid">
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-1.jpg" aria-label="Open photo 1"><img src="IMAGES/GALLERY/PHOTO-1.jpg" alt="Three friends posing indoors under blue and purple club lighting, one wearing an &quot;I Identify As Scotian&quot; shirt" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-2.jpg" aria-label="Open photo 2"><img src="IMAGES/GALLERY/PHOTO-2.jpg" alt="A group of women laughing and dancing close together at a Bump & Grind night party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-3.jpg" aria-label="Open photo 3"><img src="IMAGES/GALLERY/PHOTO-3.jpg" alt="Friends dancing indoors under red lighting at a Bump & Grind party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-4.jpg" aria-label="Open photo 4"><img src="IMAGES/GALLERY/PHOTO-4.jpg" alt="A group of friends smiling together at the bar during a Bump & Grind night" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-5.jpg" aria-label="Open photo 5"><img src="IMAGES/GALLERY/PHOTO-5.jpg" alt="Three friends posing near the DJ booth, lit in pink and blue" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-6.jpg" aria-label="Open photo 6"><img src="IMAGES/GALLERY/PHOTO-6.jpg" alt="Six friends dressed up in front of a Bump & Grind photo backdrop" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-7.jpg" aria-label="Open photo 7"><img src="IMAGES/GALLERY/PHOTO-7.jpg" alt="Three friends taking a sunlit close-up photo together on the patio" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-8.jpg" aria-label="Open photo 8"><img src="IMAGES/GALLERY/PHOTO-8.jpg" alt="Friends laughing together in the sun at a Bump & Grind patio party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-9.jpg" aria-label="Open photo 9"><img src="IMAGES/GALLERY/PHOTO-9.jpg" alt="Crowd gathered on the patio near the sponsor tent and string lights" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-10.jpg" aria-label="Open photo 10"><img src="IMAGES/GALLERY/PHOTO-10.jpg" alt="Wide view of a crowded outdoor patio party under string lights" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-11.jpg" aria-label="Open photo 11"><img src="IMAGES/GALLERY/PHOTO-11.jpg" alt="Five friends posing together in front of the Bump & Grind photo backdrop" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-12.jpg" aria-label="Open photo 12"><img src="IMAGES/GALLERY/PHOTO-12.jpg" alt="A guest waves a rainbow-colored fan while catching up with friends at the day party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-13.jpg" aria-label="Open photo 13"><img src="IMAGES/GALLERY/PHOTO-13.jpg" alt="Two friends smiling together at the day party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-14.jpg" aria-label="Open photo 14"><img src="IMAGES/GALLERY/PHOTO-14.jpg" alt="A guest laughing under the patio umbrellas at the day party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-15.jpg" aria-label="Open photo 15"><img src="IMAGES/GALLERY/PHOTO-15.jpg" alt="Two friends smiling together at a sunny patio table" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-16.jpg" aria-label="Open photo 16"><img src="IMAGES/GALLERY/PHOTO-16.jpg" alt="A group of friends gathered around the bar table with drinks in hand" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-17.jpg" aria-label="Open photo 17"><img src="IMAGES/GALLERY/PHOTO-17.jpg" alt="Two friends posing together near the DJ booth at the day party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-18.jpg" aria-label="Open photo 18"><img src="IMAGES/GALLERY/PHOTO-18.jpg" alt="Friends mingling on the patio near the sponsor tent at the day party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-19.jpg" aria-label="Open photo 19"><img src="IMAGES/GALLERY/PHOTO-19.jpg" alt="Two friends sharing a laugh over drinks at the day party" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-20.jpg" aria-label="Open photo 20"><img src="IMAGES/GALLERY/PHOTO-20.jpg" alt="Three friends posing together at a sunny patio table" loading="lazy" decoding="async"></button>
-      <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-21.jpg" aria-label="Open photo 21"><img src="IMAGES/GALLERY/PHOTO-21.jpg" alt="The DJ keeping the crowd moving on the patio at the day party" loading="lazy" decoding="async"></button>
+  <div class="mem-stage" id="memGrid">
+    <div class="mem-pin">
+      <div class="mem-row">
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-1.jpg" aria-label="Open photo 1"><img src="IMAGES/GALLERY/PHOTO-1.jpg" alt="Three friends posing indoors under blue and purple club lighting, one wearing an &quot;I Identify As Scotian&quot; shirt" width="800" height="1100" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-6.jpg" aria-label="Open photo 6"><img src="IMAGES/GALLERY/PHOTO-6.jpg" alt="Six friends dressed up in front of a Bump & Grind photo backdrop" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-2.jpg" aria-label="Open photo 2"><img src="IMAGES/GALLERY/PHOTO-2.jpg" alt="A group of women laughing and dancing close together at a Bump & Grind night party" width="800" height="600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-14.jpg" aria-label="Open photo 14"><img src="IMAGES/GALLERY/PHOTO-14.jpg" alt="A guest laughing under the patio umbrellas at the day party" width="1200" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-7.jpg" aria-label="Open photo 7"><img src="IMAGES/GALLERY/PHOTO-7.jpg" alt="Three friends taking a sunlit close-up photo together on the patio" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-3.jpg" aria-label="Open photo 3"><img src="IMAGES/GALLERY/PHOTO-3.jpg" alt="Friends dancing indoors under red lighting at a Bump & Grind party" width="800" height="600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-15.jpg" aria-label="Open photo 15"><img src="IMAGES/GALLERY/PHOTO-15.jpg" alt="Two friends smiling together at a sunny patio table" width="1199" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-8.jpg" aria-label="Open photo 8"><img src="IMAGES/GALLERY/PHOTO-8.jpg" alt="Friends laughing together in the sun at a Bump & Grind patio party" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-4.jpg" aria-label="Open photo 4"><img src="IMAGES/GALLERY/PHOTO-4.jpg" alt="A group of friends smiling together at the bar during a Bump & Grind night" width="800" height="600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-11.jpg" aria-label="Open photo 11"><img src="IMAGES/GALLERY/PHOTO-11.jpg" alt="Five friends posing together in front of the Bump & Grind photo backdrop" width="1600" height="1199" loading="lazy" decoding="async"></button>
+      </div>
+      <div class="mem-row">
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-12.jpg" aria-label="Open photo 12"><img src="IMAGES/GALLERY/PHOTO-12.jpg" alt="A guest waves a rainbow-colored fan while catching up with friends at the day party" width="1212" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-18.jpg" aria-label="Open photo 18"><img src="IMAGES/GALLERY/PHOTO-18.jpg" alt="Friends mingling on the patio near the sponsor tent at the day party" width="1199" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-9.jpg" aria-label="Open photo 9"><img src="IMAGES/GALLERY/PHOTO-9.jpg" alt="Crowd gathered on the patio near the sponsor tent and string lights" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-5.jpg" aria-label="Open photo 5"><img src="IMAGES/GALLERY/PHOTO-5.jpg" alt="Three friends posing near the DJ booth, lit in pink and blue" width="800" height="600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-13.jpg" aria-label="Open photo 13"><img src="IMAGES/GALLERY/PHOTO-13.jpg" alt="Two friends smiling together at the day party" width="1600" height="1200" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-20.jpg" aria-label="Open photo 20"><img src="IMAGES/GALLERY/PHOTO-20.jpg" alt="Three friends posing together at a sunny patio table" width="1200" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-10.jpg" aria-label="Open photo 10"><img src="IMAGES/GALLERY/PHOTO-10.jpg" alt="Wide view of a crowded outdoor patio party under string lights" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-16.jpg" aria-label="Open photo 16"><img src="IMAGES/GALLERY/PHOTO-16.jpg" alt="A group of friends gathered around the bar table with drinks in hand" width="1600" height="1178" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-17.jpg" aria-label="Open photo 17"><img src="IMAGES/GALLERY/PHOTO-17.jpg" alt="Two friends posing together near the DJ booth at the day party" width="1600" height="1199" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-19.jpg" aria-label="Open photo 19"><img src="IMAGES/GALLERY/PHOTO-19.jpg" alt="Two friends sharing a laugh over drinks at the day party" width="1600" height="1199" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-21.jpg" aria-label="Open photo 21"><img src="IMAGES/GALLERY/PHOTO-21.jpg" alt="The DJ keeping the crowd moving on the patio at the day party" width="1600" height="1211" loading="lazy" decoding="async"></button>
+      </div>
     </div>
+  </div>
 
+  <div class="shell mem-foot">
     <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" rel="noopener" class="btn-instagram reveal">
       <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       Follow on Instagram
@@ -1335,6 +1347,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     if (!grid || !box) return;
     var img = document.getElementById('lbImg');
     var cells = Array.prototype.slice.call(grid.querySelectorAll('.mem-cell'));
+    cells.forEach(function (c, n) { c.setAttribute('data-i', n); });
     var i = 0, lastFocus = null;
 
     function show(n) {
@@ -1358,7 +1371,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
     grid.addEventListener('click', function (e) {
       var cell = e.target.closest('.mem-cell');
-      if (cell) open(cells.indexOf(cell));
+      if (cell) open(+cell.getAttribute('data-i'));
     });
     document.getElementById('lbClose').addEventListener('click', close);
     document.getElementById('lbPrev').addEventListener('click', function () { show(i - 1); });
@@ -1370,6 +1383,34 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       if (e.key === 'ArrowLeft') show(i - 1);
       if (e.key === 'ArrowRight') show(i + 1);
     });
+  })();
+
+  // Memories collage marquee: each row is duplicated once so translateX(-50%) lands
+  // exactly where it started, which makes the loop seamless
+  (function memMarquee() {
+    var stage = document.getElementById('memGrid');
+    if (!stage) return;
+    var rows = Array.prototype.slice.call(stage.querySelectorAll('.mem-row'));
+    rows.forEach(function (row) {
+      Array.prototype.slice.call(row.children).forEach(function (c) {
+        var copy = c.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        copy.tabIndex = -1;
+        row.appendChild(copy);
+      });
+    });
+    // Constant pixel speed regardless of row length or screen size
+    function setSpeed() {
+      rows.forEach(function (row, n) {
+        var pxPerSec = n ? 34 : 42;
+        row.style.setProperty('--mem-dur', (row.offsetWidth / 2 / pxPerSec) + 's');
+      });
+    }
+    setSpeed();
+    stage.querySelectorAll('img').forEach(function (img) {
+      if (!img.complete) img.addEventListener('load', setSpeed, { once: true });
+    });
+    window.addEventListener('resize', setSpeed);
   })();
 
   // Burger menu
