@@ -573,9 +573,20 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   #memories .mem-foot { padding-top: clamp(28px, 4vw, 48px); }
   /* Full-bleed collage marquee: two rows of photos, edge to edge, looping in opposite directions */
   .mem-pin { overflow: hidden; }
-  .mem-row { display: flex; width: max-content; height: clamp(150px, 27vw, 400px); animation: ticker var(--mem-dur, 90s) linear infinite; }
+  .mem-row { display: flex; width: max-content; height: clamp(180px, 27vw, 400px); animation: ticker var(--mem-dur, 90s) linear infinite; }
   .mem-row + .mem-row { animation-direction: reverse; }
-  .mem-pin:hover .mem-row, .mem-pin:focus-within .mem-row { animation-play-state: paused; }
+  .mem-pin:hover .mem-row, .mem-pin:focus-within .mem-row, .mem-paused .mem-row { animation-play-state: paused; }
+  .mem-stage { position: relative; }
+  .mem-toggle {
+    position: absolute; right: 12px; bottom: 12px; z-index: 2;
+    width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(20,15,13,0.6); color: #fff; transition: background 0.2s;
+  }
+  .mem-toggle:hover { background: rgba(20,15,13,0.85); }
+  .mem-toggle svg { width: 16px; height: 16px; fill: currentColor; }
+  .mem-toggle .i-play, .mem-paused .mem-toggle .i-pause { display: none; }
+  .mem-paused .mem-toggle .i-play { display: block; }
   .mem-cell { flex: none; display: block; height: 100%; padding: 0; border: 0; background: var(--dark); overflow: hidden; cursor: pointer; }
   .mem-cell img { display: block; height: 100%; width: auto; transition: transform 0.6s ease; }
   .mem-cell:hover img { transform: scale(1.04); }
@@ -603,6 +614,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     .mem-cell:hover img { transform: none; }
     .mem-row { animation: none; }
     .mem-pin { overflow-x: auto; scrollbar-width: none; }
+    .mem-toggle { display: none; }
   }
 
   /* ── INSTAGRAM LINK ── */
@@ -1049,7 +1061,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 <section id="memories">
   <div class="shell mem-head">
     <p class="eyebrow reveal">Memories</p>
-    <h2 class="section-title reveal">Good people, good nights.</h2>
+    <h2 class="section-title reveal">Good people, good times.</h2>
   </div>
 
   <div class="mem-stage" id="memGrid">
@@ -1080,6 +1092,10 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
         <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-21.jpg" aria-label="Open photo 21"><img src="IMAGES/GALLERY/PHOTO-21.jpg" alt="The DJ keeping the crowd moving on the patio at the day party" width="1600" height="1211" loading="lazy" decoding="async"></button>
       </div>
     </div>
+    <button type="button" class="mem-toggle" id="memToggle" aria-pressed="false" aria-label="Pause photos">
+      <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2h4v12H3zM9 2h4v12H9z"/></svg>
+      <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
+    </button>
   </div>
 
   <div class="shell mem-foot">
@@ -1411,6 +1427,14 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       if (!img.complete) img.addEventListener('load', setSpeed, { once: true });
     });
     window.addEventListener('resize', setSpeed);
+
+    // Pause/play for visitors who can't hover (phones) and anyone who wants the photos to hold still
+    var toggle = document.getElementById('memToggle');
+    if (toggle) toggle.addEventListener('click', function () {
+      var paused = stage.classList.toggle('mem-paused');
+      toggle.setAttribute('aria-pressed', paused);
+      toggle.setAttribute('aria-label', paused ? 'Play photos' : 'Pause photos');
+    });
   })();
 
   // Burger menu
