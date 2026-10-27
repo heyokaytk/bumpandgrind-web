@@ -75,6 +75,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     "@type": "Event",
     "name": "Bump & Grind R&B New Year's Eve at Lot Six",
     "description": "Bump & Grind's New Year's Eve R&B party at Lot Six in downtown Halifax.",
+    "image": "https://www.bumpandgrindhfx.com/IMAGES/DEC31-NYE-LOTSIX-HERO-FLYER.jpg",
     "startDate": "2026-12-31T21:00:00-04:00",
     "endDate": "2027-01-01T01:00:00-04:00",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -178,37 +179,14 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     border-bottom-color: var(--light-gray);
   }
   /* Over the dark hero (before scroll): light nav content */
-  nav:not(.scrolled) .wordmark { color: var(--off-white); }
   nav:not(.scrolled) .nav-links a { color: var(--off-white); opacity: 0.85; }
   nav:not(.scrolled) .nav-social a { color: var(--off-white); }
   nav:not(.scrolled) .nav-burger span { background: var(--off-white); }
-  nav .wordmark, footer .wordmark {
-    font-family: var(--display);
-    font-size: 20px;
-    letter-spacing: 0.06em;
-    color: var(--dark);
-    text-decoration: none;
-    line-height: 1;
-    transition: color 0.25s ease;
-  }
-  nav .wordmark span, footer .wordmark span { color: var(--blush-deep); }
-  nav .wordmark {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-  }
-  nav .wordmark::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.9), transparent);
-    transform: skewX(-20deg);
-    mix-blend-mode: overlay;
-    animation: btnShine 4s ease-in-out infinite;
-    pointer-events: none;
+  /* Nav logo: shares the footer logo's masked shine + hover flip */
+  .nav-logo { height: 40px; width: auto; display: block; }
+  .nav-logo-link {
+    -webkit-mask-image: url('IMAGES/logo-nav.png');
+            mask-image: url('IMAGES/logo-nav.png');
   }
   .nav-links { display: flex; align-items: center; gap: 24px; }
   .nav-links a {
@@ -329,6 +307,59 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     transition: transform 0.4s ease;
   }
   .hero-flyer:hover img { transform: scale(1.02); }
+  /* Flyers stack in one grid cell and crossfade */
+  .hero-flyer { display: grid; }
+  .hero-slide {
+    grid-area: 1 / 1;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+  }
+  .hero-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease;
+  }
+  .hero-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(20,14,12,0.55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    cursor: pointer;
+    transform: translateY(-50%);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+  }
+  .hero-arrow-prev { left: 12px; }
+  .hero-arrow-next { right: 12px; }
+  .hero-arrow svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .hero-arrow:hover { background: var(--blush); border-color: var(--blush); color: var(--dark); }
+  .hero-arrow:focus-visible { outline: 2px solid var(--off-white); outline-offset: 3px; }
+  @media (max-width: 768px) {
+    .hero-arrow { width: 36px; height: 36px; }
+    .hero-arrow-prev { left: 8px; }
+    .hero-arrow-next { right: 8px; }
+    .hero-arrow svg { width: 16px; height: 16px; }
+  }
   .hero-flyer::after {
     content: "";
     position: absolute;
@@ -762,6 +793,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     animation: logoShine 6.5s ease-in-out infinite;
     pointer-events: none;
   }
+  /* Logo does one coin-flip on hover (nav + footer) */
+  .logo-hover { transition: transform 0.9s cubic-bezier(.5,0,.2,1); }
+  .logo-hover:hover { transform: perspective(600px) rotateY(360deg); }
   @keyframes logoShine {
     0% { transform: translateX(0) skewX(-18deg); }
     18% { transform: translateX(500%) skewX(-18deg); }
@@ -786,10 +820,10 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     .ticker-inner { animation: none; }
-    nav .wordmark::after { animation: none; display: none; }
     .hero-ticket-btn::after { animation: none; display: none; }
     .hero-flyer::after { animation: none; display: none; }
     .footer-logo-link::after { animation: none; display: none; }
+    .logo-hover, .logo-hover:hover { transition: none; transform: none; }
   }
 
   /* ── BURGER MENU ── */
@@ -848,7 +882,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       right: 20px;
     }
     /* Open mobile menu is a light overlay — force dark content even before scroll */
-    nav.nav-open .wordmark { color: var(--dark); }
     nav.nav-open .nav-links a { color: var(--dark); }
     nav.nav-open .nav-social a { color: var(--dark); }
     nav.nav-open .nav-burger span { background: var(--dark); }
@@ -870,7 +903,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="wordmark">BUMP <span>&amp;</span> GRIND</a>
+  <a href="#" class="footer-logo-link nav-logo-link logo-hover" aria-label="Bump & Grind, back to top"><img class="nav-logo" src="IMAGES/logo-nav.png" width="114" height="120" alt=""></a>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#events">Events</a>
@@ -900,10 +933,24 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <p class="eyebrow">Bump <span>&amp;</span> Grind · Est 2016</p>
     <h1 class="hero-giant">Your<br>favourite<br>R&amp;B party</h1>
 
-    <a class="hero-flyer" id="heroFlyer" href="#events" data-ticket>
-      <img src="IMAGES/NOV20-MARQUEE-HERO-FLYER.jpg" width="1920" height="1080" fetchpriority="high" loading="eager"
-           alt="Bump & Grind R&B at The Marquee, Friday November 20 at The Marquee, Halifax">
-    </a>
+    <div class="hero-flyer" id="heroFlyer">
+      <a class="hero-slide is-active" href="#events" data-ticket
+         data-cta-label="Get tickets now" data-venue="The Marquee · 2037 Gottingen St · Halifax">
+        <img src="IMAGES/NOV20-MARQUEE-HERO-FLYER.jpg" width="1920" height="1080" fetchpriority="high" loading="eager"
+             alt="Bump & Grind R&B at The Marquee, Friday November 20 at The Marquee, Halifax">
+      </a>
+      <a class="hero-slide" href="#ev-nye"
+         data-cta-label="Tickets coming soon" data-venue="Lot Six · 1685 Argyle St · Halifax">
+        <img src="IMAGES/DEC31-NYE-LOTSIX-HERO-FLYER.jpg" width="1672" height="941" loading="eager" decoding="async"
+             alt="Bump & Grind presents NYE 26 at Lot Six, 1685 Argyle Street, Thursday December 31">
+      </a>
+      <button type="button" class="hero-arrow hero-arrow-prev" aria-label="Previous event flyer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button type="button" class="hero-arrow hero-arrow-next" aria-label="Next event flyer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
 
     <div class="hero-actions">
       <a class="hero-ticket-btn" href="#events" data-ticket data-soon-label="Get tickets now" data-live-label="Get tickets now">Get tickets now</a>
@@ -1010,7 +1057,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
         </span>
         <a class="ev-cta" href="#events" data-ticket data-soon-label="Coming soon" data-live-label="Get tickets now">Coming soon</a>
       </div>
-      <div class="ev-row reveal">
+      <div class="ev-row reveal" id="ev-nye">
         <span class="ev-date"><span class="ev-mon">Dec</span><span class="ev-day">31</span></span>
         <span class="ev-info">
           <span class="ev-name">R&amp;B New Year's Eve at Lot Six</span>
@@ -1212,7 +1259,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo-link"><img class="footer-logo" src="IMAGES/logo.png" width="440" height="460" loading="lazy" alt="Bump & Grind, your favourite R&B party"></a>
+  <a href="#" class="footer-logo-link logo-hover"><img class="footer-logo" src="IMAGES/logo.png" width="440" height="460" loading="lazy" alt="Bump & Grind, your favourite R&B party"></a>
   <p class="footer-copy">Halifax, NS · © 2026 Bump &amp; Grind</p>
   <div class="footer-social">
     <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" rel="noopener" aria-label="Instagram">
@@ -1267,6 +1314,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   // Meta Pixel — ticket link clicks (nav CTA, hero buttons, events section)
   document.querySelectorAll('a[href*="bloomtickets.ca"]').forEach(function(link) {
     link.addEventListener('click', function() {
+      // Hero button can be re-pointed by the flyer rotator, so check at click time
+      if (this.href.indexOf('bloomtickets.ca') === -1) return;
       const eventId = crypto.randomUUID();
       const contentName = this.textContent.trim();
       if (typeof fbq === 'function') {
@@ -1509,6 +1558,49 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     } else {
       pill.hidden = true;
     }
+  })();
+
+  // Hero flyer rotator — crossfades the flyers in #heroFlyer every few seconds
+  // and points the hero ticket button + venue pill at whichever is showing.
+  // Pauses on hover/focus; no autoplay with reduced motion (arrows still work).
+  (function heroRotator() {
+    var slides = document.querySelectorAll('#heroFlyer .hero-slide');
+    var btn = document.querySelector('.hero-ticket-btn');
+    var pill = document.getElementById('countdownPill');
+    if (slides.length < 2) return;
+    var current = 0, timer = null, paused = false;
+
+    function show(i) {
+      slides[current].classList.remove('is-active');
+      current = (i + slides.length) % slides.length;
+      var s = slides[current];
+      s.classList.add('is-active');
+      if (btn) {
+        btn.setAttribute('href', s.getAttribute('href'));
+        btn.textContent = s.getAttribute('data-cta-label');
+      }
+      if (pill && s.getAttribute('data-venue')) {
+        pill.textContent = s.getAttribute('data-venue');
+        pill.hidden = false;
+      }
+    }
+    function start() {
+      stop();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = setInterval(function() {
+        if (!paused && !document.hidden) show(current + 1);
+      }, 6000);
+    }
+    function stop() { clearInterval(timer); }
+
+    document.querySelector('.hero-arrow-prev').addEventListener('click', function() { show(current - 1); start(); });
+    document.querySelector('.hero-arrow-next').addEventListener('click', function() { show(current + 1); start(); });
+    var hero = document.querySelector('.hero-inner');
+    hero.addEventListener('mouseenter', function() { paused = true; });
+    hero.addEventListener('mouseleave', function() { paused = false; });
+    hero.addEventListener('focusin', function() { paused = true; });
+    hero.addEventListener('focusout', function() { paused = false; });
+    start();
   })();
 
   // Nav ticket CTA text/href is handled by wireTicketLinks() above,
