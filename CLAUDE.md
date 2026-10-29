@@ -46,6 +46,10 @@ Tech Stack Context: Static HTML on GitHub Pages, custom domain via Cloudflare DN
 
 Cover the whole site (all pages), not just recent diffs. Present findings as a punch list. Flag issues and let TK decide what to fix now vs. later.
 
+## Past Events
+
+After each show, move it from the homepage events list and JSON-LD to `past-events/index.html` (newest first, "Sold out" pill if it sold out, guest DJs named in the meta line) and update that year's "X of Y sold out" stat. TK has the pre-2026 history; add older years when provided.
+
 ## Promo Copy
 
 Don't name the DJs (OKAY TK, DJ IV) in site copy or event promo; the event sells itself. The monthly R&B mix is the exception. In Event JSON-LD, use Bump & Grind as the performer unless third-party listings already name the DJs (as with the Nov 20 Marquee show).
