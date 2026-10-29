@@ -30,7 +30,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 <meta property="og:title" content="Bump & Grind Halifax | R&B Parties & Events">
 <meta property="og:description" content="Halifax's longest-running R&B party. Since 2016, Bump & Grind has brought R&B to rooftops, patios and some of the city's biggest venues.">
 <meta property="og:image" content="https://www.bumpandgrindhfx.com/IMAGES/BUMPANDGRIND-HERO-TOP.jpg">
-<meta property="og:url" content="https://www.bumpandgrindhfx.com">
+<meta property="og:url" content="https://www.bumpandgrindhfx.com/">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://www.bumpandgrindhfx.com/">
 <meta property="og:site_name" content="Bump & Grind Halifax">
@@ -68,33 +68,10 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       "validFrom": "2026-09-21T00:00:00-03:00"
     },
     "organizer": { "@type": "Organization", "name": "Bump & Grind", "url": "https://www.bumpandgrindhfx.com" },
-    "performer": { "@type": "Person", "name": "OKAY TK" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "Bump & Grind Presents New Year's Eve at Lot Six",
-    "description": "Bump & Grind's New Year's Eve R&B party at Lot Six in downtown Halifax.",
-    "image": "https://www.bumpandgrindhfx.com/IMAGES/DEC31-NYE-LOTSIX-HERO-FLYER.jpg",
-    "startDate": "2026-12-31T21:00:00-04:00",
-    "endDate": "2027-01-01T01:00:00-04:00",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
-      "@type": "Place",
-      "name": "Lot Six",
-      "address": { "@type": "PostalAddress", "streetAddress": "1685 Argyle Street", "addressLocality": "Halifax", "addressRegion": "NS", "addressCountry": "CA" }
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://bump-grind-r-b-party.bloomtickets.ca/event/4303",
-      "price": "100",
-      "priceCurrency": "CAD",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-10-27"
-    },
-    "organizer": { "@type": "Organization", "name": "Bump & Grind", "url": "https://www.bumpandgrindhfx.com" },
-    "performer": { "@type": "Person", "name": "OKAY TK" }
+    "performer": [
+      { "@type": "Person", "name": "OKAY TK" },
+      { "@type": "Person", "name": "DJ IV" }
+    ]
   }
 ]
 </script>
@@ -117,7 +94,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   },
   "sameAs": [
     "https://www.instagram.com/bumpandgrindhfx",
-    "https://www.facebook.com/bumpandgrindhfx"
+    "https://www.facebook.com/bumpandgrindhfx",
+    "https://bump-grind-r-b-party.bloomtickets.ca/hostinfo/480"
   ]
 }
 </script>
@@ -554,6 +532,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   .ev-day { display: block; font-family: var(--display); font-size: 40px; line-height: 0.9; color: var(--dark); }
   .ev-info { flex: 1; }
   .ev-name { display: block; font-family: var(--display); font-size: clamp(18px, 2.6vw, 24px); font-weight: 400; letter-spacing: 0.02em; }
+  a.ev-name { color: inherit; text-decoration: underline; text-decoration-color: var(--blush); text-underline-offset: 4px; transition: color 0.2s; }
+  a.ev-name:hover { color: var(--blush-deep-text); }
   .ev-meta { display: block; font-family: var(--sans); font-weight: 300; font-size: 16px; color: var(--mid-gray); margin-top: 3px; letter-spacing: 0.015em; }
   .ev-hot {
     display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;
@@ -915,6 +895,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#events">Events</a>
+    <a href="/nye/">NYE</a>
     <a href="#mixes">Mixes</a>
     <a href="#memories">Memories</a>
     <a href="#events" class="nav-cta" id="navCta" data-ticket data-soon-label="See events" data-live-label="Get tickets now">See events</a>
@@ -939,7 +920,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-inner">
     <p class="eyebrow">Bump <span>&amp;</span> Grind · Est 2016</p>
-    <h1 class="hero-giant">Your<br>favourite<br>R&amp;B party</h1>
+    <h1 class="hero-giant">Halifax's<br>favourite<br>R&amp;B party</h1>
 
     <div class="hero-flyer" id="heroFlyer">
       <a class="hero-slide is-active" href="#events" data-ticket
@@ -1068,7 +1049,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       <div class="ev-row reveal" id="ev-nye">
         <span class="ev-date"><span class="ev-mon">Dec</span><span class="ev-day">31</span></span>
         <span class="ev-info">
-          <span class="ev-name">Bump &amp; Grind Presents New Year's Eve at Lot Six</span>
+          <a class="ev-name" href="/nye/">Bump &amp; Grind Presents New Year's Eve at Lot Six</a>
           <span class="ev-meta">Lot Six · 1685 Argyle St · Downtown Halifax · 9pm-1am</span>
         </span>
         <a class="ev-cta" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303">Get tickets now</a>
