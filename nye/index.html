@@ -186,6 +186,20 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   }
   .hero-flyer img { display: block; width: 100%; height: auto; aspect-ratio: 1672 / 941; object-fit: cover; }
 
+  /* Sales meter: TICKETS_SOLD below drives it */
+  .meter { max-width: 760px; margin-top: 22px; }
+  .meter[hidden] { display: none; }
+  .meter-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--sans); font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); }
+  .meter-label b { font-weight: 400; color: var(--blush); }
+  .meter-sub { font-family: var(--body); font-weight: 300; font-size: 14px; letter-spacing: 0.02em; text-transform: none; color: rgba(253,248,247,0.7); }
+  .meter-track { height: 10px; margin-top: 10px; border-radius: 999px; background: rgba(255,255,255,0.16); overflow: hidden; }
+  .meter-fill { height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--blush-deep), var(--blush)); transition: width 1.2s ease; }
+  .pass-card .meter-label { color: var(--dark); }
+  .pass-card .meter-label b { color: var(--blush-deep-text); }
+  .pass-card .meter-sub { color: var(--mid-gray); }
+  .pass-card .meter-track { background: var(--light-gray); }
+  @media (prefers-reduced-motion: reduce) { .meter-fill { transition: none; } }
+
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 24px; }
   .btn {
     display: inline-block;
@@ -294,6 +308,11 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <p class="hero-lede">Bump &amp; Grind presents our first ever New Year's Eve party. R&amp;B since 2016, one midnight countdown, and only 100 tickets.</p>
     <p class="hero-when">Thursday, December 31 · 9pm to 1am · Lot Six, 1685 Argyle Street</p>
 
+    <div class="meter" data-meter hidden>
+      <div class="meter-label"><span><b data-meter-left></b> <span data-meter-text></span></span><span class="meter-sub" data-meter-sub></span></div>
+      <div class="meter-track" role="progressbar" aria-valuemin="0" data-meter-bar><div class="meter-fill"></div></div>
+    </div>
+
     <a class="hero-flyer" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303">
       <img src="/IMAGES/DEC31-NYE-LOTSIX-HERO-FLYER.jpg" width="1672" height="941" fetchpriority="high"
            alt="Bump & Grind presents NYE 26 at Lot Six, 1685 Argyle Street, Thursday December 31">
@@ -332,7 +351,11 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       <p class="eyebrow">First 50 tickets only</p>
       <h2 class="section-title">A free 2027 season pass.</h2>
       <p class="copy">The first 50 people to buy get free cover to every Bump &amp; Grind event in 2027. Once those 50 are gone, the season pass goes with them.</p>
-      <p class="copy"><a href="/seasonpass">See what the season pass includes →</a></p>
+      <div class="meter" data-meter hidden>
+        <div class="meter-label"><span><b data-meter-left></b> <span data-meter-text></span></span><span class="meter-sub" data-meter-sub></span></div>
+        <div class="meter-track" role="progressbar" aria-valuemin="0" data-meter-bar><div class="meter-fill"></div></div>
+      </div>
+      <p class="copy" style="margin-top:20px"><a href="/seasonpass">See what the season pass includes →</a></p>
       <div class="actions">
         <a class="btn" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303">Get tickets</a>
       </div>
@@ -409,6 +432,35 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 </footer>
 
 <script>
+  // Update this as tickets sell. While season passes remain (first 50 sold),
+  // the meters count those down; after that they count tickets left of 100.
+  var TICKETS_SOLD = 9;
+  var CAPACITY = 100, PASSES = 50;
+
+  (function salesMeter() {
+    var passPhase = TICKETS_SOLD < PASSES;
+    var total = passPhase ? PASSES : CAPACITY;
+    var left = Math.max(total - TICKETS_SOLD, 0);
+    var pct = Math.min(TICKETS_SOLD / total * 100, 100);
+    var text = left === 0 ? 'Sold out'
+      : passPhase ? 'of 50 free season passes left'
+      : (left === 1 ? 'ticket left' : 'tickets left');
+    var sub = passPhase ? 'First 50 buyers only' : 'No door sales';
+    document.querySelectorAll('[data-meter]').forEach(function(m) {
+      m.querySelector('[data-meter-left]').textContent = left === 0 ? '' : left;
+      m.querySelector('[data-meter-text]').textContent = text;
+      m.querySelector('[data-meter-sub]').textContent = sub;
+      var bar = m.querySelector('[data-meter-bar]');
+      bar.setAttribute('aria-valuemax', total);
+      bar.setAttribute('aria-valuenow', TICKETS_SOLD);
+      bar.setAttribute('aria-label', (left ? left + ' ' : '') + text);
+      m.hidden = false;
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() { bar.firstElementChild.style.width = pct + '%'; });
+      });
+    });
+  })();
+
   function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : undefined;
