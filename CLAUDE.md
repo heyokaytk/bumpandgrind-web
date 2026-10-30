@@ -22,6 +22,23 @@ After any site change: push to `main` on GitHub (Pages rebuilds automatically). 
 
 ---
 
+## Design System
+
+All tokens and shared components live in `styles.css`; every page links it before its own `<style>` block. Page `<style>` blocks hold only layout specific to that page.
+
+**Rules**
+- No raw hex colours, radii or font stacks in pages. Use the tokens in `styles.css`. If a value is genuinely new, add a token there first.
+- Reuse the shared components before writing new ones: `.btn` / `.btn-ghost` (pill buttons), `.pill-status` ("Sold out" style chips), `.eyebrow`, `.section-title`, `.shell`, the `#hero` stack (`.hero-bg` → `.hero-tint` → `.hero-scrim` → `.hero-inner`), `.page-footer` for subpages.
+- New pages: link `/styles.css` (absolute path, so subfolder pages work), load Bebas Neue + Outfit (+ Anton if using `.hero-giant`), and copy the hero stack from `past-events/index.html`.
+
+**Palette**: warm blush on near-black and off-white. `--blush-deep` is the CTA colour; `--blush-deep-text` is for small text on light backgrounds (passes AA); `--blush` is for accents on dark backgrounds and hover states; `--blush-light` is the alternating section tint. Dark pages (Season Pass, Waitlist) use the same palette over a photo with the warm scrim; no plum or other off-brand tones.
+
+**Type**: Bebas Neue (`--sans` / `--display`) is caps-only, so use it for headings, labels, nav and buttons only. Outfit (`--body`) for anything people read in sentences (ledes, descriptions, FAQ answers, form fields). Anton (`--display-fat`) only for the big hero headline. Cormorant Garamond (`--serif`) only on the 404.
+
+**Shape**: cards and flyers `--radius-card` (14px), buttons and chips `--radius-pill`. Content width `--shell-max` (1120px), side padding `--gutter`.
+
+**Primary CTA**: one filled `.btn` per view pointing at the Bloom event; secondary actions use `.btn-ghost`.
+
 ## Pre-Push Checks (every push)
 
 Quick and mechanical, no write-up needed unless something fails:

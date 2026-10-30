@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#181412">
 <title>Waitlist — Bump & Grind R&B Day Party · June 21</title>
 
 <!-- Meta Pixel Code -->
@@ -34,19 +35,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="/styles.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --blush:      #d97b63;
-    --blush-mid:  #c4624a;
-    --plum:       #1a0410;
-    --white:      #ffffff;
-    --muted:      rgba(255,255,255,0.45);
-    --display:    'Bebas Neue', sans-serif;
-    --sans:       'Outfit', sans-serif;
-  }
-
   html, body {
     height: 100%;
     min-height: 100vh;
@@ -55,8 +45,10 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   }
 
   body {
-    font-family: var(--sans);
-    background-color: var(--plum);
+    font-family: var(--body);
+    color: var(--white);
+    letter-spacing: normal;
+    background-color: var(--dark);
     background-image: url('IMAGES/WAITLISTHEADER.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -71,9 +63,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     inset: 0;
     background: linear-gradient(
       160deg,
-      rgba(15, 2, 10, 0.88) 0%,
-      rgba(60, 10, 30, 0.80) 50%,
-      rgba(15, 2, 10, 0.92) 100%
+      rgba(28, 14, 11, 0.88) 0%,
+      rgba(120, 44, 30, 0.78) 50%,
+      rgba(28, 14, 11, 0.92) 100%
     );
     z-index: 0;
   }
@@ -104,6 +96,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   /* ── LOGO ── */
   .logo {
     width: clamp(160px, 40vw, 280px);
+    height: auto;
     margin-bottom: 40px;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.1s;
@@ -115,7 +108,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     font-family: var(--display);
     font-size: 13px;
     letter-spacing: 0.22em;
-    color: var(--plum);
+    color: var(--dark);
     background: var(--blush);
     padding: 5px 18px 3px;
     margin-bottom: 28px;
@@ -194,7 +187,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     border: 1px solid rgba(255,255,255,0.15);
     border-bottom: none;
     color: var(--white);
-    font-family: var(--sans);
+    font-family: var(--body);
     font-size: 14px;
     font-weight: 300;
     padding: 15px 18px;
@@ -213,7 +206,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   }
 
   #waitlistForm input:focus {
-    background: rgba(217,123,99,0.1);
+    background: rgba(240,179,160,0.1);
     border-color: var(--blush);
     z-index: 1;
     position: relative;
@@ -222,9 +215,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   #waitlistForm button[type="submit"] {
     width: 100%;
     margin-top: 10px;
-    background: var(--blush);
+    background: var(--blush-deep);
     border: none;
-    color: var(--plum);
+    color: var(--white);
     font-family: var(--display);
     font-size: 20px;
     letter-spacing: 0.18em;
@@ -234,7 +227,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   }
 
   #waitlistForm button[type="submit"]:hover {
-    background: #e8906f;
+    background: var(--blush);
+    color: var(--dark);
     transform: translateY(-1px);
   }
 
@@ -249,7 +243,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     display: none;
     margin-top: 20px;
     padding: 16px 20px;
-    background: rgba(217,123,99,0.12);
+    background: rgba(240,179,160,0.12);
     border-left: 3px solid var(--blush);
     font-size: 13px;
     color: rgba(255,255,255,0.7);
@@ -304,6 +298,12 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     .page { padding: 48px 20px 100px; }
     .logo { margin-bottom: 28px; }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+    .logo, .badge, .headline, .card-hero, .intro, .perks, .fine-print-section, .widget-wrap,
+    .event-info, .form-wrap { opacity: 1; }
+  }
 </style>
 </head>
 <body>
@@ -314,6 +314,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     src="IMAGES/BUMPANDGRIND-MAIN-LOGO.png"
     alt="Bump & Grind"
     class="logo"
+    width="1980" height="2067"
   >
 
   <h1 class="headline">JOIN<br>THE <em>WAITLIST.</em></h1>
@@ -335,12 +336,14 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
       
       <input type="hidden" name="event" value="June 21 Patio Party Waitlist">
-      <input type="text"  name="name"  placeholder="FIRST NAME"     autocomplete="given-name" required>
-      <input type="email" name="email" placeholder="EMAIL ADDRESS"  autocomplete="email"      required>
+      <label for="wlName" class="sr-only">First name</label>
+      <input type="text"  name="name" id="wlName" placeholder="FIRST NAME"     autocomplete="given-name" required>
+      <label for="wlEmail" class="sr-only">Email address</label>
+      <input type="email" name="email" id="wlEmail" placeholder="EMAIL ADDRESS"  autocomplete="email"      required>
       <button type="submit">COUNT ME IN</button>
     </form>
 
-    <div id="result" class="success-message"></div>
+    <div id="result" class="success-message" role="status" aria-live="polite"></div>
 
     <p class="fine-print">
       We'll only contact you if a ticket opens up. No spam, ever.<br>
@@ -360,7 +363,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       
       const submitButton = form.querySelector('button[type="submit"]');
       submitButton.disabled = true;
-      submitButton.innerText = 'SENDING...';
+      submitButton.innerText = 'SENDING…';
 
       // Capture the data exactly as the working HTML version did
       const formData = new FormData(form);

@@ -1,0 +1,155 @@
+/* Bump & Grind shared styles: design tokens + components used on more than one page.
+   Page-specific layout stays in each page's own <style> block, which loads after this. */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── TOKENS ── */
+:root {
+  /* Palette */
+  --white: #ffffff;
+  --off-white: #fdf8f7;
+  --blush-light: #fceee9;
+  --blush: #f0b3a0;
+  --blush-deep: #b8543a;
+  --blush-deep-text: #ac4c34;   /* blush-deep nudged darker for AA text on light */
+  --light-gray: #eee9e7;
+  --mid-gray: #6b6b6b;
+  --dark: #181412;
+  --error: #c0392b;
+  --error-on-dark: #f2b8b0;
+
+  /* Type */
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Bebas Neue', 'Outfit', system-ui, sans-serif;   /* caps-only UI type */
+  --body: 'Outfit', system-ui, sans-serif;                 /* sentence-case reading type */
+  --display: 'Bebas Neue', sans-serif;
+  --display-fat: 'Anton', 'Bebas Neue', Impact, sans-serif;
+
+  /* Shape + layout */
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --shell-max: 1120px;
+  --gutter: clamp(20px, 5vw, 48px);
+}
+
+/* ── BASE ── */
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--dark);
+  font-family: var(--sans);
+  letter-spacing: 0.02em;
+  overflow-x: hidden;
+}
+h1, h2 { text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--blush-deep); outline-offset: 3px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ── NAV (over the dark hero) ── */
+nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--gutter);
+}
+.nav-logo { height: 40px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--off-white);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+/* ── HERO: blurred crowd photo, blush colour tint, warm scrim ── */
+#hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--dark);
+  padding-top: 64px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: url('IMAGES/HERO-BACKGROUND.jpg') center / cover no-repeat;
+  filter: blur(3px) grayscale(0.5) contrast(1.06) brightness(0.82) saturate(1.1);
+  transform: scale(1.06);
+}
+.hero-tint { position: absolute; inset: 0; z-index: 1; background: var(--blush-deep); mix-blend-mode: color; opacity: 0.55; }
+.hero-scrim {
+  position: absolute; inset: 0; z-index: 2;
+  background:
+    radial-gradient(120% 95% at 72% 4%, rgba(30,12,9,0.25), rgba(28,14,11,0.72) 62%),
+    linear-gradient(180deg, rgba(120,44,30,0.42), rgba(34,16,12,0.82));
+}
+.hero-inner {
+  position: relative; z-index: 3;
+  max-width: var(--shell-max); margin: 0 auto;
+  padding: clamp(32px, 7vw, 72px) var(--gutter) clamp(48px, 8vw, 88px);
+}
+.hero-inner .eyebrow { display: block; margin-bottom: 18px; font-family: var(--display); font-size: 20px; letter-spacing: 0.06em; color: var(--off-white); }
+.hero-inner .eyebrow span { color: var(--blush); }
+.hero-lede {
+  font-family: var(--body); font-weight: 300;
+  font-size: clamp(17px, 2.2vw, 20px); line-height: 1.5;
+  color: rgba(253,248,247,0.88);
+  max-width: 52ch; margin-top: 20px;
+}
+
+/* ── SECTIONS ── */
+.shell { max-width: var(--shell-max); margin: 0 auto; padding: clamp(56px, 9vw, 104px) var(--gutter); }
+.eyebrow { font-family: var(--sans); font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blush-deep-text); }
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(36px, 5.2vw, 58px);
+  font-weight: 400; line-height: 0.95;
+  letter-spacing: 0.02em; text-transform: uppercase;
+}
+
+/* ── BUTTONS ── */
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 24px; }
+.btn {
+  display: inline-block;
+  font-family: var(--sans); font-size: 15px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+  padding: 14px 30px; border-radius: var(--radius-pill);
+  border: 1.5px solid var(--blush-deep);
+  background: var(--blush-deep); color: var(--white);
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.btn:hover { background: var(--blush); border-color: var(--blush); color: var(--dark); }
+.btn-ghost { background: transparent; color: var(--dark); border-color: var(--blush); }
+.btn-ghost:hover { background: var(--white); }
+.on-dark .btn-ghost { color: var(--off-white); border-color: rgba(255,255,255,0.5); }
+.on-dark .btn-ghost:hover { color: var(--dark); }
+@media (max-width: 560px) { .btn { padding: 14px 24px; } }
+
+/* ── PILL (status chips: "Sold out", "Selling fast") ── */
+.pill-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: 14px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--blush-deep-text); background: var(--blush-light);
+  border: 1px solid var(--blush); padding: 6px 12px; border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+/* ── SUBPAGE FOOTER ── */
+.page-footer { text-align: center; padding: 36px 20px 44px; background: var(--off-white); }
+.page-footer a { font-family: var(--sans); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); text-decoration: none; }
+.page-footer a:hover { color: var(--blush-deep); }
+.page-footer p { font-family: var(--body); font-weight: 300; font-size: 14px; color: var(--mid-gray); margin-top: 10px; }

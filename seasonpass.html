@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#181412">
 <title>Season Pass — Bump &amp; Grind R&amp;B Party</title>
 
 <!-- Meta Pixel Code -->
@@ -33,19 +34,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="/styles.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --blush:     #d97b63;
-    --blush-mid: #c4624a;
-    --plum:      #1a0410;
-    --white:     #ffffff;
-    --muted:     rgba(255,255,255,0.45);
-    --display:   'Bebas Neue', sans-serif;
-    --sans:      'Outfit', sans-serif;
-  }
-
   html, body {
     height: 100%;
     min-height: 100vh;
@@ -54,8 +44,10 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   }
 
   body {
-    font-family: var(--sans);
-    background-color: var(--plum);
+    font-family: var(--body);
+    color: var(--white);
+    letter-spacing: normal;
+    background-color: var(--dark);
     background-image: url('IMAGES/SEASONPASSHERO.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -70,9 +62,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     inset: 0;
     background: linear-gradient(
       160deg,
-      rgba(15, 2, 10, 0.88) 0%,
-      rgba(60, 10, 30, 0.80) 50%,
-      rgba(15, 2, 10, 0.92) 100%
+      rgba(28, 14, 11, 0.88) 0%,
+      rgba(120, 44, 30, 0.78) 50%,
+      rgba(28, 14, 11, 0.92) 100%
     );
     z-index: 0;
   }
@@ -108,6 +100,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   /* —— LOGO —— */
   .logo {
     width: clamp(160px, 40vw, 280px);
+    height: auto;
     margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.1s;
@@ -119,7 +112,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     font-family: var(--display);
     font-size: 13px;
     letter-spacing: 0.22em;
-    color: var(--plum);
+    color: var(--dark);
     background: var(--blush);
     padding: 5px 18px 3px;
     margin-bottom: 24px;
@@ -154,6 +147,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
   .card-hero img {
     width: clamp(260px, 55vw, 420px);
+    height: auto;
     display: block;
     margin: 0 auto;
     animation: float 6s ease-in-out infinite, floatShadow 6s ease-in-out infinite;
@@ -308,6 +302,12 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   @media (max-width: 480px) {
     .page { padding: 48px 20px 120px; }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+    .logo, .badge, .headline, .card-hero, .intro, .perks, .fine-print-section, .widget-wrap,
+    .event-info, .form-wrap { opacity: 1; }
+  }
 </style>
 </head>
 <body>
@@ -316,6 +316,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     src="IMAGES/BUMPANDGRIND-MAIN-LOGO.png"
     alt="Bump &amp; Grind"
     class="logo"
+    width="1980" height="2067"
   >
 
   <span class="badge">SEASON PASS · LIMITED RUN</span>
@@ -323,7 +324,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <h1 class="headline">ONE PASS.<br><em>EVERY PARTY.</em></h1>
 
   <div class="card-hero">
-    <img src="IMAGES/vipcards.png" alt="B&amp;G Season Pass card">
+    <img src="IMAGES/vipcards.png" alt="B&amp;G Season Pass card" width="719" height="730">
   </div>
 
   <p class="intro">Introducing B&amp;G Season Passes for the very first time, and you get first access.</p>
@@ -374,7 +375,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     BloomWidget.init({
       containerId: 'bloom-widget-container',
       eventId: '1878',
-      btnColor: '#d97b63',
+      btnColor: '#b8543a',
       url: 'https://www.bloomtickets.ca'
     });
     if (typeof fbq === 'function') {
