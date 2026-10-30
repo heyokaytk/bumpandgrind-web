@@ -606,7 +606,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   /* ── MEMORIES ── */
   #memories { background: var(--white); }
   #memories .mem-head { padding-bottom: clamp(28px, 4vw, 48px); }
-  #memories .mem-foot { padding-top: clamp(28px, 4vw, 48px); }
   /* Full-bleed collage marquee: two rows of photos, edge to edge, looping in opposite directions */
   .mem-pin { overflow: hidden; }
   .mem-row { display: flex; width: max-content; height: clamp(180px, 27vw, 400px); animation: ticker var(--mem-dur, 90s) linear infinite; }
@@ -652,17 +651,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     .mem-pin { overflow-x: auto; scrollbar-width: none; }
     .mem-toggle { display: none; }
   }
-
-  /* ── INSTAGRAM LINK ── */
-  .btn-instagram {
-    display: inline-flex; align-items: center; gap: 10px; margin-top: 22px;
-    background: var(--white); border: 1px solid var(--light-gray); color: var(--dark);
-    font-family: var(--sans); font-size: 15px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-    padding: 14px 28px; transition: border-color 0.2s, color 0.2s, background 0.2s; white-space: nowrap;
-  }
-  .btn-instagram:hover { background: var(--blush-deep); border-color: var(--blush-deep); color: var(--white); }
-  .btn-instagram svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
 
   /* ── NEWSLETTER ── */
   #newsletter-section {
@@ -893,9 +881,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 <nav>
   <a href="#" class="footer-logo-link nav-logo-link logo-hover" aria-label="Bump & Grind, back to top"><img class="nav-logo" src="IMAGES/logo-nav.png" width="114" height="120" alt=""></a>
   <div class="nav-links">
-    <a href="#about">About</a>
     <a href="#events">Events</a>
-    <a href="/nye/">NYE</a>
+    <a href="/nye/">NYE Tickets</a>
     <a href="#mixes">Mixes</a>
     <a href="#memories">Memories</a>
     <a href="#events" class="nav-cta" id="navCta" data-ticket data-soon-label="See events" data-live-label="Get tickets now">See events</a>
@@ -1013,23 +1000,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <span>Chlöe</span><span class="dot">◆</span>
   </div>
 </div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="shell about-grid">
-    <div class="about-copy">
-      <p class="eyebrow reveal">About</p>
-      <h2 class="section-title reveal">Bump &amp; Grind</h2>
-      <p class="about-body reveal">Bump &amp; Grind started in 2016 in small, intimate venues and has grown into Halifax's longest-running R&amp;B party. Along the way, we've hosted guest DJs from across Canada and the U.S., thrown summer rooftop parties, and sold out some of the city's biggest venues.</p>
-      <p class="about-body reveal">Through it all, the focus has stayed the same: timeless R&amp;B and the songs you know and love.</p>
-      <p class="about-body reveal">Nearly a decade later, we're still bringing Halifax together, one party at a time.</p>
-      <p class="about-body reveal">See you at the next one. &#10084;&#65039;</p>
-    </div>
-    <div class="about-photo reveal">
-      <img src="IMAGES/ABOUT.jpg" width="960" height="1200" loading="lazy" alt="A packed Bump & Grind dance floor, crew singing along under the disco ball and club lights, the Bump & Grind banner on the wall">
-    </div>
-  </div>
-</section>
 
 <!-- EVENTS -->
 <section id="events-section">
@@ -1173,12 +1143,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     </button>
   </div>
 
-  <div class="shell mem-foot">
-    <a href="https://www.instagram.com/bumpandgrindhfx" target="_blank" rel="noopener" class="btn-instagram reveal">
-      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      Follow on Instagram
-    </a>
-  </div>
 </section>
 
 <!-- Lightbox -->
@@ -1188,6 +1152,21 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <img class="lb-img" id="lbImg" alt="">
   <button class="lb-next" id="lbNext" aria-label="Next photo">&#8250;</button>
 </div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="shell about-grid">
+    <div class="about-copy">
+      <p class="eyebrow reveal">About</p>
+      <h2 class="section-title reveal">Since 2016.</h2>
+      <p class="about-body reveal">Bump &amp; Grind started in small, intimate venues and has grown into Halifax's longest-running R&amp;B party. Along the way, we've hosted guest DJs from across Canada and the U.S., thrown summer rooftop parties, and sold out some of the city's biggest venues.</p>
+      <p class="about-body reveal">Through it all, the focus has stayed the same: timeless R&amp;B and the songs you know and love. See you at the next one. &#10084;&#65039;</p>
+    </div>
+    <div class="about-photo reveal">
+      <img src="IMAGES/ABOUT.jpg" width="960" height="1200" loading="lazy" alt="A packed Bump & Grind dance floor, crew singing along under the disco ball and club lights, the Bump & Grind banner on the wall">
+    </div>
+  </div>
+</section>
 
 <!-- NEWSLETTER -->
 <section id="newsletter-section">
