@@ -63,7 +63,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     "offers": {
       "@type": "Offer",
       "url": "https://bump-grind-r-b-party.bloomtickets.ca/event/3339",
-      "price": "20",
+      "price": "25",
       "priceCurrency": "CAD",
       "availability": "https://schema.org/InStock",
       "validFrom": "2026-09-21T00:00:00-03:00"
@@ -97,6 +97,55 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     "https://www.instagram.com/bumpandgrindhfx",
     "https://www.facebook.com/bumpandgrindhfx",
     "https://bump-grind-r-b-party.bloomtickets.ca/hostinfo/480"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Bump & Grind?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Halifax's longest-running R&B party. Since 2016 we've thrown R&B nights and day parties on rooftops, patios and some of the city's biggest venues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How old do I have to be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most of our events are 19+ because they're held in licensed venues. Bigger public events can be different, so check the event listing for each show."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a dress code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No strict dress code. We want you comfortable, but come looking good."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What music will be playing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "R&B all night: throwbacks, slow jams, sing-alongs and the songs you know every word to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I get tickets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tickets are sold on Bloom Tickets, linked from the events list on this page. Newsletter subscribers get first access and VIP pricing on every drop."
+      }
+    }
   ]
 }
 </script>
@@ -347,6 +396,22 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   }
   .pill b { color: var(--blush-deep-text); font-weight: 600; }
 
+  /* ── FAQ ── */
+  .faq-shell { max-width: 820px; }
+  .faq { border-top: 1px solid var(--light-gray); }
+  .faq details { border-bottom: 1px solid var(--light-gray); }
+  .faq summary {
+    cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 20px 0;
+    font-family: var(--display); font-size: clamp(20px, 2.6vw, 24px); letter-spacing: 0.02em;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-family: var(--body); font-size: 24px; color: var(--blush-deep); flex: none; transition: transform 0.2s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { font-family: var(--body); font-weight: 300; font-size: 17px; line-height: 1.6; padding: 0 0 20px; max-width: 60ch; }
+  .faq details p a { color: var(--blush-deep-text); }
+
   /* ── ABOUT ── */
   #about { background: var(--blush-light); }
   .about-grid {
@@ -372,11 +437,11 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     object-fit: cover;
   }
   .about-body {
-    font-family: var(--display);
-    font-size: clamp(18px, 2.6vw, 24px);
-    font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: 0.015em;
+    font-family: var(--body);
+    font-size: clamp(17px, 2vw, 20px);
+    font-weight: 300;
+    line-height: 1.65;
+    letter-spacing: normal;
     color: var(--dark);
   }
   .about-body + .about-body { margin-top: 24px; }
@@ -412,12 +477,13 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     transition: background 0.2s, color 0.2s;
   }
   .ev-cta:hover { background: var(--blush); color: var(--dark); }
+  .ev-cta-ghost { background: transparent; color: var(--dark); border: 1px solid var(--blush); }
   .ev-cta[data-soon] { background: transparent; color: var(--mid-gray); border: 1px solid var(--light-gray); pointer-events: none; }
   .ev-note {
     font-family: var(--sans); font-weight: 300; font-size: 17px;
     color: var(--mid-gray); margin-top: 28px; letter-spacing: 0.015em;
   }
-  .ev-note a { color: var(--blush-deep); text-decoration: none; }
+  .ev-note a { color: var(--blush-deep-text); text-decoration: underline; text-underline-offset: 3px; }
   .ev-note a:hover { color: var(--dark); }
 
   /* ── MIXES ── */
@@ -772,7 +838,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <h1 class="hero-giant">Halifax's<br>favourite<br>R&amp;B party</h1>
 
     <div class="hero-flyer" id="heroFlyer">
-      <a class="hero-slide is-active" href="#events" data-ticket
+      <a class="hero-slide is-active" href="https://bump-grind-r-b-party.bloomtickets.ca/event/3339" data-ticket
          data-cta-label="Get tickets now" data-venue="The Marquee · 2037 Gottingen St · Halifax">
         <img src="IMAGES/NOV20-MARQUEE-HERO-FLYER.jpg" width="1920" height="1080" fetchpriority="high" loading="eager"
              alt="Bump & Grind Presents: R&B at The Marquee, Friday November 20 at The Marquee, Halifax">
@@ -791,7 +857,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     </div>
 
     <div class="hero-actions">
-      <a class="btn hero-ticket-btn" href="#events" data-ticket data-soon-label="Get tickets now" data-live-label="Get tickets now">Get tickets now</a>
+      <a class="btn hero-ticket-btn" href="https://bump-grind-r-b-party.bloomtickets.ca/event/3339" data-ticket data-soon-label="Get tickets now" data-live-label="Get tickets now">Get tickets now</a>
       <span class="pill" id="countdownPill" hidden></span>
     </div>
   </div>
@@ -876,7 +942,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
           <span class="ev-name">Bump &amp; Grind Presents: R&amp;B at The Marquee</span>
           <span class="ev-meta">The Marquee · 2037 Gottingen St · Halifax · 9pm-1am</span>
         </span>
-        <a class="ev-cta" href="#events" data-ticket data-soon-label="Coming soon" data-live-label="Get tickets now">Coming soon</a>
+        <a class="ev-cta" href="https://bump-grind-r-b-party.bloomtickets.ca/event/3339" data-ticket data-soon-label="Coming soon" data-live-label="Get tickets now">Get tickets now</a>
       </div>
       <div class="ev-row reveal" id="ev-nye">
         <span class="ev-date"><span class="ev-mon">Dec</span><span class="ev-day">31</span></span>
@@ -884,11 +950,11 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
           <a class="ev-name" href="/nye/">Bump &amp; Grind Presents: New Year's Eve at Lot Six</a>
           <span class="ev-meta">Lot Six · 1685 Argyle St · Downtown Halifax · 9pm-1am</span>
         </span>
-        <a class="ev-cta" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303">Get tickets now</a>
+        <a class="ev-cta ev-cta-ghost" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303">Get tickets now</a>
       </div>
     </div>
 
-    <p class="ev-note reveal">Tickets drop closer to each date. <a href="#newsletter">Get on the newsletter</a> for first access &amp; VIP pricing. <a href="/past-events/">See past events →</a></p>
+    <p class="ev-note reveal">Newsletter gets first access and VIP pricing on every drop. <a href="#newsletter">Get on the newsletter</a>. <a href="/past-events/">See past events →</a></p>
   </div>
 </section>
 
@@ -960,43 +1026,43 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <div class="mem-stage" id="memGrid">
     <div class="mem-pin">
       <div class="mem-row">
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-1.jpg" aria-label="Open photo 1"><img src="IMAGES/GALLERY/PHOTO-1.jpg" alt="Three friends posing indoors under blue and purple club lighting, one wearing an &quot;I Identify As Scotian&quot; shirt" width="800" height="1100" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-6.jpg" aria-label="Open photo 6"><img src="IMAGES/GALLERY/PHOTO-6.jpg" alt="Six friends dressed up in front of a Bump & Grind photo backdrop" width="3000" height="2000" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-25.jpg" aria-label="Open photo 25"><img src="IMAGES/GALLERY/PHOTO-25.jpg" alt="Five friends posing together on the dance floor at a Bump &amp; Grind night" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-2.jpg" aria-label="Open photo 2"><img src="IMAGES/GALLERY/PHOTO-2.jpg" alt="A group of women laughing and dancing close together at a Bump & Grind night party" width="800" height="600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-29.jpg" aria-label="Open photo 29"><img src="IMAGES/GALLERY/PHOTO-29.jpg" alt="Light streaks blur across the DJ booth as the crowd dances" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-14.jpg" aria-label="Open photo 14"><img src="IMAGES/GALLERY/PHOTO-14.jpg" alt="A guest laughing under the patio umbrellas at the day party" width="1200" height="1600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-7.jpg" aria-label="Open photo 7"><img src="IMAGES/GALLERY/PHOTO-7.jpg" alt="Three friends taking a sunlit close-up photo together on the patio" width="3000" height="2000" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-3.jpg" aria-label="Open photo 3"><img src="IMAGES/GALLERY/PHOTO-3.jpg" alt="Friends dancing indoors under red lighting at a Bump & Grind party" width="800" height="600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-24.jpg" aria-label="Open photo 24"><img src="IMAGES/GALLERY/PHOTO-24.jpg" alt="Two friends hugging and smiling under red lighting at a Bump &amp; Grind night" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-15.jpg" aria-label="Open photo 15"><img src="IMAGES/GALLERY/PHOTO-15.jpg" alt="Two friends smiling together at a sunny patio table" width="1199" height="1600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-28.jpg" aria-label="Open photo 28"><img src="IMAGES/GALLERY/PHOTO-28.jpg" alt="Four friends posing together and throwing up hand signs at the bar" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-8.jpg" aria-label="Open photo 8"><img src="IMAGES/GALLERY/PHOTO-8.jpg" alt="Friends laughing together in the sun at a Bump & Grind patio party" width="3000" height="2000" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-32.jpg" aria-label="Open photo 32"><img src="IMAGES/GALLERY/PHOTO-32.jpg" alt="A packed dance floor full of people dancing" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-4.jpg" aria-label="Open photo 4"><img src="IMAGES/GALLERY/PHOTO-4.jpg" alt="A group of friends smiling together at the bar during a Bump & Grind night" width="800" height="600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-26.jpg" aria-label="Open photo 26"><img src="IMAGES/GALLERY/PHOTO-26.jpg" alt="A DJ in sunglasses and a cap mixing on a laptop in front of the Bump &amp; Grind banner" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-11.jpg" aria-label="Open photo 11"><img src="IMAGES/GALLERY/PHOTO-11.jpg" alt="Five friends posing together in front of the Bump & Grind photo backdrop" width="1600" height="1199" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-33.jpg" aria-label="Open photo 33"><img src="IMAGES/GALLERY/PHOTO-33.jpg" alt="Friends laughing and dancing in the crowd at a Bump &amp; Grind night" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-1.jpg" aria-label="Open photo 1"><img src="IMAGES/GALLERY/thumbs/PHOTO-1.webp" alt="Three friends posing indoors under blue and purple club lighting, one wearing an &quot;I Identify As Scotian&quot; shirt" width="800" height="1100" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-6.jpg" aria-label="Open photo 6"><img src="IMAGES/GALLERY/thumbs/PHOTO-6.webp" alt="Six friends dressed up in front of a Bump & Grind photo backdrop" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-25.jpg" aria-label="Open photo 25"><img src="IMAGES/GALLERY/thumbs/PHOTO-25.webp" alt="Five friends posing together on the dance floor at a Bump &amp; Grind night" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-2.jpg" aria-label="Open photo 2"><img src="IMAGES/GALLERY/thumbs/PHOTO-2.webp" alt="A group of women laughing and dancing close together at a Bump & Grind night party" width="800" height="600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-29.jpg" aria-label="Open photo 29"><img src="IMAGES/GALLERY/thumbs/PHOTO-29.webp" alt="Light streaks blur across the DJ booth as the crowd dances" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-14.jpg" aria-label="Open photo 14"><img src="IMAGES/GALLERY/thumbs/PHOTO-14.webp" alt="A guest laughing under the patio umbrellas at the day party" width="1200" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-7.jpg" aria-label="Open photo 7"><img src="IMAGES/GALLERY/thumbs/PHOTO-7.webp" alt="Three friends taking a sunlit close-up photo together on the patio" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-3.jpg" aria-label="Open photo 3"><img src="IMAGES/GALLERY/thumbs/PHOTO-3.webp" alt="Friends dancing indoors under red lighting at a Bump & Grind party" width="800" height="600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-24.jpg" aria-label="Open photo 24"><img src="IMAGES/GALLERY/thumbs/PHOTO-24.webp" alt="Two friends hugging and smiling under red lighting at a Bump &amp; Grind night" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-15.jpg" aria-label="Open photo 15"><img src="IMAGES/GALLERY/thumbs/PHOTO-15.webp" alt="Two friends smiling together at a sunny patio table" width="1199" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-28.jpg" aria-label="Open photo 28"><img src="IMAGES/GALLERY/thumbs/PHOTO-28.webp" alt="Four friends posing together and throwing up hand signs at the bar" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-8.jpg" aria-label="Open photo 8"><img src="IMAGES/GALLERY/thumbs/PHOTO-8.webp" alt="Friends laughing together in the sun at a Bump & Grind patio party" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-32.jpg" aria-label="Open photo 32"><img src="IMAGES/GALLERY/thumbs/PHOTO-32.webp" alt="A packed dance floor full of people dancing" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-4.jpg" aria-label="Open photo 4"><img src="IMAGES/GALLERY/thumbs/PHOTO-4.webp" alt="A group of friends smiling together at the bar during a Bump & Grind night" width="800" height="600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-26.jpg" aria-label="Open photo 26"><img src="IMAGES/GALLERY/thumbs/PHOTO-26.webp" alt="A DJ in sunglasses and a cap mixing on a laptop in front of the Bump &amp; Grind banner" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-11.jpg" aria-label="Open photo 11"><img src="IMAGES/GALLERY/thumbs/PHOTO-11.webp" alt="Five friends posing together in front of the Bump & Grind photo backdrop" width="1600" height="1199" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-33.jpg" aria-label="Open photo 33"><img src="IMAGES/GALLERY/thumbs/PHOTO-33.webp" alt="Friends laughing and dancing in the crowd at a Bump &amp; Grind night" width="1600" height="1066" loading="lazy" decoding="async"></button>
       </div>
       <div class="mem-row">
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-27.jpg" aria-label="Open photo 27"><img src="IMAGES/GALLERY/PHOTO-27.jpg" alt="The DJ looking out over a packed dance floor from behind the decks" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-12.jpg" aria-label="Open photo 12"><img src="IMAGES/GALLERY/PHOTO-12.jpg" alt="A guest waves a rainbow-colored fan while catching up with friends at the day party" width="1212" height="1600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-18.jpg" aria-label="Open photo 18"><img src="IMAGES/GALLERY/PHOTO-18.jpg" alt="Friends mingling on the patio near the sponsor tent at the day party" width="1199" height="1600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-30.jpg" aria-label="Open photo 30"><img src="IMAGES/GALLERY/PHOTO-30.jpg" alt="Two DJs working the booth above the crowd" width="1600" height="1099" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-9.jpg" aria-label="Open photo 9"><img src="IMAGES/GALLERY/PHOTO-9.jpg" alt="Crowd gathered on the patio near the sponsor tent and string lights" width="3000" height="2000" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-22.jpg" aria-label="Open photo 22"><img src="IMAGES/GALLERY/PHOTO-22.jpg" alt="Two DJs behind the decks under blue stage lights in front of the Bump &amp; Grind banner" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-5.jpg" aria-label="Open photo 5"><img src="IMAGES/GALLERY/PHOTO-5.jpg" alt="Three friends posing near the DJ booth, lit in pink and blue" width="800" height="600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-13.jpg" aria-label="Open photo 13"><img src="IMAGES/GALLERY/PHOTO-13.jpg" alt="Two friends smiling together at the day party" width="1600" height="1200" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-20.jpg" aria-label="Open photo 20"><img src="IMAGES/GALLERY/PHOTO-20.jpg" alt="Three friends posing together at a sunny patio table" width="1200" height="1600" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-10.jpg" aria-label="Open photo 10"><img src="IMAGES/GALLERY/PHOTO-10.jpg" alt="Wide view of a crowded outdoor patio party under string lights" width="3000" height="2000" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-35.jpg" aria-label="Open photo 35"><img src="IMAGES/GALLERY/PHOTO-35.jpg" alt="Two guests in caps sharing a moment near the DJ booth" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-16.jpg" aria-label="Open photo 16"><img src="IMAGES/GALLERY/PHOTO-16.jpg" alt="A group of friends gathered around the bar table with drinks in hand" width="1600" height="1178" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-31.jpg" aria-label="Open photo 31"><img src="IMAGES/GALLERY/PHOTO-31.jpg" alt="View over the DJ's shoulder of a packed crowd under the club lights" width="1600" height="972" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-17.jpg" aria-label="Open photo 17"><img src="IMAGES/GALLERY/PHOTO-17.jpg" alt="Two friends posing together near the DJ booth at the day party" width="1600" height="1199" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-34.jpg" aria-label="Open photo 34"><img src="IMAGES/GALLERY/PHOTO-34.jpg" alt="Two guests dancing and hamming it up for the camera under pink lighting" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-19.jpg" aria-label="Open photo 19"><img src="IMAGES/GALLERY/PHOTO-19.jpg" alt="Two friends sharing a laugh over drinks at the day party" width="1600" height="1199" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-23.jpg" aria-label="Open photo 23"><img src="IMAGES/GALLERY/PHOTO-23.jpg" alt="View from behind the DJ booth looking out over the crowd at a Bump &amp; Grind night" width="1600" height="1066" loading="lazy" decoding="async"></button>
-        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-21.jpg" aria-label="Open photo 21"><img src="IMAGES/GALLERY/PHOTO-21.jpg" alt="The DJ keeping the crowd moving on the patio at the day party" width="1600" height="1211" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-27.jpg" aria-label="Open photo 27"><img src="IMAGES/GALLERY/thumbs/PHOTO-27.webp" alt="The DJ looking out over a packed dance floor from behind the decks" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-12.jpg" aria-label="Open photo 12"><img src="IMAGES/GALLERY/thumbs/PHOTO-12.webp" alt="A guest waves a rainbow-colored fan while catching up with friends at the day party" width="1212" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-18.jpg" aria-label="Open photo 18"><img src="IMAGES/GALLERY/thumbs/PHOTO-18.webp" alt="Friends mingling on the patio near the sponsor tent at the day party" width="1199" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-30.jpg" aria-label="Open photo 30"><img src="IMAGES/GALLERY/thumbs/PHOTO-30.webp" alt="Two DJs working the booth above the crowd" width="1600" height="1099" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-9.jpg" aria-label="Open photo 9"><img src="IMAGES/GALLERY/thumbs/PHOTO-9.webp" alt="Crowd gathered on the patio near the sponsor tent and string lights" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-22.jpg" aria-label="Open photo 22"><img src="IMAGES/GALLERY/thumbs/PHOTO-22.webp" alt="Two DJs behind the decks under blue stage lights in front of the Bump &amp; Grind banner" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-5.jpg" aria-label="Open photo 5"><img src="IMAGES/GALLERY/thumbs/PHOTO-5.webp" alt="Three friends posing near the DJ booth, lit in pink and blue" width="800" height="600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-13.jpg" aria-label="Open photo 13"><img src="IMAGES/GALLERY/thumbs/PHOTO-13.webp" alt="Two friends smiling together at the day party" width="1600" height="1200" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-20.jpg" aria-label="Open photo 20"><img src="IMAGES/GALLERY/thumbs/PHOTO-20.webp" alt="Three friends posing together at a sunny patio table" width="1200" height="1600" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-10.jpg" aria-label="Open photo 10"><img src="IMAGES/GALLERY/thumbs/PHOTO-10.webp" alt="Wide view of a crowded outdoor patio party under string lights" width="3000" height="2000" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-35.jpg" aria-label="Open photo 35"><img src="IMAGES/GALLERY/thumbs/PHOTO-35.webp" alt="Two guests in caps sharing a moment near the DJ booth" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-16.jpg" aria-label="Open photo 16"><img src="IMAGES/GALLERY/thumbs/PHOTO-16.webp" alt="A group of friends gathered around the bar table with drinks in hand" width="1600" height="1178" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-31.jpg" aria-label="Open photo 31"><img src="IMAGES/GALLERY/thumbs/PHOTO-31.webp" alt="View over the DJ's shoulder of a packed crowd under the club lights" width="1600" height="972" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-17.jpg" aria-label="Open photo 17"><img src="IMAGES/GALLERY/thumbs/PHOTO-17.webp" alt="Two friends posing together near the DJ booth at the day party" width="1600" height="1199" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-34.jpg" aria-label="Open photo 34"><img src="IMAGES/GALLERY/thumbs/PHOTO-34.webp" alt="Two guests dancing and hamming it up for the camera under pink lighting" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-19.jpg" aria-label="Open photo 19"><img src="IMAGES/GALLERY/thumbs/PHOTO-19.webp" alt="Two friends sharing a laugh over drinks at the day party" width="1600" height="1199" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-23.jpg" aria-label="Open photo 23"><img src="IMAGES/GALLERY/thumbs/PHOTO-23.webp" alt="View from behind the DJ booth looking out over the crowd at a Bump &amp; Grind night" width="1600" height="1066" loading="lazy" decoding="async"></button>
+        <button type="button" class="mem-cell" data-full="IMAGES/GALLERY/PHOTO-21.jpg" aria-label="Open photo 21"><img src="IMAGES/GALLERY/thumbs/PHOTO-21.webp" alt="The DJ keeping the crowd moving on the patio at the day party" width="1600" height="1211" loading="lazy" decoding="async"></button>
       </div>
     </div>
     <button type="button" class="mem-toggle" id="memToggle" aria-pressed="false" aria-label="Pause photos">
@@ -1026,6 +1092,36 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     </div>
     <div class="about-photo reveal">
       <img src="IMAGES/ABOUT.jpg" width="960" height="1200" loading="lazy" alt="A packed Bump & Grind dance floor, crew singing along under the disco ball and club lights, the Bump & Grind banner on the wall">
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="shell faq-shell">
+    <p class="eyebrow reveal">Questions</p>
+    <h2 class="section-title reveal">Good to know</h2>
+    <div class="faq reveal">
+      <details>
+        <summary>What is Bump &amp; Grind?</summary>
+        <p>Halifax's longest-running R&amp;B party. Since 2016 we've thrown R&amp;B nights and day parties on rooftops, patios and some of the city's biggest venues.</p>
+      </details>
+      <details>
+        <summary>How old do I have to be?</summary>
+        <p>Most of our events are 19+ because they're held in licensed venues. Bigger public events can be different, so check the event listing for each show.</p>
+      </details>
+      <details>
+        <summary>Is there a dress code?</summary>
+        <p>No strict dress code. We want you comfortable, but come looking good.</p>
+      </details>
+      <details>
+        <summary>What music will be playing?</summary>
+        <p>R&amp;B all night: throwbacks, slow jams, sing-alongs and the songs you know every word to.</p>
+      </details>
+      <details>
+        <summary>Where do I get tickets?</summary>
+        <p>Tickets are sold on Bloom Tickets, linked from the <a href="#events">events list</a> on this page. <a href="#newsletter">Newsletter</a> subscribers get first access and VIP pricing on every drop.</p>
+      </details>
     </div>
   </div>
 </section>
