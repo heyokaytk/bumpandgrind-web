@@ -8,6 +8,7 @@ Website: bumpandgrindhfx.com (canonical: www.bumpandgrindhfx.com)
 Repo: heyokaytk/bumpandgrind-web (GitHub)
 Hosting: GitHub Pages (`CNAME` file sets custom domain), fronted by Cloudflare DNS/proxy — same pattern as Golden Service.
 Ticketing: Showpass / Bloom Tickets. Newsletter: Beehiiv, but the on-page signup form posts to a Cloudflare Worker, not directly to Beehiiv.
+Analytics: Meta Pixel (in the HTML) plus Cloudflare Web Analytics via automatic setup. Cloudflare injects its beacon at the edge, so it is not in the source. Do not flag missing analytics.
 
 Business context, newsletter drafting, and Instagram captions are handled in the separate `BUMP & GRIND` project folder (`/Users/okaytk/Documents/CLAUDE/PROJECTS/BUMP & GRIND`) — that folder's `index.html` is a **stale, disconnected snapshot**, not this site's source. Always edit here.
 
