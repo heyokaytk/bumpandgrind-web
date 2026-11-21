@@ -216,6 +216,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     text-transform: uppercase;
     padding: 14px 22px;
   }
+  #hero .hero-event-link { text-decoration: none; border: 1px solid rgba(255,255,255,0.35); transition: background 0.2s, border-color 0.2s; }
+  #hero .hero-event-link::after { content: " →"; }
+  #hero .hero-event-link:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.7); }
   .hero-flyer {
     position: relative;
     display: block;
@@ -845,7 +848,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
     <div class="hero-actions">
       <a class="btn hero-ticket-btn" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303" data-ticket data-soon-label="Get tickets now" data-live-label="Get tickets now">Get tickets now</a>
-      <span class="pill" id="countdownPill" hidden></span>
+      <a class="pill hero-event-link" id="countdownPill" href="/nye/" hidden></a>
     </div>
   </div>
 </section>
