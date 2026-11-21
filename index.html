@@ -48,31 +48,30 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "Bump & Grind Presents: R&B at The Marquee",
-    "description": "Bump & Grind's R&B night at The Marquee in Halifax.",
-    "image": "https://www.bumpandgrindhfx.com/IMAGES/NOV20-MARQUEE-HERO-FLYER.jpg",
-    "startDate": "2026-11-20T21:00:00-04:00",
-    "endDate": "2026-11-21T01:00:00-04:00",
+    "name": "Bump & Grind Presents: New Year's Eve at Lot Six",
+    "description": "Bump & Grind's first ever New Year's Eve R&B party at Lot Six in downtown Halifax. 100 tickets, no door sales. Includes 1 drink ticket, hors d'oeuvres and fast-track entry to the after party at The Toothy Moose.",
+    "url": "https://www.bumpandgrindhfx.com/nye/",
+    "image": "https://www.bumpandgrindhfx.com/IMAGES/DEC31-NYE-LOTSIX-HERO-FLYER.jpg",
+    "startDate": "2026-12-31T21:00:00-04:00",
+    "endDate": "2027-01-01T01:00:00-04:00",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "typicalAgeRange": "19-",
     "location": {
       "@type": "Place",
-      "name": "The Marquee",
-      "address": { "@type": "PostalAddress", "streetAddress": "2037 Gottingen Street", "addressLocality": "Halifax", "addressRegion": "NS", "addressCountry": "CA" }
+      "name": "Lot Six",
+      "address": { "@type": "PostalAddress", "streetAddress": "1685 Argyle Street", "addressLocality": "Halifax", "addressRegion": "NS", "addressCountry": "CA" }
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://bump-grind-r-b-party.bloomtickets.ca/event/3339",
-      "price": "25",
+      "url": "https://bump-grind-r-b-party.bloomtickets.ca/event/4303",
+      "price": "100",
       "priceCurrency": "CAD",
       "availability": "https://schema.org/InStock",
-      "validFrom": "2026-09-21T00:00:00-03:00"
+      "validFrom": "2026-10-27"
     },
     "organizer": { "@type": "Organization", "name": "Bump & Grind", "url": "https://www.bumpandgrindhfx.com" },
-    "performer": [
-      { "@type": "Person", "name": "OKAY TK" },
-      { "@type": "Person", "name": "DJ IV" }
-    ]
+    "performer": { "@type": "PerformingGroup", "name": "Bump & Grind", "url": "https://www.bumpandgrindhfx.com" }
   }
 ]
 </script>
@@ -477,7 +476,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     transition: background 0.2s, color 0.2s;
   }
   .ev-cta:hover { background: var(--blush); color: var(--dark); }
-  .ev-cta-ghost { background: transparent; color: var(--dark); border: 1px solid var(--blush); }
   .ev-cta[data-soon] { background: transparent; color: var(--mid-gray); border: 1px solid var(--light-gray); pointer-events: none; }
   .ev-note {
     font-family: var(--sans); font-weight: 300; font-size: 17px;
@@ -838,26 +836,15 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <h1 class="hero-giant">Halifax's<br>favourite<br>R&amp;B party</h1>
 
     <div class="hero-flyer" id="heroFlyer">
-      <a class="hero-slide is-active" href="https://bump-grind-r-b-party.bloomtickets.ca/event/3339" data-ticket
-         data-cta-label="Get tickets now" data-venue="The Marquee · 2037 Gottingen St · Halifax">
-        <img src="IMAGES/NOV20-MARQUEE-HERO-FLYER.jpg" width="1920" height="1080" fetchpriority="high" loading="eager"
-             alt="Bump & Grind Presents: R&B at The Marquee, Friday November 20 at The Marquee, Halifax">
-      </a>
-      <a class="hero-slide" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303"
+      <a class="hero-slide is-active" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303" data-ticket
          data-cta-label="Get tickets now" data-venue="Lot Six · 1685 Argyle St · Halifax">
-        <img src="IMAGES/DEC31-NYE-LOTSIX-HERO-FLYER.jpg" width="1672" height="941" loading="eager" decoding="async"
+        <img src="IMAGES/DEC31-NYE-LOTSIX-HERO-FLYER.jpg" width="1672" height="941" fetchpriority="high" loading="eager"
              alt="Bump & Grind presents: NYE 26 at Lot Six, 1685 Argyle Street, Thursday December 31">
       </a>
-      <button type="button" class="hero-arrow hero-arrow-prev" aria-label="Previous event flyer">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
-      </button>
-      <button type="button" class="hero-arrow hero-arrow-next" aria-label="Next event flyer">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
-      </button>
     </div>
 
     <div class="hero-actions">
-      <a class="btn hero-ticket-btn" href="https://bump-grind-r-b-party.bloomtickets.ca/event/3339" data-ticket data-soon-label="Get tickets now" data-live-label="Get tickets now">Get tickets now</a>
+      <a class="btn hero-ticket-btn" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303" data-ticket data-soon-label="Get tickets now" data-live-label="Get tickets now">Get tickets now</a>
       <span class="pill" id="countdownPill" hidden></span>
     </div>
   </div>
@@ -936,21 +923,13 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <h2 class="section-title reveal">Events</h2>
 
     <div class="ev-list">
-      <div class="ev-row reveal">
-        <span class="ev-date"><span class="ev-mon">Nov</span><span class="ev-day">20</span></span>
-        <span class="ev-info">
-          <span class="ev-name">Bump &amp; Grind Presents: R&amp;B at The Marquee</span>
-          <span class="ev-meta">The Marquee · 2037 Gottingen St · Halifax · 9pm-1am</span>
-        </span>
-        <a class="ev-cta" href="https://bump-grind-r-b-party.bloomtickets.ca/event/3339" data-ticket data-soon-label="Coming soon" data-live-label="Get tickets now">Get tickets now</a>
-      </div>
       <div class="ev-row reveal" id="ev-nye">
         <span class="ev-date"><span class="ev-mon">Dec</span><span class="ev-day">31</span></span>
         <span class="ev-info">
           <a class="ev-name" href="/nye/">Bump &amp; Grind Presents: New Year's Eve at Lot Six</a>
           <span class="ev-meta">Lot Six · 1685 Argyle St · Downtown Halifax · 9pm-1am</span>
         </span>
-        <a class="ev-cta ev-cta-ghost" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303">Get tickets now</a>
+        <a class="ev-cta" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303">Get tickets now</a>
       </div>
     </div>
 
@@ -1211,10 +1190,10 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   //           their data-soon-label text instead of data-live-label).
   //  - venue: location line shown in the hero pill; empty string hides it.
   var NEXT_EVENT = {
-    name: 'Bump & Grind Presents: R&B at The Marquee',
-    date: '2026-11-20T21:00:00-04:00',
-    ticketUrl: 'https://bump-grind-r-b-party.bloomtickets.ca/event/3339',
-    venue: 'The Marquee · 2037 Gottingen St · Halifax'
+    name: "Bump & Grind Presents: New Year's Eve at Lot Six",
+    date: '2026-12-31T21:00:00-04:00',
+    ticketUrl: 'https://bump-grind-r-b-party.bloomtickets.ca/event/4303',
+    venue: 'Lot Six · 1685 Argyle St · Halifax'
   };
 
   // Point every [data-ticket] CTA at NEXT_EVENT.ticketUrl when it exists,
