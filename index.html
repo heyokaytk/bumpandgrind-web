@@ -216,6 +216,12 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     text-transform: uppercase;
     padding: 14px 22px;
   }
+  .hero-urgency {
+    font-family: var(--body); font-weight: 400; font-size: clamp(16px, 2vw, 18px); line-height: 1.5;
+    color: rgba(253,248,247,0.92); margin-top: 18px; max-width: 60ch;
+  }
+  .hero-urgency b { color: var(--blush); font-weight: 600; }
+  .hero-urgency a { color: inherit; text-decoration: underline; text-decoration-color: var(--blush); text-underline-offset: 3px; }
   #hero .hero-event-link { text-decoration: none; border: 1px solid rgba(255,255,255,0.35); transition: background 0.2s, border-color 0.2s; }
   #hero .hero-event-link::after { content: " →"; }
   #hero .hero-event-link:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.7); }
@@ -849,7 +855,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <div class="hero-actions">
       <a class="btn hero-ticket-btn" href="https://bump-grind-r-b-party.bloomtickets.ca/event/4303" data-ticket data-soon-label="Get tickets now" data-live-label="Get tickets now">Get tickets now</a>
       <a class="pill hero-event-link" id="countdownPill" href="/nye/" hidden></a>
+      <span class="pill" id="daysPill" data-label="to NYE" hidden></span>
     </div>
+    <p class="hero-urgency" id="heroUrgency">First 50 tickets get a free <a href="/seasonpass">2027 Season Pass</a>. 100 tickets only. No door sales.</p>
   </div>
 </section>
 
@@ -1179,6 +1187,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   </div>
 </footer>
 
+<script src="/nye-sales.js"></script>
 <script>
   function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -1471,6 +1480,28 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
       pill.hidden = false;
     } else {
       pill.hidden = true;
+    }
+  })();
+
+  // Hero NYE urgency line + days-to-go chip. Count comes from /nye-sales.js.
+  (function nyeHero() {
+    var s = window.NYE_SALES, line = document.getElementById('heroUrgency');
+    if (s && line) {
+      var passLeft = Math.max(s.passes - s.sold, 0), left = Math.max(s.capacity - s.sold, 0);
+      var pass = '<a href="/seasonpass">2027 Season Pass</a>';
+      line.innerHTML = left === 0 ? 'Sold out. Thank you!'
+        : passLeft > 0 ? 'First 50 tickets get a free ' + pass + '. <b>' + passLeft + ' left.</b> No door sales.'
+        : '<b>Only ' + left + (left === 1 ? ' ticket' : ' tickets') + ' left.</b> No door sales.';
+    }
+    var chip = document.getElementById('daysPill');
+    if (chip && NEXT_EVENT.date) {
+      var start = new Date(NEXT_EVENT.date), now = new Date();
+      var days = Math.round((new Date(start.getFullYear(), start.getMonth(), start.getDate()) -
+                             new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+      if (days >= 0) {
+        chip.textContent = days === 0 ? 'Tonight' : days === 1 ? 'Tomorrow' : days + ' days ' + chip.getAttribute('data-label');
+        chip.hidden = false;
+      }
     }
   })();
 
