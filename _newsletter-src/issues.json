@@ -1,0 +1,190 @@
+{
+  "_readme": "Source for /newsletter/. Add the newest issue at the TOP of `issues`, then run: python3 _newsletter-src/build.py. Post issues one week after they're emailed, and leave out early-access ticket links and VIP pricing (that's what subscribers get). `up_next` is the event card shown on every issue page; set it to null when there's nothing on sale. Folders starting with _ aren't published by GitHub Pages.",
+  "up_next": {
+    "eyebrow": "Up next",
+    "title": "New Year's Eve at Lot Six",
+    "body": "Thursday, December 31 at Lot Six on Argyle Street. Only 100 tickets, no door sales, and the first 50 come with a free 2027 Season Pass.",
+    "cta": "See the NYE party",
+    "href": "/nye/"
+  },
+  "issues": [
+    {
+      "slug": "b2k-eclipse-silk-sonic-turns-5",
+      "date": "2026-11-11",
+      "headline": "B2K drop their first album in 24 years + Silk Sonic turns 5",
+      "dek": "Plus T-Pain's Thr33 Ringz turns 18, and our first ever This or That.",
+      "beehiiv_url": "https://news.bumpandgrindhfx.com/p/bump-grind-9ceffdae014b6604",
+      "intro": [
+        "Happy Wednesday, everyone. Today is <b>Remembrance Day</b>, so we want to take a moment to honour everyone who has served and sacrificed. 🌺",
+        "This week we've got a brand-new album from a group we never thought we'd see back in album mode, a modern classic that turns 5, and a throwback from November 11th, 2008. We're also trying something new: <b>This or That</b>, where you get a say. 🤔"
+      ],
+      "sections": [
+        {
+          "kind": "rewind",
+          "title": "Silk Sonic, “Smokin Out The Window” (2021)",
+          "body": [
+            "5 years ago this week, on November 12th, 2021, <b>Bruno Mars</b> and <b>Anderson .Paak</b> dropped <i>An Evening with Silk Sonic</i>.",
+            "It debuted at #2 on the Billboard 200, and “Leave the Door Open” went to #1 on the Hot 100 before winning four Grammys, including Record and Song of the Year."
+          ],
+          "dyk": "“Smokin Out the Window” started as a backstage joke between Bruno and Anderson, and they turned it into a hook. The funk legend <b>Bootsy Collins</b> named the duo and also hosts the album. That's his voice you hear on the intro.",
+          "video": { "id": "GG7fLOmlhYg", "label": "Watch Silk Sonic, “Smokin Out The Window”" }
+        },
+        {
+          "kind": "radar",
+          "title": "B2K, <i>Eclipse</i> (2026)",
+          "body": [
+            "Omarion, J-Boog, Raz-B and Lil Fizz are back with <i>Eclipse</i>, their first album since 2002's <i>Pandemonium!</i> (the album that gave you “Bump, Bump, Bump”). It's 12 tracks from a more grown-up B2K, led by the singles “Mileage” and “Lil Freak.”"
+          ],
+          "dyk": "<b>Bow Wow</b> joins them on a track called “Boyfriend,” a nod to “Girlfriend,” his 2007 hit with Omarion. The album also comes off the back of their 25th anniversary tour earlier this year.",
+          "video": { "id": "keIHWbiU1fY", "label": "Watch B2K, “Boyfriend” (ft. Bow Wow)" }
+        },
+        {
+          "kind": "otd",
+          "title": "On This Day, November 11th, 2008",
+          "body": [
+            "18 years ago today, <b>T-Pain</b> released <i>Thr33 Ringz</i>, his third album. It debuted at #4 on the Billboard 200, went to #1 on the R&amp;B/Hip-Hop albums chart, and gave us “Can't Believe It” with Lil Wayne and “Freeze” with Chris Brown."
+          ],
+          "dyk": "<i>Thr33 Ringz</i> was nominated for Best Contemporary R&amp;B Album at the Grammys, but it lost to Beyoncé's <i>I Am... Sasha Fierce</i>.",
+          "video": { "id": "kWBE0sQC5L8", "label": "Watch T-Pain, “Can't Believe It” (ft. Lil Wayne)" }
+        },
+        {
+          "kind": "thisorthat",
+          "title": "Silk Sonic vs. Silk Sonic",
+          "body": [
+            "New this week! We're putting two songs head to head, and subscribers pick the winner. This week it's <b>Silk Sonic</b>. Which one are you running back?",
+            "Voting happens right in the email, and everyone who voted was entered to win 2 tickets to R&amp;B at The Marquee. Results dropped in the next issue."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "whitney-im-your-baby-tonight-mya-retrospect",
+      "date": "2026-11-04",
+      "headline": "Why Whitney went funky in 1990 + Mýa's sample-free comeback",
+      "dek": "Plus Alicia Keys' Here turns 10.",
+      "beehiiv_url": "https://news.bumpandgrindhfx.com/p/bump-grind-f56eadbb76beb17c",
+      "intro": [
+        "Just like that, we're in the first week of November (Scorpio season). Where does the time go?! We hope the week has been treating you well.",
+        "This week we've got a fresh visual from <b>Mýa's</b> latest album, a <b>Whitney Houston</b> classic that turns 36, and an <b>Alicia Keys</b> album we're throwing on today just because."
+      ],
+      "sections": [
+        {
+          "kind": "rewind",
+          "title": "Whitney Houston, “I'm Your Baby Tonight” (1990)",
+          "body": [
+            "36 years ago this week, on November 6th, 1990, <b>Whitney</b> dropped <i>I'm Your Baby Tonight</i>. It was her third album and her most R&amp;B-leaning one yet, with L.A. Reid and Babyface behind the boards and appearances from Luther Vandross and Stevie Wonder.",
+            "The title track hit #1 on the Hot 100 and spent two weeks at #1 on the R&amp;B chart. The album topped the R&amp;B albums chart too."
+          ],
+          "dyk": "This album was a response. After Whitney was booed (crazy!) at the 1989 Soul Train Music Awards and called “not black enough,” she went after a funkier sound on purpose. She picked L.A. Reid and Babyface because of their work on Bobby Brown's <i>Don't Be Cruel</i>. According to Reid, she nailed the title track in one take, in under an hour.",
+          "video": { "id": "i0oRnyXxIrY", "label": "Watch Whitney Houston, “I'm Your Baby Tonight”" }
+        },
+        {
+          "kind": "radar",
+          "title": "Mýa, “Saturday Night” (2026)",
+          "body": [
+            "<b>Mýa</b> is in full throwback mode. “Saturday Night” comes from <i>Retrospect</i>, her first album in eight years, a love letter to 70s and 80s funk and soul that she released on her own label, Planet 9.",
+            "The video dropped on her birthday and turns the clock back to a late-80s house party."
+          ],
+          "dyk": "There's not a single sample on <i>Retrospect</i>. <b>Mýa</b> skipped them on purpose, following advice she got from <b>Prince</b>.",
+          "video": { "id": "HNBIS25NZOU", "label": "Watch Mýa, “Saturday Night”" }
+        },
+        {
+          "kind": "otd",
+          "title": "On This Day, November 4th, 2016",
+          "body": [
+            "10 years ago today, <b>Alicia Keys</b> released <i>Here</i>, her sixth album and her first in four years. 🎹",
+            "It debuted at #2 on the Billboard 200 and gave <b>Alicia</b> her seventh #1 on the R&amp;B albums chart."
+          ],
+          "dyk": "<b>Alicia</b> has said she wrote around 30 songs for <i>Here</i> in about 10 days. Her pregnancy delayed the release, so the album sat for a while before finally coming out in 2016.",
+          "video": { "id": "HbGm5f5PR2o", "label": "Watch Alicia Keys, “Blended Family (What You Do For Love)”" }
+        }
+      ]
+    },
+    {
+      "slug": "dru-hill-how-deep-is-your-love-nao-autumn",
+      "date": "2026-10-28",
+      "headline": "Dru Hill's Rush Hour classic turns 28 + NAO's surprise autumn album",
+      "dek": "Plus happy birthday, Frank Ocean, and the hit he wrote for someone else.",
+      "beehiiv_url": "https://news.bumpandgrindhfx.com/p/bump-grind-b2737eb40f626ce6",
+      "intro": [
+        "Hope everybody's doing well. Is it just us, or did someone forget to tell the weather it's the end of October? ☀️ All this sun has been a treat, so hopefully you're getting outside and soaking up some fresh air while it lasts. And with Halloween weekend here, we hope you've got your costumes locked in. 🎃",
+        "One more thing... we've got something planned for later this year. 👀 A very limited capacity night that takes Bump &amp; Grind back to its roots. That's all we'll say for now. <span class=\"nl-note\">(Update: it's <a href=\"/nye/\">New Year's Eve at Lot Six</a>.)</span>"
+      ],
+      "sections": [
+        {
+          "kind": "rewind",
+          "title": "Dru Hill, “How Deep Is Your Love” (1998)",
+          "body": [
+            "28 years ago this week, on October 27th, 1998, <b>Dru Hill</b> dropped <i>Enter the Dru</i>. The album went 2x platinum, peaked at #2 on the Billboard 200 and gave us “How Deep Is Your Love,” “These Are the Times” and “Beauty.”",
+            "“How Deep Is Your Love” became the group's biggest hit, reaching #3 on the Hot 100 and holding #1 on the R&amp;B chart for three weeks."
+          ],
+          "dyk": "The song was made for the <i>Rush Hour</i> soundtrack. <i>Rush Hour</i> director Brett Ratner shot the video on a rooftop in Hong Kong, and it's mixed with clips from the movie. Bonus: the album title is a nod to the Bruce Lee classic <i>Enter the Dragon</i>.",
+          "video": { "id": "43XWafBLJIM", "label": "Watch Dru Hill, “How Deep Is Your Love”" }
+        },
+        {
+          "kind": "radar",
+          "title": "NAO, “Fly Away” (2026)",
+          "body": [
+            "London's own <b>NAO</b> surprised everyone this month with <i>Autumn</i>, a brand-new album she announced just days before it dropped on October 16th. “Fly Away” is the standout.",
+            "<i>Autumn</i> is NAO's first independent album after four records with RCA. It's also the first of four seasonal albums in a series she's calling “A Soulful Suite,” and it leans into the 90s and 2000s neo-soul she grew up on."
+          ],
+          "dyk": "Before her solo career took off, <b>NAO</b> studied jazz in London and spent six years singing in an all-female a cappella group. She's also a Grammy nominee and co-wrote <b>Ariana Grande's</b> “Be Alright.”",
+          "video": { "id": "qp8KDbqbZAA", "label": "Watch NAO, “Fly Away”" }
+        },
+        {
+          "kind": "otd",
+          "title": "On This Day, October 28th, 1987",
+          "body": [
+            "Happy birthday to <b>Frank Ocean</b>, born on this day in Long Beach, California. 🎈",
+            "Before he was Frank Ocean, he was writing songs for <b>Brandy</b>, <b>John Legend</b>, <b>Beyoncé</b> and <b>Justin Bieber</b>. His debut album <i>Channel Orange</i> (2012) went on to win the Grammy for Best Urban Contemporary Album."
+          ],
+          "dyk": "“Thinkin Bout You” wasn't originally meant for Frank. He wrote it as a demo for singer <b>Bridget Kelly</b>, who recorded her own version called “Thinking About Forever.” Frank's version leaked in 2011, and the rest is history.",
+          "video": { "id": "aWUWC21_HE8", "label": "Watch Frank Ocean, “Thinkin Bout You” (live on SNL)" }
+        }
+      ]
+    },
+    {
+      "slug": "irreplaceable-turns-20-b2k-lil-freak",
+      "date": "2026-10-21",
+      "headline": "“Irreplaceable” turns 20 + B2K speed things up",
+      "dek": "Plus the 14-year-old who dropped a debut album on this day in 1987.",
+      "beehiiv_url": "https://news.bumpandgrindhfx.com/p/bump-grind-1712da8ec12b0d01",
+      "intro": [
+        "Hope the week is treating you well. Keeping this one short and sweet.",
+        "And yes... we may be planning something for New Year's. A VERY limited event. Keep your eyes peeled over the next few weeks. 👀 <span class=\"nl-note\">(Update: it's <a href=\"/nye/\">New Year's Eve at Lot Six</a>, and tickets are on sale now.)</span>"
+      ],
+      "sections": [
+        {
+          "kind": "rewind",
+          "title": "Beyoncé, “Irreplaceable” (2006)",
+          "body": [
+            "This one turned 20 this past weekend. Released October 17, 2006 off <i>B'Day</i>, “Irreplaceable” sat at #1 on the Hot 100 for 10 straight weeks and became the biggest single of 2007.",
+            "Twenty years later, “to the left, to the left” still gets the whole room singing."
+          ],
+          "dyk": "<b>Ne-Yo</b> wrote the lyrics, and he originally had it as a country-leaning song he was going to keep for himself. Glad he changed his mind.",
+          "video": { "id": "2EwViQxSJJQ", "label": "Watch Beyoncé, “Irreplaceable”" }
+        },
+        {
+          "kind": "radar",
+          "title": "B2K, “Lil Freak” (2026)",
+          "body": [
+            "Omarion, Raz-B, J-Boog and Lil Fizz are back again. After the slow burn of “Mileage” this summer, they sped things up with “Lil Freak,” a song made for the dance floor, produced by Lil Ronnie.",
+            "It's the latest taste of <i>Eclipse</i>, their first new album in over 20 years, which is due in November. Fair warning, this one's the explicit version. 😅"
+          ],
+          "dyk": null,
+          "video": { "id": "FyPg2TBufJc", "label": "Watch B2K, “Lil Freak”" }
+        },
+        {
+          "kind": "otd",
+          "title": "On This Day, October 21st, 1987",
+          "body": [
+            "On this day, a 14-year-old <b>Shanice</b> released her debut album, <i>Discovery</i>.",
+            "Most of us know her from “I Love Your Smile” a few years later, but this is where it started. Fourteen years old with a full album out. Wild."
+          ],
+          "dyk": null,
+          "video": { "id": "ysYyCElzB0A", "label": "Watch Shanice, “I Love Your Smile”" }
+        }
+      ]
+    }
+  ]
+}

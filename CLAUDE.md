@@ -10,6 +10,7 @@ Hosting: GitHub Pages (`CNAME` file sets custom domain), fronted by Cloudflare D
 Ticketing: Showpass / Bloom Tickets. Newsletter: Beehiiv, but the on-page signup form posts to a Cloudflare Worker, not directly to Beehiiv.
 Analytics: Meta Pixel (in the HTML) plus Cloudflare Web Analytics via automatic setup. Cloudflare injects its beacon at the edge, so it is not in the source. Do not flag missing analytics.
 NYE ticket count: `nye-sales.js` (`sold`) drives both the /nye/ meter and the homepage hero line. Update it there only.
+Newsletter web versions: `/newsletter/` is generated from `_newsletter-src/issues.json` by `python3 _newsletter-src/build.py` (also refreshes the homepage "recent issue" link and sitemap between NEWSLETTER markers). Post issues one week after sending; no early-access ticket links.
 
 Business context, newsletter drafting, and Instagram captions are handled in the separate `BUMP & GRIND` project folder (`/Users/okaytk/Documents/CLAUDE/PROJECTS/BUMP & GRIND`) — that folder's `index.html` is a **stale, disconnected snapshot**, not this site's source. Always edit here.
 

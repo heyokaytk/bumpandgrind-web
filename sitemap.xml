@@ -20,4 +20,31 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <!-- NEWSLETTER:START -->
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/newsletter/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/newsletter/b2k-eclipse-silk-sonic-turns-5/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/newsletter/whitney-im-your-baby-tonight-mya-retrospect/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/newsletter/dru-hill-how-deep-is-your-love-nao-autumn/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/newsletter/irreplaceable-turns-20-b2k-lil-freak/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- NEWSLETTER:END -->
 </urlset>
