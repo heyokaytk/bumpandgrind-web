@@ -165,6 +165,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   }
 
   /* —— INTRO —— */
+  .meter--center { max-width: 460px; margin: 0 auto 36px; text-align: left; }
   .intro {
     font-size: 14px;
     font-weight: 300;
@@ -330,6 +331,11 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
 
   <p class="intro">Free entry to every Bump &amp; Grind event in 2027. The first 50 NYE tickets come with one. That's the only way to get it.</p>
 
+  <div class="meter meter--center" data-meter hidden>
+    <div class="meter-label"><span><b data-meter-left></b> <span data-meter-text></span></span><span class="meter-sub" data-meter-sub></span></div>
+    <div class="meter-track" role="progressbar" aria-valuemin="0" data-meter-bar><div class="meter-fill"></div></div>
+  </div>
+
   <div class="perks">
     <span class="centered-heading">WHAT YOU GET</span>
     <ul class="perks-list">
@@ -366,5 +372,6 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   <a href="https://www.bumpandgrindhfx.com" class="footer-link">← bumpandgrindhfx.com</a>
 </div>
 
+<script src="/nye-sales.js"></script>
 </body>
 </html>

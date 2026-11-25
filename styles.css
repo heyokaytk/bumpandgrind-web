@@ -153,3 +153,23 @@ nav {
 .page-footer a { font-family: var(--sans); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); text-decoration: none; }
 .page-footer a:hover { color: var(--blush-deep); }
 .page-footer p { font-family: var(--body); font-weight: 300; font-size: 14px; color: var(--mid-gray); margin-top: 10px; }
+
+/* ── NYE SALES METER ──
+   Filled in by /nye-sales.js from its `sold` count. Default is for dark/photo
+   backgrounds; add .meter--light on white or blush sections, .meter--compact
+   inside list rows. */
+.meter { max-width: 760px; margin-top: 22px; }
+.meter[hidden] { display: none; }
+.meter-label { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; font-family: var(--sans); font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--off-white); }
+.meter-label b { font-weight: 400; color: var(--blush); }
+.meter-sub { font-family: var(--body); font-weight: 300; font-size: 14px; letter-spacing: 0.02em; text-transform: none; color: rgba(253,248,247,0.7); }
+.meter-track { height: 10px; margin-top: 10px; border-radius: var(--radius-pill); background: rgba(255,255,255,0.16); overflow: hidden; }
+.meter-fill { height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--blush-deep), var(--blush)); transition: width 1.2s ease; }
+.meter--light .meter-label { color: var(--dark); }
+.meter--light .meter-label b { color: var(--blush-deep-text); }
+.meter--light .meter-sub { color: var(--mid-gray); }
+.meter--light .meter-track { background: var(--light-gray); }
+.meter--compact { max-width: 420px; margin-top: 12px; }
+.meter--compact .meter-label { font-size: 16px; }
+.meter--compact .meter-track { height: 6px; margin-top: 6px; }
+@media (prefers-reduced-motion: reduce) { .meter-fill { transition: none; } }
