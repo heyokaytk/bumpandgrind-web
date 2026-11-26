@@ -107,6 +107,8 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     font-family: var(--sans); font-size: 17px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white);
   }
   .nl-video span::before { content: "▶"; margin-right: 10px; color: var(--blush); }
+  .nl-video-live { cursor: default; }
+  .nl-video-live iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
   .nl-upnext { margin-top: 56px; padding: 26px 24px; border-radius: var(--radius-card); background: var(--dark); color: var(--off-white); }
   .nl-upnext h2 { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 4vw, 36px); letter-spacing: 0.02em; margin: 6px 0 10px; color: var(--white); }
   .nl-upnext p { font-family: var(--body); font-weight: 300; font-size: 17px; line-height: 1.55; letter-spacing: normal; color: rgba(253,248,247,0.85); margin-bottom: 20px; }
@@ -174,7 +176,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <p>28 years ago this week, on October 27th, 1998, <b>Dru Hill</b> dropped <i>Enter the Dru</i>. The album went 2x platinum, peaked at #2 on the Billboard 200 and gave us “How Deep Is Your Love,” “These Are the Times” and “Beauty.”</p>
     <p>“How Deep Is Your Love” became the group's biggest hit, reaching #3 on the Hot 100 and holding #1 on the R&amp;B chart for three weeks.</p>
     <div class="nl-dyk"><span class="eyebrow">Did you know 🧠</span><p>The song was made for the <i>Rush Hour</i> soundtrack. <i>Rush Hour</i> director Brett Ratner shot the video on a rooftop in Hong Kong, and it's mixed with clips from the movie. Bonus: the album title is a nod to the Bruce Lee classic <i>Enter the Dragon</i>.</p></div>
-    <a class="nl-video" href="https://www.youtube.com/watch?v=43XWafBLJIM" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/43XWafBLJIM/hqdefault.jpg" width="480" height="270" loading="lazy" alt=""><span>Watch Dru Hill, “How Deep Is Your Love”</span></a>
+    <a class="nl-video" href="https://www.youtube.com/watch?v=43XWafBLJIM" data-yt="43XWafBLJIM" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/43XWafBLJIM/hqdefault.jpg" width="480" height="270" loading="lazy" alt=""><span>Watch Dru Hill, “How Deep Is Your Love”</span></a>
   </section>
   <section class="nl-sec">
     <p class="eyebrow">📡 R&amp;B Radar</p>
@@ -182,7 +184,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <p>London's own <b>NAO</b> surprised everyone this month with <i>Autumn</i>, a brand-new album she announced just days before it dropped on October 16th. “Fly Away” is the standout.</p>
     <p><i>Autumn</i> is NAO's first independent album after four records with RCA. It's also the first of four seasonal albums in a series she's calling “A Soulful Suite,” and it leans into the 90s and 2000s neo-soul she grew up on.</p>
     <div class="nl-dyk"><span class="eyebrow">Did you know 🧠</span><p>Before her solo career took off, <b>NAO</b> studied jazz in London and spent six years singing in an all-female a cappella group. She's also a Grammy nominee and co-wrote <b>Ariana Grande's</b> “Be Alright.”</p></div>
-    <a class="nl-video" href="https://www.youtube.com/watch?v=qp8KDbqbZAA" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/qp8KDbqbZAA/hqdefault.jpg" width="480" height="270" loading="lazy" alt=""><span>Watch NAO, “Fly Away”</span></a>
+    <a class="nl-video" href="https://www.youtube.com/watch?v=qp8KDbqbZAA" data-yt="qp8KDbqbZAA" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/qp8KDbqbZAA/hqdefault.jpg" width="480" height="270" loading="lazy" alt=""><span>Watch NAO, “Fly Away”</span></a>
   </section>
   <section class="nl-sec">
     <p class="eyebrow">🗓️ On This Day</p>
@@ -190,7 +192,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <p>Happy birthday to <b>Frank Ocean</b>, born on this day in Long Beach, California. 🎈</p>
     <p>Before he was Frank Ocean, he was writing songs for <b>Brandy</b>, <b>John Legend</b>, <b>Beyoncé</b> and <b>Justin Bieber</b>. His debut album <i>Channel Orange</i> (2012) went on to win the Grammy for Best Urban Contemporary Album.</p>
     <div class="nl-dyk"><span class="eyebrow">Did you know 🧠</span><p>“Thinkin Bout You” wasn't originally meant for Frank. He wrote it as a demo for singer <b>Bridget Kelly</b>, who recorded her own version called “Thinking About Forever.” Frank's version leaked in 2011, and the rest is history.</p></div>
-    <a class="nl-video" href="https://www.youtube.com/watch?v=aWUWC21_HE8" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/aWUWC21_HE8/hqdefault.jpg" width="480" height="270" loading="lazy" alt=""><span>Watch Frank Ocean, “Thinkin Bout You” (live on SNL)</span></a>
+    <a class="nl-video" href="https://www.youtube.com/watch?v=aWUWC21_HE8" data-yt="aWUWC21_HE8" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/aWUWC21_HE8/hqdefault.jpg" width="480" height="270" loading="lazy" alt=""><span>Watch Frank Ocean, “Thinkin Bout You” (live on SNL)</span></a>
   </section>
 
   <aside class="nl-upnext">
@@ -249,6 +251,26 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     }).catch(function() {
       btn.textContent = 'Subscribe'; btn.disabled = false;
       document.getElementById('newsletterError').style.display = 'block';
+    });
+  });
+</script>
+<script>
+  // Tap a video card to play it here instead of leaving for YouTube.
+  // The player only loads on tap, so pages stay light. No JS = the link still works.
+  document.querySelectorAll('.nl-video[data-yt]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
+      f.title = a.textContent.trim();
+      f.referrerPolicy = 'strict-origin-when-cross-origin';  // YouTube needs this (error 153 without)
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      var w = document.createElement('div');
+      w.className = 'nl-video nl-video-live';
+      w.appendChild(f);
+      a.replaceWith(w);
+      if (typeof fbq === 'function') fbq('trackCustom', 'VideoPlay', { video: a.dataset.yt });
     });
   });
 </script>
