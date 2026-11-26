@@ -105,6 +105,8 @@ CSS = """
     font-family: var(--sans); font-size: 17px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white);
   }
   .nl-video span::before { content: "▶"; margin-right: 10px; color: var(--blush); }
+  .nl-video-live { cursor: default; }
+  .nl-video-live iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
   .nl-upnext { margin-top: 56px; padding: 26px 24px; border-radius: var(--radius-card); background: var(--dark); color: var(--off-white); }
   .nl-upnext h2 { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 4vw, 36px); letter-spacing: 0.02em; margin: 6px 0 10px; color: var(--white); }
   .nl-upnext p { font-family: var(--body); font-weight: 300; font-size: 17px; line-height: 1.55; letter-spacing: normal; color: rgba(253,248,247,0.85); margin-bottom: 20px; }
@@ -135,6 +137,27 @@ CSS = """
   .nl-msg.err { color: var(--error-on-dark); }
   .nl-fine { font-family: var(--body); font-size: 14px; letter-spacing: normal; color: rgba(253,248,247,0.6); margin-top: 14px; }
 """
+
+VIDEO_JS = """<script>
+  // Tap a video card to play it here instead of leaving for YouTube.
+  // The player only loads on tap, so pages stay light. No JS = the link still works.
+  document.querySelectorAll('.nl-video[data-yt]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
+      f.title = a.textContent.trim();
+      f.referrerPolicy = 'strict-origin-when-cross-origin';  // YouTube needs this (error 153 without)
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      var w = document.createElement('div');
+      w.className = 'nl-video nl-video-live';
+      w.appendChild(f);
+      a.replaceWith(w);
+      if (typeof fbq === 'function') fbq('trackCustom', 'VideoPlay', { video: a.dataset.yt });
+    });
+  });
+</script>"""
 
 SUBSCRIBE_JS = """<script>
   function getCookie(name) {
@@ -254,7 +277,7 @@ def section_html(sec):
     v = sec.get("video")
     if v:
         out.append(
-            f'    <a class="nl-video" href="https://www.youtube.com/watch?v={v["id"]}" target="_blank" rel="noopener">'
+            f'    <a class="nl-video" href="https://www.youtube.com/watch?v={v["id"]}" data-yt="{v["id"]}" target="_blank" rel="noopener">'
             f'<img src="https://i.ytimg.com/vi/{v["id"]}/hqdefault.jpg" width="480" height="270" loading="lazy" alt="">'
             f'<span>{v["label"]}</span></a>'
         )
@@ -314,6 +337,7 @@ def issue_page(i, issue):
 </section>
 {SIGNUP}
 {SUBSCRIBE_JS}
+{VIDEO_JS}
 </body>
 </html>
 """
@@ -336,6 +360,7 @@ def archive_page():
 </section>
 {SIGNUP}
 {SUBSCRIBE_JS}
+{VIDEO_JS}
 </body>
 </html>
 """
@@ -454,7 +479,7 @@ def rewind_page(post, posts):
     dyk = f'\n    <div class="nl-dyk"><span class="eyebrow">Did you know 🧠</span><p>{sec["dyk"]}</p></div>' if sec.get("dyk") else ""
     v = sec["video"]
     video = (
-        f'\n    <a class="nl-video" href="https://www.youtube.com/watch?v={v["id"]}" target="_blank" rel="noopener">'
+        f'\n    <a class="nl-video" href="https://www.youtube.com/watch?v={v["id"]}" data-yt="{v["id"]}" target="_blank" rel="noopener">'
         f'<img src="{post["thumb"]}" width="480" height="270" loading="lazy" alt="">'
         f'<span>{v["label"]}</span></a>'
     )
@@ -478,6 +503,7 @@ def rewind_page(post, posts):
 </section>
 {SIGNUP}
 {SUBSCRIBE_JS}
+{VIDEO_JS}
 </body>
 </html>
 """
@@ -501,6 +527,7 @@ def rewind_index(posts):
 </section>
 {SIGNUP}
 {SUBSCRIBE_JS}
+{VIDEO_JS}
 </body>
 </html>
 """
