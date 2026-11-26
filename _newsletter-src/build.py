@@ -3,13 +3,18 @@
 
 Writes newsletter/index.html and newsletter/<slug>/index.html, and refreshes the
 "latest issue" link on the homepage and the newsletter URLs in sitemap.xml
-(both between NEWSLETTER markers). Run from anywhere:
+(both between NEWSLETTER markers).
+
+Also builds Rewind: every R&B Rewind and On This Day section becomes its own
+page at rewind/<slug>/, plus rewind/index.html, the homepage Rewind strip and
+the Rewind URLs in sitemap.xml (between REWIND markers). Run from anywhere:
 
     python3 _newsletter-src/build.py
 """
 import html
 import json
 import re
+import unicodedata
 from datetime import date
 from pathlib import Path
 
@@ -193,6 +198,7 @@ def head(title, desc, url, og_type="website", extra=""):
   <a href="/" aria-label="Bump & Grind home"><img class="nav-logo" src="/IMAGES/logo-nav.png" width="114" height="120" alt=""></a>
   <div class="nav-links">
     <a href="/newsletter/">Newsletter</a>
+    <a href="/rewind/">Rewind</a>
     <a href="/nye/">NYE</a>
   </div>
 </nav>
@@ -344,6 +350,183 @@ def replace_between(path, start, end, new):
     path.write_text(pat.sub(lambda m: start + new + end, s, count=1))
 
 
+# ── REWIND ──────────────────────────────────────────────────────────────
+
+REWIND_KINDS = ("rewind", "otd")
+
+
+def slugify(s):
+    s = unicodedata.normalize("NFKD", strip_tags(s)).encode("ascii", "ignore").decode()
+    s = s.lower().replace("&", " and ")
+    s = re.sub(r"[’'\u2019]", "", s)
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+
+def clip(s, n):
+    s = re.sub(r"\s+", " ", strip_tags(s)).strip()
+    if len(s) <= n:
+        return s
+    return s[: n - 1].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+
+
+def rewind_posts():
+    posts, seen = [], set()
+    for issue in ISSUES:
+        for sec in issue["sections"]:
+            if sec["kind"] not in REWIND_KINDS or not sec.get("video"):
+                continue
+            title = sec.get("web_title") or sec["title"]
+            slug = slugify(title)
+            if slug in seen:
+                slug = f"{slug}-{issue['date']}"
+            seen.add(slug)
+            posts.append({
+                "slug": slug, "title": title, "kind": sec["kind"], "date": issue["date"],
+                "issue": issue, "sec": sec,
+                "thumb": f"https://i.ytimg.com/vi/{sec['video']['id']}/hqdefault.jpg",
+                # Evergreen line for cards and meta: the fact box if there is one,
+                # since body copy says things like "5 years ago this week".
+                "dek": clip(sec.get("dyk") or " ".join(sec["body"]), 160),
+            })
+    return posts
+
+
+def rw_kicker(post):
+    emoji, label = KINDS[post["kind"]]
+    return f"{emoji} {label}"
+
+
+def rw_feature(post, eager=False):
+    load = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    return (
+        f'<a class="rw-feature" href="/rewind/{post["slug"]}/">'
+        f'<span class="rw-feature-img"><img src="{post["thumb"]}" width="480" height="270" {load} alt=""></span>'
+        f'<span class="rw-feature-body"><span class="rw-kicker">{rw_kicker(post)}</span>'
+        f'<h3>{post["title"]}</h3><p>{html.escape(post["dek"])}</p>'
+        f'<span class="rw-more">Read the story →</span></span></a>'
+    )
+
+
+def rw_row(post, heading="h3"):
+    return (
+        f'<a class="rw-row" href="/rewind/{post["slug"]}/">'
+        f'<img src="{post["thumb"]}" width="132" height="74" loading="lazy" alt="">'
+        f'<span><span class="rw-kicker">{rw_kicker(post)}</span>'
+        f'<{heading}>{post["title"]}</{heading}><p>{html.escape(post["dek"])}</p></span></a>'
+    )
+
+
+REWIND_CSS = """
+  .rw-body p { font-family: var(--body); font-weight: 300; font-size: 18px; line-height: 1.65; letter-spacing: normal; }
+  .rw-body > p + p { margin-top: 16px; }
+  .rw-body .nl-dyk p { font-size: 17px; }
+  .nl-article .rw-row, .nl-article .btn-ghost { color: var(--dark); }
+  .hero-lede a { color: inherit; text-underline-offset: 3px; }
+  .rw-related { margin-top: 56px; }
+  .rw-related .rw-list { grid-template-columns: 1fr; }
+  .rw-index-feature { max-width: 760px; }
+  .rw-index .rw-list { margin-top: 28px; }
+"""
+
+
+def rewind_page(post, posts):
+    url = f"{SITE}/rewind/{post['slug']}/"
+    sec, issue = post["sec"], post["issue"]
+    title = f"{strip_tags(post['title'])} | Bump & Grind Rewind"
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": strip_tags(post["title"]),
+        "description": post["dek"],
+        "datePublished": post["date"],
+        "url": url,
+        "image": post["thumb"],
+        "author": {"@type": "Organization", "name": "Bump & Grind", "url": SITE},
+        "publisher": {"@type": "Organization", "name": "Bump & Grind", "url": SITE},
+        "isPartOf": {"@type": "Blog", "name": "Bump & Grind Rewind", "url": f"{SITE}/rewind/"},
+    }
+    extra = (
+        f'<meta property="article:published_time" content="{post["date"]}">\n'
+        f'<script type="application/ld+json">\n{json.dumps(ld, indent=2, ensure_ascii=False)}\n</script>\n'
+        f"<style>{REWIND_CSS}</style>\n"
+    )
+    body = "\n".join(f"    <p>{p}</p>" for p in sec["body"])
+    dyk = f'\n    <div class="nl-dyk"><span class="eyebrow">Did you know 🧠</span><p>{sec["dyk"]}</p></div>' if sec.get("dyk") else ""
+    v = sec["video"]
+    video = (
+        f'\n    <a class="nl-video" href="https://www.youtube.com/watch?v={v["id"]}" target="_blank" rel="noopener">'
+        f'<img src="{post["thumb"]}" width="480" height="270" loading="lazy" alt="">'
+        f'<span>{v["label"]}</span></a>'
+    )
+    others = [x for x in posts if x is not post][:3]
+    related = "\n".join("      " + rw_row(x) for x in others)
+    emoji, label = KINDS[post["kind"]]
+    page = f"""{head(title, post['dek'], url, 'article', extra)}{hero(f'<a href="/rewind/" style="color:inherit">Rewind</a> · {emoji} {label}', post['title'], f'From the <a href="/newsletter/{issue["slug"]}/">{nice_date(issue["date"])} issue</a> of the Bump &amp; Grind newsletter.')}
+<section>
+  <article class="shell nl-article">
+  <div class="rw-body">
+{body}{dyk}{video}
+  </div>
+    <aside class="rw-related" aria-label="More Rewind">
+      <p class="eyebrow">⏪️ More Rewind</p>
+      <div class="rw-list">
+{related}
+      </div>
+      <p style="margin-top:22px"><a class="btn-ghost btn" href="/rewind/">All Rewind stories</a></p>
+    </aside>
+  </article>
+</section>
+{SIGNUP}
+{SUBSCRIBE_JS}
+</body>
+</html>
+"""
+    out = ROOT / "rewind" / post["slug"] / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(page)
+
+
+def rewind_index(posts):
+    url = f"{SITE}/rewind/"
+    extra = f"<style>{REWIND_CSS}</style>\n"
+    rows = "\n".join("      " + rw_row(x, "h2") for x in posts[1:])
+    page = f"""{head("Rewind: The Stories Behind R&B Classics | Bump & Grind Halifax", "The stories behind the R&B classics we still play at every Bump & Grind party: anniversaries, birthdays and moments in R&B history, from Halifax's R&B newsletter.", url, "website", extra)}{hero('Bump <span>&amp;</span> Grind · R&amp;B nostalgia', 'Rewind', "The stories behind the R&amp;B classics we still play at every party. New ones every week from the Bump &amp; Grind newsletter.", 'hero-giant')}
+<section>
+  <div class="shell rw-index">
+    <div class="rw-index-feature">{rw_feature(posts[0], eager=True).replace('<h3>', '<h2>').replace('</h3>', '</h2>')}</div>
+    <div class="rw-list">
+{rows}
+    </div>
+  </div>
+</section>
+{SIGNUP}
+{SUBSCRIBE_JS}
+</body>
+</html>
+"""
+    out = ROOT / "rewind" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(page)
+
+
+def build_rewind():
+    posts = rewind_posts()
+    if not posts:
+        return posts
+    for post in posts:
+        rewind_page(post, posts)
+    rewind_index(posts)
+    rows = "\n".join("          " + rw_row(x) for x in posts[1:5])
+    replace_between(
+        ROOT / "index.html", "<!-- REWIND:START -->", "<!-- REWIND:END -->",
+        f'\n      <div class="rw-grid reveal">\n        {rw_feature(posts[0])}\n        <div class="rw-rows">\n{rows}\n        </div>\n      </div>\n      ',
+    )
+    urls = [f"{SITE}/rewind/"] + [f"{SITE}/rewind/{x['slug']}/" for x in posts]
+    sm = "".join(f"\n  <url>\n    <loc>{u}</loc>\n    <changefreq>{'weekly' if u.endswith('/rewind/') else 'yearly'}</changefreq>\n    <priority>{'0.7' if u.endswith('/rewind/') else '0.5'}</priority>\n  </url>" for u in urls)
+    replace_between(ROOT / "sitemap.xml", "<!-- REWIND:START -->", "<!-- REWIND:END -->", sm + "\n  ")
+    return posts
+
+
 def main():
     for i, issue in enumerate(ISSUES):
         issue_page(i, issue)
@@ -356,7 +539,9 @@ def main():
     urls = [f"{SITE}/newsletter/"] + [f"{SITE}/newsletter/{x['slug']}/" for x in ISSUES]
     sm = "".join(f"\n  <url>\n    <loc>{u}</loc>\n    <changefreq>{'weekly' if u.endswith('/newsletter/') else 'yearly'}</changefreq>\n    <priority>{'0.7' if u.endswith('/newsletter/') else '0.5'}</priority>\n  </url>" for u in urls)
     replace_between(ROOT / "sitemap.xml", "<!-- NEWSLETTER:START -->", "<!-- NEWSLETTER:END -->", sm + "\n  ")
+    posts = build_rewind()
     print(f"Built {len(ISSUES)} issues + archive. Latest: {latest['slug']}")
+    print(f"Built {len(posts)} Rewind posts + index.")
 
 
 if __name__ == "__main__":

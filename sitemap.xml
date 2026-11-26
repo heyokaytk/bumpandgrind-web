@@ -47,4 +47,51 @@
     <priority>0.5</priority>
   </url>
   <!-- NEWSLETTER:END -->
+  <!-- REWIND:START -->
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/silk-sonic-smokin-out-the-window-2021/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/t-pain-thr33-ringz-2008/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/whitney-houston-im-your-baby-tonight-1990/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/alicia-keys-here-2016/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/dru-hill-how-deep-is-your-love-1998/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/happy-birthday-frank-ocean-1987/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/beyonce-irreplaceable-2006/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.bumpandgrindhfx.com/rewind/shanice-discovery-1987/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- REWIND:END -->
 </urlset>

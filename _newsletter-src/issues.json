@@ -1,5 +1,5 @@
 {
-  "_readme": "Source for /newsletter/. Add the newest issue at the TOP of `issues`, then run: python3 _newsletter-src/build.py. Post issues one week after they're emailed, and leave out early-access ticket links and VIP pricing (that's what subscribers get). `up_next` is the event card shown on every issue page; set it to null when there's nothing on sale. Folders starting with _ aren't published by GitHub Pages.",
+  "_readme": "Source for /newsletter/. Add the newest issue at the TOP of `issues`, then run: python3 _newsletter-src/build.py. Post issues one week after they're emailed, and leave out early-access ticket links and VIP pricing (that's what subscribers get). Every R&B Rewind and On This Day section also becomes its own page under /rewind/ (titled by `web_title` if set, else `title`). `up_next` is the event card shown on every issue page; set it to null when there's nothing on sale. Folders starting with _ aren't published by GitHub Pages.",
   "up_next": {
     "eyebrow": "Up next",
     "title": "New Year's Eve at Lot Six",
@@ -41,6 +41,7 @@
         {
           "kind": "otd",
           "title": "On This Day, November 11th, 2008",
+          "web_title": "T-Pain, <i>Thr33 Ringz</i> (2008)",
           "body": [
             "18 years ago today, <b>T-Pain</b> released <i>Thr33 Ringz</i>, his third album. It debuted at #4 on the Billboard 200, went to #1 on the R&amp;B/Hip-Hop albums chart, and gave us “Can't Believe It” with Lil Wayne and “Freeze” with Chris Brown."
           ],
@@ -91,6 +92,7 @@
         {
           "kind": "otd",
           "title": "On This Day, November 4th, 2016",
+          "web_title": "Alicia Keys, <i>Here</i> (2016)",
           "body": [
             "10 years ago today, <b>Alicia Keys</b> released <i>Here</i>, her sixth album and her first in four years. 🎹",
             "It debuted at #2 on the Billboard 200 and gave <b>Alicia</b> her seventh #1 on the R&amp;B albums chart."
@@ -134,6 +136,7 @@
         {
           "kind": "otd",
           "title": "On This Day, October 28th, 1987",
+          "web_title": "Happy birthday, Frank Ocean (1987)",
           "body": [
             "Happy birthday to <b>Frank Ocean</b>, born on this day in Long Beach, California. 🎈",
             "Before he was Frank Ocean, he was writing songs for <b>Brandy</b>, <b>John Legend</b>, <b>Beyoncé</b> and <b>Justin Bieber</b>. His debut album <i>Channel Orange</i> (2012) went on to win the Grammy for Best Urban Contemporary Album."
@@ -177,6 +180,7 @@
         {
           "kind": "otd",
           "title": "On This Day, October 21st, 1987",
+          "web_title": "Shanice, <i>Discovery</i> (1987)",
           "body": [
             "On this day, a 14-year-old <b>Shanice</b> released her debut album, <i>Discovery</i>.",
             "Most of us know her from “I Love Your Smile” a few years later, but this is where it started. Fourteen years old with a full album out. Wild."
