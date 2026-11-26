@@ -539,6 +539,9 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
   .requests-error::before { content: "⚠"; margin-right: 8px; font-weight: 700; }
 
   /* ── MEMORIES ── */
+  #rewind-section { background: var(--off-white); }
+  .rw-head { display: flex; justify-content: space-between; align-items: end; gap: 16px 24px; flex-wrap: wrap; }
+  .rw-sub { font-family: var(--body); font-weight: 300; font-size: 18px; line-height: 1.5; letter-spacing: normal; color: var(--mid-gray); max-width: 46ch; margin-top: 12px; }
   #memories { background: var(--white); }
   #memories .mem-head { padding-bottom: clamp(28px, 4vw, 48px); }
   /* Full-bleed collage marquee: two rows of photos, edge to edge, looping in opposite directions */
@@ -820,6 +823,7 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     <a href="/nye/">NYE Tickets</a>
     <a href="#mixes">Mixes</a>
     <a href="/newsletter/">Newsletter</a>
+    <a href="/rewind/">Rewind</a>
     <a href="#memories">Memories</a>
     <a href="#events" class="nav-cta" id="navCta" data-ticket data-soon-label="See events" data-live-label="Get tickets now">See events</a>
   </div>
@@ -1008,6 +1012,31 @@ src="https://www.facebook.com/tr?id=1478717332720361&ev=PageView&noscript=1"
     </form>
     <div class="requests-success" id="requestsSuccess" role="status" aria-live="polite">Got it, thanks for the request!</div>
     <div class="requests-error" id="requestsError" role="status" aria-live="polite">Something went wrong. Email us at <a href="mailto:bumpandgrindhfx@gmail.com" style="color:var(--error)">bumpandgrindhfx@gmail.com</a>.</div>
+  </div>
+</section>
+
+<!-- REWIND -->
+<section id="rewind-section">
+  <div id="rewind" class="shell">
+    <div class="rw-head">
+      <div>
+        <p class="eyebrow reveal">⏪️ Rewind</p>
+        <h2 class="section-title reveal">The stories behind the classics.</h2>
+        <p class="rw-sub reveal">The R&amp;B we still play at every party, and the stories behind it. New ones every week from the newsletter.</p>
+      </div>
+      <a class="btn btn-ghost reveal" href="/rewind/">All Rewind stories</a>
+    </div>
+    <!-- REWIND:START -->
+      <div class="rw-grid reveal">
+        <a class="rw-feature" href="/rewind/silk-sonic-smokin-out-the-window-2021/"><span class="rw-feature-img"><img src="https://i.ytimg.com/vi/GG7fLOmlhYg/hqdefault.jpg" width="480" height="270" loading="lazy" alt=""></span><span class="rw-feature-body"><span class="rw-kicker">⏪️ R&amp;B Rewind</span><h3>Silk Sonic, “Smokin Out The Window” (2021)</h3><p>“Smokin Out the Window” started as a backstage joke between Bruno and Anderson, and they turned it into a hook. The funk legend Bootsy Collins named the duo…</p><span class="rw-more">Read the story →</span></span></a>
+        <div class="rw-rows">
+          <a class="rw-row" href="/rewind/t-pain-thr33-ringz-2008/"><img src="https://i.ytimg.com/vi/kWBE0sQC5L8/hqdefault.jpg" width="132" height="74" loading="lazy" alt=""><span><span class="rw-kicker">🗓️ On This Day</span><h3>T-Pain, <i>Thr33 Ringz</i> (2008)</h3><p>Thr33 Ringz was nominated for Best Contemporary R&amp;B Album at the Grammys, but it lost to Beyoncé&#x27;s I Am... Sasha Fierce.</p></span></a>
+          <a class="rw-row" href="/rewind/whitney-houston-im-your-baby-tonight-1990/"><img src="https://i.ytimg.com/vi/i0oRnyXxIrY/hqdefault.jpg" width="132" height="74" loading="lazy" alt=""><span><span class="rw-kicker">⏪️ R&amp;B Rewind</span><h3>Whitney Houston, “I'm Your Baby Tonight” (1990)</h3><p>This album was a response. After Whitney was booed (crazy!) at the 1989 Soul Train Music Awards and called “not black enough,” she went after a funkier sound…</p></span></a>
+          <a class="rw-row" href="/rewind/alicia-keys-here-2016/"><img src="https://i.ytimg.com/vi/HbGm5f5PR2o/hqdefault.jpg" width="132" height="74" loading="lazy" alt=""><span><span class="rw-kicker">🗓️ On This Day</span><h3>Alicia Keys, <i>Here</i> (2016)</h3><p>Alicia has said she wrote around 30 songs for Here in about 10 days. Her pregnancy delayed the release, so the album sat for a while before finally coming out…</p></span></a>
+          <a class="rw-row" href="/rewind/dru-hill-how-deep-is-your-love-1998/"><img src="https://i.ytimg.com/vi/43XWafBLJIM/hqdefault.jpg" width="132" height="74" loading="lazy" alt=""><span><span class="rw-kicker">⏪️ R&amp;B Rewind</span><h3>Dru Hill, “How Deep Is Your Love” (1998)</h3><p>The song was made for the Rush Hour soundtrack. Rush Hour director Brett Ratner shot the video on a rooftop in Hong Kong, and it&#x27;s mixed with clips from the…</p></span></a>
+        </div>
+      </div>
+      <!-- REWIND:END -->
   </div>
 </section>
 

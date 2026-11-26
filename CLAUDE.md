@@ -11,6 +11,7 @@ Ticketing: Showpass / Bloom Tickets. Newsletter: Beehiiv, but the on-page signup
 Analytics: Meta Pixel (in the HTML) plus Cloudflare Web Analytics via automatic setup. Cloudflare injects its beacon at the edge, so it is not in the source. Do not flag missing analytics.
 NYE ticket count: `nye-sales.js` (`sold`) drives both the /nye/ meter and the homepage hero line. Update it there only.
 Newsletter web versions: `/newsletter/` is generated from `_newsletter-src/issues.json` by `python3 _newsletter-src/build.py` (also refreshes the homepage "recent issue" link and sitemap between NEWSLETTER markers). Post issues one week after sending; no early-access ticket links.
+Rewind: the same build turns every R&B Rewind and On This Day section into its own page at `/rewind/<slug>/`, plus `/rewind/`, the homepage Rewind strip (between REWIND markers) and the sitemap. Give On This Day sections a `web_title` (e.g. `Alicia Keys, <i>Here</i> (2016)`) so the page isn't titled by date. Cards use `.rw-feature` / `.rw-row` from `styles.css`.
 
 Business context, newsletter drafting, and Instagram captions are handled in the separate `BUMP & GRIND` project folder (`/Users/okaytk/Documents/CLAUDE/PROJECTS/BUMP & GRIND`) — that folder's `index.html` is a **stale, disconnected snapshot**, not this site's source. Always edit here.
 
