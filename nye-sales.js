@@ -1,7 +1,7 @@
 // NYE ticket count: update `sold` as tickets sell.
 // Read by every [data-meter] bar (homepage events row, /nye/, /seasonpass)
 // and the homepage hero line.
-window.NYE_SALES = { sold: 17, capacity: 100, passes: 50 };
+window.NYE_SALES = { sold: 20, capacity: 100, passes: 50 };
 
 // Sales meters. While season passes remain (first 50 sold), they count those
 // down; after that they count tickets left of 100.
